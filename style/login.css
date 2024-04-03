@@ -1,0 +1,151 @@
+main {
+    background-image: linear-gradient( to bottom, #8f00f1, #4dcbff);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'red hat display', sans-serif;
+}
+
+.loginContainer {
+    position: relative;
+    height: 480px;
+    width: 768px;
+    border-radius: 12px;
+    box-shadow: 0 5px 12px #A0A0A0;
+    overflow: hidden;
+}
+.formContainer {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+.form {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.formButton {
+    border-style: none;
+    width: 160px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: transparent;
+    border: 2px solid #4dcbff;
+    color: #4dcbff;
+    transition: .2s;
+}
+.formButton:hover {
+    background-color: #4dcbff;
+    color: white;
+    cursor: pointer;
+}
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+}
+
+.formLogin {
+    background-color: white;
+    padding: 55px 0;
+}
+.formLogin > .title{
+    font-size: 2.5rem;
+    font-weight: 100;
+}
+
+.formRegister {
+    background-color: white;
+}
+.formRegister > .title{
+    font-size: 2rem;
+    font-weight: 100;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.input{
+    all: unset;
+    padding: 0.9rem;
+    border: 1px solid white;
+    border-radius: 10px;
+    transition: 150ms
+        cubic-bezier(0.4, 0, 0.2, 1);
+    width: 90%;
+    background-color: #f3f3f3;
+}
+.input:focus {
+    border: 1px solid
+        #4dcbff;
+}
+.input:is(:focus, :valid) ~ label {
+    transform: 
+        translatey(-120%)
+        scale(0.7);
+    background-color: #f3f3f3;
+    padding-inline: 0.3rem;
+    color: #4dcbff;
+}
+.label {
+    position: absolute;
+    margin-left: 10px;
+    margin-top: -34px;
+    color: #bbbbbb;
+    pointer-events: none;
+    transition: 150ms
+        cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.overlayContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    background-color: #4dcbff;
+
+}
+.overlay {
+    width: 100%;
+    height: 100%;
+    background-color: #8f00f1;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+.overlay > .title{
+    font-size: 2.3rem;
+    font-weight: 100;
+    color: white;
+    font-weight: 600;
+}
+.overlay > p {
+    color: white;
+    font-size: 1.7rem;
+    text-align: center;
+}
+.overlayButton {
+    border-style: none;
+    width: 160px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    transition: .2s;
+}
+.overlayButton:hover {
+    background-color: white;
+    color: purple;
+    cursor: pointer;
+}

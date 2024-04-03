@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../style/reset.css">
+    <link rel="stylesheet" href="../style/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <div class="loginContainer">
+            <div class="formContainer">
+                <form class="form formLogin">
+                    <h2 class="title">Entrar</h2>
+                    <div class="formInputs">
+                        <div class="inputGroup">
+                            <div>
+                                <input required type="text" id="email" class="input">
+                                <label class="label" for="email">Email</label>
+                            </div>
+                            <div>
+                                <input required type="password" id="senha" class="input">
+                                <label class="label" for="senha">Senha</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="formButton">Entrar</button>
+                    <a href="#" class="formLink">Esqueceu a senha?</a>
+                </form>
+                <form class="form formRegister">
+                    <h1 class="title">Cadastrar-se</h1>
+                    <div class="formInputs">
+                        <div class="inputGroup">
+                            <div>
+                                <input required type="text" id="email" class="input">
+                                <label class="label" for="email">Email</label>
+                            </div>
+                            <div>
+                                <input required type="password" id="senha" class="input">
+                                <label class="label" for="senha">Senha</label>
+                            </div>
+                            <div>
+                                <input required type="password" id="senha" class="input">
+                                <label class="label" for="confirmarsenha">Confirmar Senha</label>
+                            </div>
+                        </div>
+                    </div>
+                    <h1 class="title">Dados pessoais</h1>
+                    <div class="formInputs">
+                        <div class="inputGroup">
+                            <div>
+                                <input required type="text" id="nome" class="input">
+                                <label class="label" for="nome">Nome</label>
+                            </div>
+                            <div>
+                                <input required type="password" id="ra" class="input">
+                                <label class="label" for="ra">RA</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="formButton">Cadastrar</button>
+                    <a href="#" class="formLink">Esqueceu a senha?</a>
+                </form>
+            </div>
+            <div class="overlayContainer">
+                <div class="overlay">
+                    <h2 class="title">Não tem uma conta?</h2>
+                    <p class="text">Cadastre-se agora em nosso site!</p>
+                    <button class="overlayButton">Ir</button>
+                </div>
+                <!--<div class="overlay">
+                    <h2 class="title">Bem vindo de volta!</h2>
+                    <p class="text">Entre na sua conta</p>
+                    <button class="overlayButton">Ir</button>
+                </div>-->
+            </div>
+        </div>
+    </main>
+</body>
+</html>
