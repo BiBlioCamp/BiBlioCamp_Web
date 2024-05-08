@@ -1,16 +1,18 @@
 main {
-    background-image: linear-gradient( to bottom, #8f00f1, #4dcbff);
+    background-image: linear-gradient(to bottom, #8f00f1, #4dcbff);
     height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
+}
+body {
     font-family: 'red hat display', sans-serif;
 }
 
 .loginContainer {
     position: relative;
-    height: 480px;
-    width: 768px;
+    height: 560px;
+    width: 400vh;
+    margin-right: 25vw;
     border-radius: 12px;
     box-shadow: 0 5px 12px #A0A0A0;
     overflow: hidden;
@@ -110,19 +112,19 @@ a {
     height: 100%;
     width: 50%;
     background-color: #4dcbff;
-
 }
 .overlay {
     width: 100%;
     height: 100%;
-    background-color: #8f00f1;
     position: absolute;
     display: flex;
+    background-color: #8f00f1;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 30px;
 }
+
 .overlay > .title{
     font-size: 2.3rem;
     font-weight: 100;
@@ -148,4 +150,23 @@ a {
     background-color: white;
     color: purple;
     cursor: pointer;
+}
+
+.overlayContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    transform: translateX(100%);
+    transition: 1s;
+}
+
+.loginContainer.move .overlayContainer {
+    transform: translateX(0%);
+}
+
+.loginContainer.move .overlay:nth-child(2) {
+    z-index: -1;
+    opacity: 0;
 }

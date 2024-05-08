@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main-container {
+    width: 100%;
+    margin-left: 1%;
+}
+
+.left-menu {
+    width: 14rem;
+    height: 95vh;
+    display: flex;
+    position: relative;
+    background: white;
+    flex-direction: column;
+    transition: all .4s ease;
+    border-radius: 12px;
+    border: solid 2px;
+    border-color: #8f00f1;
+}
+
+.menu {
+    position: absolute;
+    list-style: none;
+    color: white;
+    border-color: black;
+    z-index: 1200;
+    top: 4%;
+    right: -20px;
+    cursor: pointer;
+    font-size: 25px;
+    transition: all 0.2s;
+    transform: rotate(-90deg);
+}
+
+.active {
+    transform: rotate(90deg);
+}
+
+.left-menu ul li a {
+    display: flex;
+}
+
+.logo {
+    position: relative;
+    width: 60px;
+    top: 1rem;
+    left: 0.5rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.logo img {
+    width: 90%;
+    z-index: 100;
+    position: absolute;
+}
+
+.logo span {
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.logo a {
+    position: relative;
+    color: #8f00f1;
+    text-align: left;
+    font-size: 18px;
+    display: table;
+    left: 180px;
+    width: 300px;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.left-menu ul {
+    display: flex;
+    margin-top: 2rem;
+    overflow: hidden;
+    margin-left: .9rem;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+ul li {
+    list-style: none;
+    align-items: center;
+    margin-bottom: 1rem;
+    margin-left: 2px;
+    transition: all .3s linear;
+    font-family: 'Poppins', sans-serif;
+}
+
+ul li a {
+    padding: 0.5rem;
+    color: #8f00f1;
+    text-decoration: none;
+}
+
+ul li a i {
+    cursor: pointer;
+    color: #8f00f1;
+    font-size: 1.4rem;
+    margin-right: 1.6rem;
+    margin-bottom: 20px;
+    text-decoration: none;
+    transition: all .3s linear;
+}
+
+.sidebar-item i {
+    text-align: center;
+}
+
+.left-menu ul li:hover {
+    transform: translateX(.4rem);
+    transition: all .4s linear;
+}
+
+.left-menu ul li:hover .fa-solid,
+.left-menu ul li:hover a { font-weight: bold;
+    color: #4dcbff;
+}
+
+.menu:hover {
+    color: #4dcbff;
+}
+
+#settings {
+    margin-top: 46vh;
+}
+
+.sideText {
+    margin-top: 3px;
+}

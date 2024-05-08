@@ -4,15 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="../style/reset.css">
+    <script src="../javascript/loginSwap.js" defer></script>
     <link rel="stylesheet" href="../style/login.css">
+    <link rel="stylesheet" href="../style/sidebar.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" Integrity sha512-MV7K8+y+gL.IBOVD59LQIYicR65Laqukzvf/nwasFenqhPay5w/91JVM2hMDcnK10nMGCdVK+LQrJ71zPJQd1w==" crossorigin anonymous referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <main>
-        <div class="loginContainer">
+        <div class="main-container">
+            <div class="left-menu">
+                <div class="logo">
+                    <img src="../images/logo.png" alt="logo">
+                    <span class="logoLink"><a href="#">BiBlioCamp</a></span>
+                </div>
+                <li class="menu"><i class="fa-sharp fa-solid fa-circle-chevron-down"></i></li>
+                <ul>
+                    <li class="sidebar-item"><a class="sidebar-link" href="#"><i class="fa-solid fa-house"></i> 
+                            <span class="home">Home</span> 
+                    </a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="#"><i class="fa-solid fa-phone"></i> 
+                            <span class="contato">Contato</span> 
+                    </a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="#"><i class="fa-solid fa-book"></i> 
+                            <span class="acervo">Acervo</span> 
+                    </a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="#"><i class="fa-solid fa-question"></i> 
+                            <span class="ajuda">Ajuda</span> 
+                    </a></li>
+                    <li class="sidebar-item" id="settings"><a id="setting" class="sidebar-Link" href="#"><i class="fa-solid fa-gear"></i></a><li>
+                </ul>
+            </div>
+        </div>
+        <div class="loginContainer" id="loginContainer">
             <div class="formContainer">
                 <form class="form formLogin">
                     <h2 class="title">Entrar</h2>
@@ -28,7 +54,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="formButton">Entrar</button>
+                    <button class="formButton" id="buttonLogin">Entrar</button>
                     <a href="#" class="formLink">Esqueceu a senha?</a>
                 </form>
                 <form class="form formRegister">
@@ -62,23 +88,24 @@
                             </div>
                         </div>
                     </div>
-                    <button class="formButton">Cadastrar</button>
+                    <button class="formButton" id="buttonCadaster">Cadastrar</button>
                     <a href="#" class="formLink">Esqueceu a senha?</a>
                 </form>
             </div>
             <div class="overlayContainer">
-                <div class="overlay">
-                    <h2 class="title">Não tem uma conta?</h2>
-                    <p class="text">Cadastre-se agora em nosso site!</p>
-                    <button class="overlayButton">Ir</button>
-                </div>
-                <!--<div class="overlay">
+                <div class="overlay" id="overlayLogin">
                     <h2 class="title">Bem vindo de volta!</h2>
                     <p class="text">Entre na sua conta</p>
-                    <button class="overlayButton">Ir</button>
-                </div>-->
+                    <button class="overlayButton" id="openLogin">Ir</button>
+                </div>
+                <div class="overlay" id="overlayCadaster">
+                    <h2 class="title">Não tem uma conta?</h2>
+                    <p class="text">Cadastre-se agora em nosso site!</p>
+                    <button class="overlayButton" id="openCadaster">Ir</button>
+                </div>
             </div>
         </div>
     </main>
 </body>
+    <script src="../javascript/sidebar.js"></script>
 </html>
