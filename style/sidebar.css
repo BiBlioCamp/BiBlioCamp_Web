@@ -5,8 +5,10 @@
 }
 
 .main-container {
+    position: fixed;
     width: 100%;
     margin-left: 1%;
+    margin-top: 1.2%;
 }
 
 .left-menu {
@@ -53,6 +55,7 @@
     align-items: center;
     margin-bottom: 20px;
     justify-content: center;
+    user-select: none;
 }
 
 .logo img {
@@ -68,7 +71,7 @@
     text-transform: uppercase;
 }
 
-.logo a {
+.logo p {
     position: relative;
     color: #8f00f1;
     text-align: left;

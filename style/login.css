@@ -3,6 +3,7 @@ main {
     height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 body {
     font-family: 'red hat display', sans-serif;
@@ -11,8 +12,7 @@ body {
 .loginContainer {
     position: relative;
     height: 560px;
-    width: 400vh;
-    margin-right: 25vw;
+    width: 120vh;
     border-radius: 12px;
     box-shadow: 0 5px 12px #A0A0A0;
     overflow: hidden;
