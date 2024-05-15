@@ -1,0 +1,10 @@
+body {
+    font-family: 'red hat display', sans-serif;
+}
+main {
+    background-image: linear-gradient(to bottom, #8f00f1, #4dcbff);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

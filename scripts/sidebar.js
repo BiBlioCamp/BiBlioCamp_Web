@@ -1,5 +1,7 @@
 const btn = document.querySelector('.menu');
 const logo = document.querySelector('.logoLink');
+const aloc = document.querySelector('.alocacoes');
+const name = document.querySelector('.name');
 const ajuda = document.querySelector('.ajuda');
 const contato = document.querySelector('.contato');
 const acervo = document.querySelector('.acervo');
@@ -17,6 +19,8 @@ btn.addEventListener('click',
             ajuda.style.opacity = '0';
             acervo.style.opacity = '0';
             logo.style.opacity = '0';
+            name.style.opacity = '0';
+            aloc.style.opacity = '0';
         }
         else {
             logo.style.opacity = '1';
@@ -25,6 +29,8 @@ btn.addEventListener('click',
             ajuda.style.opacity = '1';
             acervo.style.opacity = '1';
             menu.style.width = '13rem';
+            name.style.opacity = '1';
+            aloc.style.opacity = '1';
         }
     }
 )
