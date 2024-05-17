@@ -14,7 +14,6 @@ body {
     height: 560px;
     width: 120vh;
     border-radius: 12px;
-    box-shadow: 0 5px 12px #A0A0A0;
     overflow: hidden;
 }
 .formContainer {
@@ -118,7 +117,7 @@ a {
     height: 100%;
     position: absolute;
     display: flex;
-    background-color: #8f00f1;
+    background-color: #8105D6;
     flex-direction: column;
     align-items: center;
     justify-content: center;
