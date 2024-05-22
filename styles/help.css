@@ -1,0 +1,76 @@
+body {
+    font-family: 'red hat display', sans-serif;
+}
+
+
+.upperContainer {
+    background: linear-gradient(to bottom, #8f00f1, #4dcbff);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    color: white;
+    height: 70vh;
+    width: 100%;
+    padding: 3vh;
+}
+
+.bottomContainer {
+    background: linear-gradient(to bottom, #8f00f1, #4dcbff);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    color: white;
+    height: 30vh;
+    width: 100%;
+}
+a {
+    text-decoration: underline;
+    color: white;
+    transition: .1s;
+}
+a:hover {
+    color: #4dcbff;
+}
+
+.text {
+    text-align: center;
+    font-size: 40px;
+    width: 90vh;
+}
+.text h1 {
+    text-align: center;
+}
+
+.leftImage > img {
+    height: 100%;
+}
+
+.dividerTop {
+    background: black;
+    width: 100%;
+    height: 15vh;
+    clip-path: polygon(0 0, 100% 40%, 100% 100%, 0 60%);
+    margin-top: -60px;
+}
+
+.dividerBot {
+    background: black;
+    width: 100%;
+    height: 15vh;
+    clip-path: polygon(0 40%, 100% 0, 100% 60%, 0 100%);
+    margin-bottom: -60px;
+}
+
+.help {
+    height: 100vh;
+}
+
+@media (max-width: 768px) {
+    .leftImage{
+        display: none;
+    }
+}

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página inicial</title>
+    <title>Ajuda</title>
     <link rel="stylesheet" href="../styles/sidebar.css">
-    <link rel="stylesheet" href="../styles/home.css">
+    <link rel="stylesheet" href="../styles/help.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" Integrity="sha512-MV7K8+y+gL.IBOVD59LQIYicR65Laqukzvf/nwasFenqhPay5w/91JVM2hMDcnK10nMGCdVK+LQrJ71zPJQd1w==" crossorigin anonymous referrerpolicy="no-referrer"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,8 +25,9 @@
                     <a href="home.html"><span class="name"><p>Você</p></span></a>
                 </div>
                 <li class="menu"><i class="fa-sharp fa-solid fa-circle-chevron-down"></i></li>
-                <ul>
-                    <li class="sidebar-item"><a class="sidebar-link" href="#"><i class="fa-solid fa-house"></i> 
+                <li class="close"><i class="fa-sharp fa-solid fa-close"></i></li>
+                <ul class="list">
+                    <li class="sidebar-item"><a class="sidebar-link" href="home.html"><i class="fa-solid fa-house"></i> 
                             <span class="home">Home</span> 
                     </a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="#"><i class="fa-solid fa-book"></i> 
@@ -38,15 +39,32 @@
                     <li class="sidebar-item"><a class="sidebar-link" href="contato.html"><i class="fa-solid fa-phone"></i> 
                             <span class="contato">Contato</span> 
                     </a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="help.html"><i class="fa-solid fa-question"></i> 
+                    <li class="sidebar-item"><a class="sidebar-link" href="#"><i class="fa-solid fa-question"></i> 
                             <span class="ajuda">Ajuda</span> 
                     </a></li>
                 </ul>
             </div>
         </div>
-        <main>
-            
-        </main>
+        <div class="upperContainer">
+            <div class="leftImage">
+                <img src="../images/helpImage.png" alt="help">
+            </div>
+            <div class="text">
+                <h1>Duvidas frequentes</h1>
+                <span>Esta com algum problema? Veja algumas duvidas que frequentemente são enviadas a nós!</span>
+            </div>
+        </div>
+        <div class="dividerTop"></div>
+        <div class="help">
+
+        </div>
+        <div class="dividerBot"></div>
+        <div class="bottomContainer">
+            <div class="text">
+                <p>Não conseguiu resolver seu problema?</p>
+                <p>Entre em <a href="contato.html">contato</a> conosco!</p>
+            </div>
+        </div>
     </div>
 </body>
     <script src="../scripts/sidebar.js"></script>

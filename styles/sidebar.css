@@ -6,9 +6,9 @@
 
 .main-container {
     position: fixed;
-    width: 100%;
-    margin-left: 1%;
-    margin-top: 1.2%;
+    z-index: 10;
+    height: 100%;
+    margin-left: -.15%;
 }
 
 #profile {
@@ -31,19 +31,18 @@ a {
     border: solid 1px;
     border-radius: 100px;
     border-color: black;
-    
 }
 
 .left-menu {
     width: 14rem;
-    height: 95vh;
+    height: 100%;
     display: flex;
     position: relative;
     background: white;
     flex-direction: column;
     transition: all .4s ease;
-    border-radius: 12px;
-    border: solid 2px;
+    border-radius: 0px 20px 20px 0px;
+    border-right: solid 2px;
     border-color: #8f00f1;
 }
 
@@ -54,7 +53,19 @@ a {
     border-color: black;
     z-index: 1200;
     top: 4%;
-    right: -20px;
+    right: -16px;
+    cursor: pointer;
+    font-size: 25px;
+    transition: all 0.2s;
+    transform: rotate(-90deg);
+}
+.close {
+    position: absolute;
+    list-style: none;
+    color: rgb(220, 0, 0);
+    border-color: black;
+    z-index: 1200;
+    right: 10px;
     cursor: pointer;
     font-size: 25px;
     transition: all 0.2s;
@@ -161,8 +172,9 @@ ul li a i {
 .menu:hover {
     color: #4dcbff;
 }
-
-
+.close:hover {
+    color: #4dcbff;
+}
 
 .sideText {
     margin-top: 3px;

@@ -1,4 +1,7 @@
 const btn = document.querySelector('.menu');
+const text = document.querySelector('.logo');
+const list = document.querySelector('.list');
+const btnClose = document.querySelector('.close');
 const logo = document.querySelector('.logoLink');
 const aloc = document.querySelector('.alocacoes');
 const name = document.querySelector('.name');
@@ -20,7 +23,7 @@ btn.addEventListener('click',
             ajuda.style.opacity = '0';
             acervo.style.opacity = '0';
             logo.style.opacity = '0';
-            name.style.opacity = '';
+            name.style.opacity = '0';
             aloc.style.opacity = '0';
         }
         else {
@@ -32,6 +35,23 @@ btn.addEventListener('click',
             menu.style.width = '13rem';
             aloc.style.opacity = '1';
             name.style.opacity = '1';
+        }
+    }
+)
+btnClose.addEventListener('click', 
+    function () {
+        btn.classList.toggle('active');
+        if (btn.classList.contains('active')) {
+            text.style.display = 'none';
+            btn.style.display = 'none';
+            profile.style.display = 'none';
+            list.style.display = 'none';
+        }
+        else {
+            text.style.display = 'block';
+            btn.style.display = 'block';
+            profile.style.display = 'block';
+            list.style.display = 'block';
         }
     }
 )
