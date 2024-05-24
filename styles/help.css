@@ -39,10 +39,23 @@ a:hover {
 .text {
     text-align: center;
     font-size: 40px;
-    width: 90vh;
+    width: 50%;
 }
-.text h1 {
+@media (max-width: 1150px) {
+    .text {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .text p b {
+        font-size: 47px;
+    }
+}
+
+.text p {
     text-align: center;
+    font-size: 2em;
 }
 
 .leftImage > img {
@@ -66,7 +79,22 @@ a:hover {
 }
 
 .help {
-    height: 100vh;
+    height: fit-content;
+    padding: 5%;
+    width: 70%;
+}
+.help summary{
+    font-size: 50px;
+}
+.help p{
+    font-size: 25px;
+}
+.help details {
+    margin: 50px;
+}
+
+details {
+    transition: 1s;
 }
 
 @media (max-width: 768px) {

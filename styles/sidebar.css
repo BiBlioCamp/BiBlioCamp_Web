@@ -49,23 +49,10 @@ a {
 .menu {
     position: absolute;
     list-style: none;
-    color: white;
-    border-color: black;
+    color: #E6E6E6;
     z-index: 1200;
     top: 4%;
     right: -16px;
-    cursor: pointer;
-    font-size: 25px;
-    transition: all 0.2s;
-    transform: rotate(-90deg);
-}
-.close {
-    position: absolute;
-    list-style: none;
-    color: rgb(220, 0, 0);
-    border-color: black;
-    z-index: 1200;
-    right: 10px;
     cursor: pointer;
     font-size: 25px;
     transition: all 0.2s;
