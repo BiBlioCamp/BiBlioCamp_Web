@@ -1,3 +1,42 @@
+<?php
+
+    session_start();
+    $_SESSION['email'] = "";
+    $_SESSION['password'] = "";
+    $_SESSION['confPass'] = "";
+    $_SESSION['name'] = "";
+    $_SESSION['ra'] = "";
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $username = "User";
+        $pfp = "unsetPfp.png";
+        $pfpAction = "login.php";
+        $msg = "";
+    }
+    else if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $method = $_POST['button'];
+
+        if($method == 'cadaster') {
+            $_SESSION['email'] = $_POST['email'];
+            $_SESSION['password'] = $_POST['password'];
+            $_SESSION['name'] = $_POST['name'];
+            $_SESSION['ra'] = $_POST['ra'];
+            if($_SESSION['password'] == $_POST['confPass']) {
+                $_SESSION['confPass'] = $_POST['confPass'];
+                header('Location: profileConf.php');
+            }
+            else
+                $msg = "As senhas não coincidem!";
+        }
+        else if($method = 'login') {
+
+        }
+        else {
+            $username = "User";
+        }
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +61,7 @@
             </div>         
             <div class="icon-details">                 
                 <div class="icon-content">
-                    <a href="#">
+                    <a href="home.php">
                         <img src="../images/logobbc.png" alt="Logo">
                     </a>
                 </div>              
@@ -35,7 +74,7 @@
             </div>    
             <ul class="nav-links">            
                 <li>                
-                    <a href="home.html">
+                    <a href="home.php">
                         <i class='bx bxs-home'></i>
                         <span class="link_name">Home</span>
                     </a>                  
@@ -55,7 +94,7 @@
                 </li>
 
                 <li>                
-                    <a href="contato.html">
+                    <a href="contato.php">
                         <i class='bx bxs-phone' ></i>
                         <span class="link_name">Contato</span>
                     </a>                  
@@ -75,7 +114,7 @@
                 </li>
 
                 <li>                
-                    <a href="ajuda.html">
+                    <a href="ajuda.php">
                         <i class='bx bxs-help-circle' ></i>
                         <span class="link_name">Ajuda</span>
                     </a>                  
@@ -86,75 +125,76 @@
                 <li>           
                     <div class="profile-details">                 
                         <div class="profile-content">
-                            <a href="#">
-                                <img src="../images/pfp.png" alt="profileImg">
+                            <a href="<?= $pfpAction ?>">
+                                <img src="../images/<?= $pfp ?>" alt="profileImg">
                             </a>
                         </div>              
                         <div class="name-job">                
-                            <div class="profile_name">User</div>
+                            <div class="profile_name"><?= $username ?></div>
                         </div>                
-                        <a href="login.html" class="logout">
+                        <a href="logout.php" class="logout">
                             <i class="bx bx-log-out"></i>
                         </a>    
                     </div>            
                 </li>
             </ul>
-          </div>
+        </div>
     <main>
         
         <div class="loginContainer" id="loginContainer">
             <div class="formContainer">
-                <form class="form formLogin">
+                <form class="form formLogin" method="POST">
                     <h2 class="title">Entrar</h2>
                     <div class="formRegion">
                         <div class="formInputs">
                             <div class="inputGroup">
                                 <div>
-                                    <input required type="text" id="email" class="input">
+                                    <input required type="text" id="email" class="input" name="email">
                                     <label class="label" for="email">Email</label>
                                 </div>
                                 <div>
-                                    <input required type="password" id="senha" class="input">
+                                    <input required type="password" id="senha" class="input" name="password">
                                     <label class="label" for="senha">Senha</label>
                                 </div>
                             </div>
                         </div>
-                        <button class="formButton" id="buttonLogin">Entrar</button>
+                        <button class="formButton" id="buttonLogin" name="button" value="login">Entrar</button>
                     </div>
                     <a href="#" class="formLink">Esqueceu a senha?</a>
                 </form>
-                <form class="form formRegister">
+                <form class="form formRegister" method="POST">
                     <h1 class="title">Cadastrar-se</h1>
                     <div class="formInputs">
                         <div class="inputGroup">
                             <div>
-                                <input required type="text" id="email" class="input">
+                                <input required type="text" id="email" class="input" name="email" value="<?= $_SESSION['email'] ?>">
                                 <label class="label" for="email">Email</label>
                             </div>
                             <div>
-                                <input required type="password" id="senha" class="input">
+                                <input required type="password" id="senha" class="input" name="password" value="<?= $_SESSION['password'] ?>">
                                 <label class="label" for="senha">Senha</label>
                             </div>
                             <div>
-                                <input required type="password" id="senha" class="input">
+                                <input required type="password" id="senha" class="input" name="confPass">
                                 <label class="label" for="confirmarsenha">Confirmar Senha</label>
                             </div>
+                            <p><?= $msg ?></p>
                         </div>
                     </div>
                     <h1 class="title">Dados pessoais</h1>
                     <div class="formInputs">
                         <div class="inputGroup">
                             <div>
-                                <input required type="text" id="nome" class="input">
+                                <input required type="text" id="nome" class="input" name="name" value="<?= $_SESSION['name'] ?>">
                                 <label class="label" for="nome">Nome</label>
                             </div>
                             <div>
-                                <input required type="password" id="ra" class="input">
+                                <input required type="text" id="ra" class="input" name="ra" value="<?= $_SESSION['ra'] ?>">
                                 <label class="label" for="ra">RA</label>
                             </div>
                         </div>
                     </div>
-                    <button class="formButton" id="buttonCadaster">Cadastrar</button>
+                    <button class="formButton" id="buttonCadaster" name="button" value="cadaster">Cadastrar</button>
                 </form>
             </div>
             <div class="overlayContainer">

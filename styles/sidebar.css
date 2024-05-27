@@ -16,6 +16,8 @@
     background: #1d1b31;
       z-index: 100;
     transition: all 0.5s ease;
+    border-right: solid;
+    border-color: white;
   }
   .sidebar.close{
     width: 78px;
@@ -202,6 +204,8 @@
   }
   .sidebar.close .profile-details img{
     padding: 10px;
+    border-right: solid;
+    border-color: white;
   }
   .sidebar .profile-details .profile_name{
     color: #fff;
@@ -231,6 +235,9 @@
     padding: 12px 0;
     transition: all .5s ease;
   }
+  .sidebar .icon-details .name-bbc {
+    width: 104px;
+  }
   .sidebar .icon-details .about:hover {
     background-color: #4dcbff;
   }
@@ -255,8 +262,10 @@
   }
   .sidebar.close .icon-details img{
     padding: 10px;
+    border-right: solid;
+    border-color: white;
   }
-  .sidebar .icon-details .bbc_name{
+  .sidebar .icon-details .name-bbc .bbc_name{
     color: #fff;
     font-size: 18px;
     font-weight: 500;

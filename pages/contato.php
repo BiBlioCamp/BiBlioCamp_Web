@@ -1,11 +1,29 @@
+<?php
+
+    session_start();
+    if($_SERVER['REQUEST_METHOD'] === 'GET') {
+        if(!isset($_SESSION['username'])) {
+            $username = "User";
+            $pfp = "unsetPfp.png";
+            $pfpAction = "login.php";
+        }
+        else {
+            $username = $_SESSION["username"];
+            $pfp = $_SESSION['pfp'];
+            $pfpAction = 'profile.php';
+        }
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajuda</title>
+    <title>Página inicial</title>
     <link rel="stylesheet" href="../styles/sidebar.css">
-    <link rel="stylesheet" href="../styles/help.css">
+    <link rel="stylesheet" href="../styles/home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,10 +36,10 @@
             <div class="logo-details">
                 <i class="bx bx-menu"></i>
                 <span class="logo_name">Menu</span>
-            </div>       
+            </div>          
             <div class="icon-details">                 
                 <div class="icon-content">
-                    <a href="#">
+                    <a href="home.php">
                         <img src="../images/logobbc.png" alt="Logo">
                     </a>
                 </div>              
@@ -32,10 +50,9 @@
                     <i class='bx bx-link-external'></i>
                 </a>    
             </div>   
-            <ul class="nav-links">   
-                
+            <ul class="nav-links">            
                 <li>                
-                    <a href="home.html">
+                    <a href="home.php">
                         <i class='bx bxs-home'></i>
                         <span class="link_name">Home</span>
                     </a>                  
@@ -55,7 +72,7 @@
                 </li>
 
                 <li>                
-                    <a href="contato.html">
+                    <a href="contato.php">
                         <i class='bx bxs-phone' ></i>
                         <span class="link_name">Contato</span>
                     </a>                  
@@ -75,7 +92,7 @@
                 </li>
 
                 <li>                
-                    <a href="ajuda.html">
+                    <a href="ajuda.php">
                         <i class='bx bxs-help-circle' ></i>
                         <span class="link_name">Ajuda</span>
                     </a>                  
@@ -86,60 +103,23 @@
                 <li>           
                     <div class="profile-details">                 
                         <div class="profile-content">
-                            <a href="#">
-                                <img src="../images/pfp.png" alt="profileImg">
+                            <a href="<?= $pfpAction ?>">
+                                <img src="../images/<?= $pfp ?>" alt="profileImg">
                             </a>
                         </div>              
                         <div class="name-job">                
-                            <div class="profile_name">User</div>
+                            <div class="profile_name"><?= $username ?></div>
                         </div>                
-                        <a href="login.html" class="logout">
+                        <a href="logout.php" class="logout">
                             <i class="bx bx-log-out"></i>
                         </a>    
                     </div>            
                 </li>
             </ul>
           </div>
-        </div>
-        <div class="upperContainer">
-            <div class="leftImage">
-                <img src="../images/helpImage.png" alt="help">
-            </div>
-            <div class="text">
-                <p><b>Duvidas frequentes</b></p>
-                <span>Esta com algum problema? Veja algumas duvidas que frequentemente são enviadas a nós!</span>
-            </div>
-        </div>
-        <div class="dividerTop"></div>
-        <div class="help">
-            <details>
-                <summary>Lorem Ipsum?</summary>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
-            </details>
-            <details>
-                <summary>Lorem Ipsum?</summary>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
-            </details>
-            <details>
-                <summary>Lorem Ipsum?</summary>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
-            </details>
-            <details>
-                <summary>Lorem Ipsum?</summary>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
-            </details>
-            <details>
-                <summary>Lorem Ipsum?</summary>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
-            </details>
-        </div>
-        <div class="dividerBot"></div>
-        <div class="bottomContainer">
-            <div class="text">
-                <h4>Não conseguiu resolver seu problema?</h4>
-                <h4>Entre em <a href="contato.html">contato</a> conosco!</h4>
-            </div>
-        </div>
+        <main>
+            
+        </main>
     </div>
 </body>
     <script src="../scripts/sidebar.js"></script>
