@@ -7,43 +7,85 @@
     <link rel="stylesheet" href="../styles/sidebar.css">
     <link rel="stylesheet" href="../styles/home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" Integrity="sha512-MV7K8+y+gL.IBOVD59LQIYicR65Laqukzvf/nwasFenqhPay5w/91JVM2hMDcnK10nMGCdVK+LQrJ71zPJQd1w==" crossorigin anonymous referrerpolicy="no-referrer"/>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/jpg" href="../images/logobbc.png"/>
 </head>
 <body>
     <div class="container">
-        <div class="main-container">
-            <div class="left-menu">
-                <div class="logo">
-                    <img src="../images/logobbc.png" alt="logo">
-                    <span class="logoLink"><p>BiBlioCamp</p></span>
-                </div>
-                <div class="logo" id="profile">
-                    <span class="pfp"><a href="login.html"><img src="../images/nothing.png" alt="profile"></a></span>
-                    <a href="login.html"><span class="name"><p>Você</p></span></a>
-                </div>
-                <li class="menu"><i class="fa-sharp fa-solid fa-circle-chevron-down"></i></li>
-                <ul>
-                    <li class="sidebar-item"><a class="sidebar-link" href="home.html"><i class="fa-solid fa-house"></i> 
-                            <span class="home">Home</span> 
-                    </a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="#"><i class="fa-solid fa-book"></i> 
-                        <span class="acervo">Acervo</span> 
-                    </a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="#"><i class="fa-solid fa-box"></i> 
-                        <span class="alocacoes">Alocações</span> 
-                    </a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="contato.html"><i class="fa-solid fa-phone"></i> 
-                            <span class="contato">Contato</span> 
-                    </a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="help.html"><i class="fa-solid fa-question"></i> 
-                            <span class="ajuda">Ajuda</span> 
-                    </a></li>
-                </ul>
-            </div>
-        </div>
+        <div class="sidebar close">
+            <div class="logo-details">
+                <i class="bx bx-menu"></i>
+                <span class="logo_name">Menu</span>
+            </div>          
+            <ul class="nav-links">            
+                <li>                
+                    <a href="home.html">
+                        <i class='bx bxs-home'></i>
+                        <span class="link_name">Home</span>
+                    </a>                  
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="home.html">Home</a></li>
+                    </ul>                
+                </li>
+
+                <li>                
+                    <a href="#">
+                        <i class='bx bx-library'></i>
+                        <span class="link_name">Acervo</span>
+                    </a>                  
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="#">Acervo</a></li>
+                    </ul>                
+                </li>
+
+                <li>                
+                    <a href="contato.html">
+                        <i class='bx bxs-phone' ></i>
+                        <span class="link_name">Contato</span>
+                    </a>                  
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="contato.html">Contato</a></li>
+                    </ul>                
+                </li>
+
+                <li>                
+                    <a href="#">
+                        <i class='bx bxs-package' ></i>
+                        <span class="link_name">Suas Alocações</span>
+                    </a>                  
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="#">Alocações</a></li>
+                    </ul>                
+                </li>
+
+                <li>                
+                    <a href="ajuda.html">
+                        <i class='bx bxs-help-circle' ></i>
+                        <span class="link_name">Ajuda</span>
+                    </a>                  
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="ajuda.html">Ajuda</a></li>
+                    </ul>                
+                </li>
+                <li>           
+                    <div class="profile-details">                 
+                        <div class="profile-content">
+                            <a href="#">
+                                <img src="../images/pfp.png" alt="profileImg">
+                            </a>
+                        </div>              
+                        <div class="name-job">                
+                            <div class="profile_name">User</div>
+                        </div>                
+                        <a href="login.html" class="logout">
+                            <i class="bx bx-log-out"></i>
+                        </a>    
+                    </div>            
+                </li>
+            </ul>
+          </div>
         <main>
             
         </main>

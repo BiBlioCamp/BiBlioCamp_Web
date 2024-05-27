@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <script src="../javascript/loginSwap.js" defer></script>
-    <link rel="stylesheet" href="../styles/login.css">
+    <title>Ajuda</title>
     <link rel="stylesheet" href="../styles/sidebar.css">
+    <link rel="stylesheet" href="../styles/help.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/jpg" href="../images/logobbc.png"/>
 </head>
@@ -87,78 +86,47 @@
                 </li>
             </ul>
           </div>
-    <main>
-        
-        <div class="loginContainer" id="loginContainer">
-            <div class="formContainer">
-                <form class="form formLogin">
-                    <h2 class="title">Entrar</h2>
-                    <div class="formRegion">
-                        <div class="formInputs">
-                            <div class="inputGroup">
-                                <div>
-                                    <input required type="text" id="email" class="input">
-                                    <label class="label" for="email">Email</label>
-                                </div>
-                                <div>
-                                    <input required type="password" id="senha" class="input">
-                                    <label class="label" for="senha">Senha</label>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="formButton" id="buttonLogin">Entrar</button>
-                    </div>
-                    <a href="#" class="formLink">Esqueceu a senha?</a>
-                </form>
-                <form class="form formRegister">
-                    <h1 class="title">Cadastrar-se</h1>
-                    <div class="formInputs">
-                        <div class="inputGroup">
-                            <div>
-                                <input required type="text" id="email" class="input">
-                                <label class="label" for="email">Email</label>
-                            </div>
-                            <div>
-                                <input required type="password" id="senha" class="input">
-                                <label class="label" for="senha">Senha</label>
-                            </div>
-                            <div>
-                                <input required type="password" id="senha" class="input">
-                                <label class="label" for="confirmarsenha">Confirmar Senha</label>
-                            </div>
-                        </div>
-                    </div>
-                    <h1 class="title">Dados pessoais</h1>
-                    <div class="formInputs">
-                        <div class="inputGroup">
-                            <div>
-                                <input required type="text" id="nome" class="input">
-                                <label class="label" for="nome">Nome</label>
-                            </div>
-                            <div>
-                                <input required type="password" id="ra" class="input">
-                                <label class="label" for="ra">RA</label>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="formButton" id="buttonCadaster">Cadastrar</button>
-                </form>
+        </div>
+        <div class="upperContainer">
+            <div class="leftImage">
+                <img src="../images/helpImage.png" alt="help">
             </div>
-            <div class="overlayContainer">
-                <div class="overlay" id="overlayLogin">
-                    <h2 class="title">Já tem uma conta?</h2>
-                    <p class="text">Entre agora mesmo</p>
-                    <button class="overlayButton" id="openLogin">Ir</button>
-                </div>
-                <div class="overlay" id="overlayCadaster">
-                    <h2 class="title">Não tem uma conta?</h2>
-                    <p class="text">Cadastre-se agora em nosso site!</p>
-                    <button class="overlayButton" id="openCadaster">Ir</button>
-                </div>
+            <div class="text">
+                <p><b>Duvidas frequentes</b></p>
+                <span>Esta com algum problema? Veja algumas duvidas que frequentemente são enviadas a nós!</span>
             </div>
         </div>
-    </main>
+        <div class="dividerTop"></div>
+        <div class="help">
+            <details>
+                <summary>Lorem Ipsum?</summary>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
+            </details>
+            <details>
+                <summary>Lorem Ipsum?</summary>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
+            </details>
+            <details>
+                <summary>Lorem Ipsum?</summary>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
+            </details>
+            <details>
+                <summary>Lorem Ipsum?</summary>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
+            </details>
+            <details>
+                <summary>Lorem Ipsum?</summary>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
+            </details>
+        </div>
+        <div class="dividerBot"></div>
+        <div class="bottomContainer">
+            <div class="text">
+                <h4>Não conseguiu resolver seu problema?</h4>
+                <h4>Entre em <a href="contato.html">contato</a> conosco!</h4>
+            </div>
+        </div>
+    </div>
 </body>
     <script src="../scripts/sidebar.js"></script>
-    <script src="../scripts/loginSwap.js"></script>
 </html>
