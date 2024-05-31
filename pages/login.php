@@ -1,3 +1,40 @@
+<?php
+
+    include '../scripts/user.php';
+
+    session_start();
+    $_SESSION['email'] = "";
+    $_SESSION['password'] = "";
+    $_SESSION['confPass'] = "";
+    $_SESSION['name'] = "";
+    $_SESSION['ra'] = "";
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $username = "User";
+        $pfp = "unsetPfp.png";
+        $pfpAction = "login.php";
+        $msg = "";
+    }
+    else if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $method = $_POST['button'];
+        $msg = '';
+
+        if($method == 'cadaster') {
+            $_SESSION['email'] = $_POST['email'];
+            $_SESSION['password'] = $_POST['password'];
+            $_SESSION['confPass'] = $_POST['confPass'];
+            $_SESSION['name'] = $_POST['name'];
+            $_SESSION['ra'] = $_POST['ra'];
+
+            $user = new User($_SESSION['email'], $_SESSION['password'], $_SESSION['confPass'], $_SESSION['name'], $_SESSION['ra']);
+            $msg = $user->checkForm();
+            if($msg == '') {
+                header('Location: profileConf.php');
+            }
+        }
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +45,7 @@
     <link rel="stylesheet" href="../styles/login.css">
     <link rel="stylesheet" href="../styles/sidebar.css">
     <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../scripts/user.php">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -15,7 +53,6 @@
     <link rel="shortcut icon" type="image/jpg" href="../images/logobbc.png"/>
 </head>
 <body>
-    <div class="container">
         <div class="sidebar close">
             <div class="logo-details">
                 <i class="bx bx-menu"></i>
@@ -102,7 +139,6 @@
             </ul>
         </div>
     <main>
-        
         <div class="loginContainer" id="loginContainer">
             <div class="formContainer">
                 <form class="form formLogin" method="POST">
@@ -129,15 +165,15 @@
                     <div class="formInputs">
                         <div class="inputGroup">
                             <div>
-                                <input oninvalid='<?= $msg ?>' type="text" id="email" class="input" name="email" value="<?= $_SESSION['email'] ?>">
+                                <input required type="text" id="email" class="input" name="email" value="<?= $_SESSION['email'] ?>">
                                 <label class="label" for="email">Email</label>
                             </div>
                             <div>
-                                <input oninvalid='<?= $msg ?>' type="password" id="senha" class="input" name="password" value="<?= $_SESSION['password'] ?>">
+                                <input required type="password" id="senha" class="input" name="password" value="<?= $_SESSION['password'] ?>">
                                 <label class="label" for="senha">Senha</label>
                             </div>
                             <div>
-                                <input oninvalid='<?= $msg ?>' type="password" id="senha" class="input" name="confPass">
+                                <input required type="password" id="senha" class="input" name="confPass" value="<?= $_SESSION['confPass'] ?>">
                                 <label class="label" for="confirmarsenha">Confirmar Senha</label>
                             </div>
                         </div>
@@ -146,16 +182,17 @@
                     <div class="formInputs">
                         <div class="inputGroup">
                             <div>
-                                <input oninvalid='<?= $msg ?>' type="text" id="nome" class="input" name="name" value="<?= $_SESSION['name'] ?>">
+                                <input required type="text" id="nome" class="input" name="name" value="<?= $_SESSION['name'] ?>">
                                 <label class="label" for="nome">Nome</label>
                             </div>
                             <div>
-                                <input oninvalid='<?= $msg ?>' type="text" id="ra" class="input" name="ra" value="<?= $_SESSION['ra'] ?>">
+                                <input required type="text" id="ra" class="input" name="ra" value="<?= $_SESSION['ra'] ?>">
                                 <label class="label" for="ra">RA</label>
                             </div>
                         </div>
                     </div>
                     <button class="formButton" id="buttonCadaster" name="button" value="cadaster">Cadastrar</button>
+                    <p><?= $msg ?></p>
                 </form>
             </div>
             <div class="overlayContainer">
