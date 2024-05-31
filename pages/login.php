@@ -1,42 +1,3 @@
-<?php
-
-    session_start();
-    $_SESSION['email'] = "";
-    $_SESSION['password'] = "";
-    $_SESSION['confPass'] = "";
-    $_SESSION['name'] = "";
-    $_SESSION['ra'] = "";
-    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        $username = "User";
-        $pfp = "unsetPfp.png";
-        $pfpAction = "login.php";
-        $msg = "";
-    }
-    else if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        $method = $_POST['button'];
-
-        if($method == 'cadaster') {
-            $_SESSION['email'] = $_POST['email'];
-            $_SESSION['password'] = $_POST['password'];
-            $_SESSION['name'] = $_POST['name'];
-            $_SESSION['ra'] = $_POST['ra'];
-            if($_SESSION['password'] == $_POST['confPass']) {
-                $_SESSION['confPass'] = $_POST['confPass'];
-                header('Location: profileConf.php');
-            }
-            else
-                $msg = "As senhas não coincidem!";
-        }
-        else if($method = 'login') {
-
-        }
-        else {
-            $username = "User";
-        }
-    }
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -163,34 +124,33 @@
                     </div>
                     <a href="#" class="formLink">Esqueceu a senha?</a>
                 </form>
-                <form class="form formRegister" method="POST">
+                <form class="form formRegister" method="POST" name='cadaster'>
                     <h1 class="title">Cadastrar-se</h1>
                     <div class="formInputs">
                         <div class="inputGroup">
                             <div>
-                                <input required type="text" id="email" class="input" name="email" value="<?= $_SESSION['email'] ?>">
+                                <input oninvalid='<?= $msg ?>' type="text" id="email" class="input" name="email" value="<?= $_SESSION['email'] ?>">
                                 <label class="label" for="email">Email</label>
                             </div>
                             <div>
-                                <input required type="password" id="senha" class="input" name="password" value="<?= $_SESSION['password'] ?>">
+                                <input oninvalid='<?= $msg ?>' type="password" id="senha" class="input" name="password" value="<?= $_SESSION['password'] ?>">
                                 <label class="label" for="senha">Senha</label>
                             </div>
                             <div>
-                                <input required type="password" id="senha" class="input" name="confPass">
+                                <input oninvalid='<?= $msg ?>' type="password" id="senha" class="input" name="confPass">
                                 <label class="label" for="confirmarsenha">Confirmar Senha</label>
                             </div>
-                            <p><?= $msg ?></p>
                         </div>
                     </div>
                     <h1 class="title">Dados pessoais</h1>
                     <div class="formInputs">
                         <div class="inputGroup">
                             <div>
-                                <input required type="text" id="nome" class="input" name="name" value="<?= $_SESSION['name'] ?>">
+                                <input oninvalid='<?= $msg ?>' type="text" id="nome" class="input" name="name" value="<?= $_SESSION['name'] ?>">
                                 <label class="label" for="nome">Nome</label>
                             </div>
                             <div>
-                                <input required type="text" id="ra" class="input" name="ra" value="<?= $_SESSION['ra'] ?>">
+                                <input oninvalid='<?= $msg ?>' type="text" id="ra" class="input" name="ra" value="<?= $_SESSION['ra'] ?>">
                                 <label class="label" for="ra">RA</label>
                             </div>
                         </div>
