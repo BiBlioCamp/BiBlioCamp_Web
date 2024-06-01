@@ -3,47 +3,54 @@
     include '../scripts/user.php';
 
     session_start();
+    $msg = "";
+    $loginMsg = "";
     $_SESSION['email'] = "";
+    $_SESSION['emailLogin'] = "";
     $_SESSION['password'] = "";
     $_SESSION['confPass'] = "";
     $_SESSION['name'] = "";
     $_SESSION['ra'] = "";
-    
-
-    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        $username = "User";
-        $pfp = "unsetPfp.png";
-        $pfpAction = "login.php";
-        $msg = "";
+    if(isset($_SESSION['userList']))
+        $userList = $_SESSION['userList'];
+    else {
+        $userList = array(
+            new User('joao@g.unicamp.br', 'joao', 'joao', 'joao', '202235', 'joao', '../images/pfp.png'),
+            new User('enrique@g.unicamp.br', 'enrique', 'enrique', 'enrique', '202207', 'enrique', '../images/pfp.png'),
+            new User('jedson@g.unicamp.br', 'jedson', 'jedson', 'jedson', '202157', 'jedson', '../images/pfp.png'),
+            new User('gabriel@g.unicamp.br', 'gabriel', 'gabriel', 'gabriel', '202200', 'gabriel', '../images/pfp.png'),
+            new User('julya@g.unicamp.br', 'julya', 'julya', 'julya', '202200', 'julya', '../images/pfp.png'),
+        );
+        $_SESSION['userList'] = $userList;
     }
-    else if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        $method = $_POST['button'];
-        $msg = '';
 
-        if(isset($_SESSION['userList']))
-            $userList = $_SESSION['userList'];
-        else 
-            $userList = array(
-                new User('joao@g.unicamp.br', 'joao', 'joao', 'joao', '202235', []),
-                new User('enrique@g.unicamp.br', 'enrique', 'enrique', 'enrique', '202207', []),
-                new User('jedson@g.unicamp.br', 'jedson', 'jedson', 'jedson', '202157', []),
-                new User('gabriel@g.unicamp.br', 'gabriel', 'gabriel', 'gabriel', '202200', []),
-                new User('julya@g.unicamp.br', 'julya', 'julya', 'julya', '202200', []),
-            );
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $method = $_POST['button'];
 
         if($method == 'cadaster') {
             $_SESSION['email'] = $_POST['email'];
             $_SESSION['password'] = $_POST['password'];
             $_SESSION['confPass'] = $_POST['confPass'];
             $_SESSION['name'] = $_POST['name'];
-            $_SESSION['ra'] = $_POST['ra'];
+            $_SESSION['ra'] = $_POST['ra'];    
 
-            $user = new User($_SESSION['email'], $_SESSION['password'], $_SESSION['confPass'], $_SESSION['name'], $_SESSION['ra'], $_SESSION['userList']);
+            $user = new User($_SESSION['email'], $_SESSION['password'], $_SESSION['confPass'], $_SESSION['name'], $_SESSION['ra'], '', '');
             $msg = $user->checkForm();
             if($msg == '') {
                 array_push($userList, $user);
                 $_SESSION['userList'] = $userList;
                 header('Location: profileConf.php');
+            }
+        }
+
+        if($method == 'login') {
+            $_SESSION['emailLogin'] = $_POST['emailLogin'];
+            $_SESSION['passwordLogin'] = $_POST['passwordLogin'];
+
+            $user = new User($_SESSION['emailLogin'], $_SESSION['passwordLogin'], '', '', '', '', '');
+            $loginMsg = $user->checkLogin();
+            if($loginMsg == '') {
+                header('Location: home.php');
             }
         }
     }
@@ -56,7 +63,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <script src="../javascript/loginSwap.js" defer></script>
     <link rel="stylesheet" href="../styles/login.css">
     <link rel="stylesheet" href="../styles/sidebar.css">
     <link rel="stylesheet" href="../styles/reset.css">
@@ -139,12 +145,12 @@
                 <li>           
                     <div class="profile-details">                 
                         <div class="profile-content">
-                            <a href="<?= $pfpAction ?>">
-                                <img src="../images/<?= $pfp ?>" alt="profileImg">
+                            <a href="#">
+                                <img src="../images/unsetPfp.png" alt="profileImg">
                             </a>
                         </div>              
                         <div class="name-job">                
-                            <div class="profile_name"><?= $username ?></div>
+                            <div class="profile_name">User</div>
                         </div>                
                         <a href="logout.php" class="logout">
                             <i class="bx bx-log-out"></i>
@@ -156,17 +162,17 @@
     <main>
         <div class="loginContainer" id="loginContainer">
             <div class="formContainer">
-                <form class="form formLogin" method="POST">
+                <form class="form formLogin" method="POST" name="login">
                     <h2 class="title">Entrar</h2>
                     <div class="formRegion">
                         <div class="formInputs">
                             <div class="inputGroup">
                                 <div>
-                                    <input required type="text" id="email" class="input" name="email">
+                                    <input required type="text" id="email" class="input" name="emailLogin" value="<?= $_SESSION['emailLogin'] ?>">
                                     <label class="label" for="email">Email</label>
                                 </div>
                                 <div>
-                                    <input required type="password" id="senha" class="input" name="password">
+                                    <input required type="password" id="senha" class="input" name="passwordLogin">
                                     <label class="label" for="senha">Senha</label>
                                 </div>
                             </div>
@@ -174,6 +180,7 @@
                         <button class="formButton" id="buttonLogin" name="button" value="login">Entrar</button>
                     </div>
                     <a href="#" class="formLink">Esqueceu a senha?</a>
+                    <p><?= $loginMsg ?></p>
                 </form>
                 <form class="form formRegister" method="POST" name='cadaster'>
                     <h1 class="title">Cadastrar-se</h1>

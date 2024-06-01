@@ -1,5 +1,7 @@
 <?php
 
+    include '../scripts/user.php';
+
     session_start();
     if($_SERVER['REQUEST_METHOD'] === 'GET') {
         if(!isset($_SESSION['email']))
@@ -15,6 +17,8 @@
                     $_SESSION['pfp'] = 'unknownPfp.png';
                 }
                 else $_SESSION['pfp'] = $_POST['pfp'];
+                $user = new User('', '', '', '', '', $_SESSION['username'], $_SESSION['pfp']);
+                $user->refreshUser();
                 header('Location: home.php');
             }
         }

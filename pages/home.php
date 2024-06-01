@@ -8,7 +8,7 @@
             $pfpAction = "login.php";
         }
         else {
-            $username = $_SESSION["username"];
+            $username = $_SESSION['username'];
             $pfp = $_SESSION['pfp'];
             $pfpAction = 'profile.php';
         }

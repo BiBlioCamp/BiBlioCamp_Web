@@ -130,6 +130,10 @@ a {
     text-align: center;
     color: #DB362A;
 }
+.formLogin p {
+    text-align: center;
+    color: #DB362A;
+}
 .overlayContainer {
     position: absolute;
     top: 0;

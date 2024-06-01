@@ -6,21 +6,23 @@ class User {
     private $password;
     private $confPass;
     private $ra;
-    public $userList;
+    private $username;
+    private $pfp;
 
-    public function __construct($email, $password, $confPassword, $name, $ra, $userList) {
+    public function __construct($email, $password, $confPassword, $name, $ra, $username, $pfp) {
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;
         $this->confPass = $confPassword;
         $this->ra = $ra;
-        $this->userList = $userList;
+        $this->username = $username;
+        $this->pfp = $pfp;
     }
 
     public function checkEmail() {
         $exists = false;
         if(str_contains($this->email, '@g.unicamp.br')) {
-            foreach($this->userList as $user) {
+            foreach($_SESSION['userList'] as $user) {
                 if($this->email == $user->getEmail()) {
                     $exists = true;
                 }
@@ -77,6 +79,55 @@ class User {
         
         return $msg;
     }
+    public function checkLogin() {
+        $msg = '';
+
+        foreach($_SESSION['userList'] as $user) {
+            if($this->email == $user->getEmail()) {
+                if($this->password == $user->getPassword()) {
+                    $this->setName($user->getName());
+                    $this->setEmail($user->getEmail());
+                    $this->setPassword($user->getPassword());
+                    $this->setConfPass($user->getConfPass());
+                    $this->setRa($user->getRa());
+                    $this->setPfp($user->getPfp());
+                    $_SESSION['pfp'] = $user->getPfp();
+                    $this->setUsername($user->getUsername());
+                    $_SESSION['username'] = $user->getUsername();
+                    $msg = '';
+                    break;
+                }
+                else {
+                    $msg = 'Senha incorreta!<br>';
+                    $_SESSION['password'] = '';
+                    $_SESSION['emailLogin'] = $user->getEmail();
+                    break;
+                }
+            }
+            else {
+                $msg = 'Esse email não está cadastrado ou está incorreto!<br>';
+                $_SESSION['emailLogin'] = '';
+                $_SESSION['passwordLogin'] = '';
+            }
+        }
+        return $msg;
+    }
+    public function refreshUser() {
+        $pos = count($_SESSION['userList']) - 1;
+        $newUser = new User(            
+            $_SESSION['userList'][$pos]->getEmail(),            
+            $_SESSION['userList'][$pos]->getPassword(),            
+            $_SESSION['userList'][$pos]->getConfPass(),
+            $_SESSION['userList'][$pos]->getName(),
+            $_SESSION['userList'][$pos]->getRa(),
+            $this->username,
+            $this->pfp,
+        );
+        $userList = $_SESSION['userList'];
+        array_pop($userList);
+        array_push($userList, $newUser);
+        $_SESSION['userList'] = $userList;
+    }
     
     public function getName() {
         return $this->name;
@@ -107,5 +158,17 @@ class User {
     }
     public function setEmail($email) {
         $this->email = $email;
+    }
+    public function getUsername() {
+        return $this->username;
+    }
+    public function setUsername($username) {
+        $this->username = $username;
+    }
+    public function getPfp() {
+        return $this->pfp;
+    }
+    public function setPfp($pfp) {
+        $this->pfp = $pfp;
     }
 }
