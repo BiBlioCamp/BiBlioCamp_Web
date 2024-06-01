@@ -8,6 +8,8 @@
     $_SESSION['confPass'] = "";
     $_SESSION['name'] = "";
     $_SESSION['ra'] = "";
+    
+
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $username = "User";
         $pfp = "unsetPfp.png";
@@ -18,6 +20,17 @@
         $method = $_POST['button'];
         $msg = '';
 
+        if(isset($_SESSION['userList']))
+            $userList = $_SESSION['userList'];
+        else 
+            $userList = array(
+                new User('joao@g.unicamp.br', 'joao', 'joao', 'joao', '202235', []),
+                new User('enrique@g.unicamp.br', 'enrique', 'enrique', 'enrique', '202207', []),
+                new User('jedson@g.unicamp.br', 'jedson', 'jedson', 'jedson', '202157', []),
+                new User('gabriel@g.unicamp.br', 'gabriel', 'gabriel', 'gabriel', '202200', []),
+                new User('julya@g.unicamp.br', 'julya', 'julya', 'julya', '202200', []),
+            );
+
         if($method == 'cadaster') {
             $_SESSION['email'] = $_POST['email'];
             $_SESSION['password'] = $_POST['password'];
@@ -25,9 +38,11 @@
             $_SESSION['name'] = $_POST['name'];
             $_SESSION['ra'] = $_POST['ra'];
 
-            $user = new User($_SESSION['email'], $_SESSION['password'], $_SESSION['confPass'], $_SESSION['name'], $_SESSION['ra']);
+            $user = new User($_SESSION['email'], $_SESSION['password'], $_SESSION['confPass'], $_SESSION['name'], $_SESSION['ra'], $_SESSION['userList']);
             $msg = $user->checkForm();
             if($msg == '') {
+                array_push($userList, $user);
+                $_SESSION['userList'] = $userList;
                 header('Location: profileConf.php');
             }
         }

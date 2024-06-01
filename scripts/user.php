@@ -6,21 +6,34 @@ class User {
     private $password;
     private $confPass;
     private $ra;
+    public $userList;
 
-    public function __construct($email, $password, $confPassword, $name, $ra) {
+    public function __construct($email, $password, $confPassword, $name, $ra, $userList) {
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;
         $this->confPass = $confPassword;
         $this->ra = $ra;
+        $this->userList = $userList;
     }
 
     public function checkEmail() {
+        $exists = false;
         if(str_contains($this->email, '@g.unicamp.br')) {
-            return true;
+            foreach($this->userList as $user) {
+                if($this->email == $user->getEmail()) {
+                    $exists = true;
+                }
+            }
+            if ($exists) {
+                return 'exists';
+            }
+            else {
+                return 'elegible';
+            }
         }
         else {
-            return false;
+            return 'inelegible';
         }
     }
     public function checkPassword() {
@@ -43,17 +56,23 @@ class User {
     public function checkForm() {
         $msg = '';
         
-        if(!$this->checkEmail()) {
-            $_SESSION['email'] = '';
-            $msg .= 'Use um email Unicamp para fazer login! (@g.unicamp.br)';
+        switch($this->checkEmail()) {
+            case 'inelegible':
+                $_SESSION['email'] = '';
+                $msg .= 'Use um email Unicamp para fazer login! (@g.unicamp.br)<br>';
+                break;
+            case 'exists':
+                $_SESSION['email'] = '';
+                $msg .= 'Esse email já esta cadastrado!<br>';
+                break;
         }
         if(!$this->checkPassword()) {
             $_SESSION['confPass'] = '';
-            $msg .= 'As senhas não coincidem!';
+            $msg .= 'As senhas não coincidem!<br>';
         }
         if(!$this->checkRa()) {
             $_SESSION['ra'] = '';
-            $msg .= 'O RA informado não é valido!';
+            $msg .= 'O RA informado não é valido!<br>';
         }
         
         return $msg;
@@ -90,5 +109,3 @@ class User {
         $this->email = $email;
     }
 }
-
-?>
