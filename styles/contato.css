@@ -1,0 +1,127 @@
+body {
+    font-family: 'red hat display', sans-serif;
+}
+
+main {
+    background-image: linear-gradient(to bottom, #8f00f1, #4dcbff);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formContainer {
+    position: relative;
+    height: 560px;
+    width: 50%;
+    border-radius: 12px;
+}
+.form {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 25px;
+}
+.formButton {
+    border-style: none;
+    width: 50%;
+    height: 40px;
+    border-radius: 50px;
+    background-color: transparent;
+    border: 2px solid #4dcbff;
+    color: #4dcbff;
+    transition: .2s;
+}
+.formInputs {
+    width: 100%;
+}
+.formButton:hover {
+    background-color: #4dcbff;
+    color: white;
+    cursor: pointer;
+}
+.formRegion {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: fit-content;
+    width: 50%;
+}
+.formContact {
+    background-color: white;
+}
+.formContact > .title{
+    font-size: 2rem;
+    font-weight: 100;
+    text-align: center;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.input{
+    all: unset;
+    padding: .9rem;
+    border: 1px solid white;
+    border-radius: 10px;
+    transition: 150ms
+        cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    background-color: #f3f3f3;
+}
+
+#message {
+    width: 100%; 
+    height: 100px; 
+    resize: none;
+    outline: 0;
+    padding: .9rem;
+    border: 1px solid white;
+    border-radius: 10px;
+    transition: 150ms
+        cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    background-color: #f3f3f3;
+}
+.messageGroup label {
+    margin-top: -120px;
+}
+#message:is(:focus, :valid) ~ label {
+    transform: 
+        translatey(-120%)
+        scale(0.7);
+    background-color: #f3f3f3;
+    padding-inline: 0.3rem;
+    color: #4dcbff;
+}
+
+.input:focus {
+    border: 1px solid
+        #4dcbff;
+}
+.input:is(:focus, :valid) ~ label {
+    transform: 
+        translatey(-120%)
+        scale(0.7);
+    background-color: #f3f3f3;
+    padding-inline: 0.3rem;
+    color: #4dcbff;
+}
+.label {
+    margin-left: 10px;
+    margin-top: -34px;
+    position: absolute;
+    color: #bbbbbb;
+    pointer-events: none;
+    transition: 150ms
+        cubic-bezier(0.4, 0, 0.2, 1);
+}
+.formContact p {
+    text-align: center;
+    color: #DB362A;
+}

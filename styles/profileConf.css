@@ -1,6 +1,5 @@
 body {
     font-family: 'red hat display', sans-serif;
-    color: white;
 }
 main {
     background-image: linear-gradient(to bottom, #8f00f1, #4dcbff);
@@ -11,16 +10,11 @@ main {
     align-items: center;
 }
 
-form {
-    padding: 50px;
-}
 .main-container {
     width: 50%;
     height: 60%;
-    background-color: #1d1b31;
-    border: solid;
+    background-color: #fff;
     border-radius: 20px;
-    border-color: white;
     display: flex;
     flex-direction: column;
     columns: 2;
@@ -55,18 +49,23 @@ form {
     padding: 1%;
     font-size: 60px;
     top: 0;
+    margin-bottom: 50px;
+    font-weight: 100;
 }
+
 .personal-image {
     text-align: center;
 }
+
 .personal-image input[type="file"] {
     display: none;
 }
 .personal-figure {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
 }
+
 .personal-avatar {
     cursor: pointer;
     width: inherit;
@@ -80,6 +79,7 @@ form {
 .personal-avatar:hover {
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
 }
+
 .personal-figcaption {
     display: flex;
     cursor: pointer;
@@ -92,19 +92,14 @@ form {
     border-radius: 100%;
     opacity: 0;
     background-color: rgba(0, 0, 0, 0);
-    transition: all ease-in-out .3s;
+    transition: all ease-in-out .2s;
 }
 .personal-figcaption:hover {
     opacity: 1;
     background-color: rgba(0, 0, 0, .5);
 }
-.personal-figcaption > img {
-    width: 50px;
-    height: 50px;
-}
-.content-left p {
-    font-size: 40px;
-    margin-bottom: 10px;
+.personal-figcaption img {
+    height: 20%;
 }
 
 .inputGroup {
@@ -132,7 +127,7 @@ form {
     transform: 
         translatey(-150%)
         scale(0.8);
-    background-color: #1d1b31;
+    background-color: #f3f3f3;
     padding-inline: 0.3rem;
     color: #4dcbff;
 }
@@ -163,4 +158,36 @@ form {
     background-color: #4dcbff;
     color: white;
     cursor: pointer;
+}
+
+@media (max-width: 1600px) {
+    .personal-figure {
+        position: relative;
+        width: 350px;
+        height: 350px;
+    }
+}
+@media (max-width: 1400px) {
+    .personal-figure {
+        position: relative;
+        width: 300px;
+        height: 300px;
+    }
+}
+@media (max-width: 1300px) {
+    .personal-figure {
+        position: relative;
+        width: 350px;
+        height: 350px;
+    }
+    .main-container {
+        width: 70%;
+    }
+}
+@media (max-width: 1200px) {
+    .personal-figure {
+        position: relative;
+        width: 300px;
+        height: 300px;
+    }
 }

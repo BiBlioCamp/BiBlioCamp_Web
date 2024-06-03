@@ -21,9 +21,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página inicial</title>
+    <title>Contato</title>
     <link rel="stylesheet" href="../styles/sidebar.css">
-    <link rel="stylesheet" href="../styles/home.css">
+    <link rel="stylesheet" href="../styles/contato.css">
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -117,9 +117,32 @@
                     </div>            
                 </li>
             </ul>
-          </div>
+        </div>
         <main>
-            
+            <div class="formContainer">
+                <form class="form formContact" method="POST" name='contact'>
+                    <h1 class="title">Formulário de contato</h1>
+                    <div class="formRegion">
+                        <div class="formInputs">
+                            <div class="inputGroup">
+                                <div>
+                                    <input required type="text" id="nome" class="input" name="name">
+                                    <label class="label" for="nome">Nome</label>
+                                </div>
+                                <div>
+                                    <input required type="text" id="email" class="input" name="email">
+                                    <label class="label" for="email">Email</label>
+                                </div>
+                                <div class="messageGroup">
+                                    <textarea required id="message" name="message"></textarea>
+                                    <label class="label" for="message">Mensagem:</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="formButton" id="buttonSubmit" name="button" value="submit">Enviar</button>
+                </form>
+            </div>
         </main>
     </div>
 </body>

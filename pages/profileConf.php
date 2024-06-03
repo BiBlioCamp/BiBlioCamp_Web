@@ -31,7 +31,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Personalizar Perfil</title>
     <link rel="stylesheet" href="../styles/profileConf.css">
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,20 +44,18 @@
     <main>
         <div class="main-container">
             <div class="presentation-text">
-                <h1>PERSONALIZE SEU PERFIL</h1>
+                <p>Personalize seu perfil</p>
             </div>
             <form method="POST">
             <div class="content-divider">
-
                 <div class="content-left">
-                    <p>Foto de perfil</p>
                     <div class="personal-image">
                         <label class="labelForm">
                             <input class="pfp" type="file" accept="image/*" capture name="pfp">
                             <figure class="personal-figure">
                                 <img src="../images/unsetPfp.png" class="personal-avatar" alt="avatar">
                                 <figcaption class="personal-figcaption">
-                                    <img src="https://raw.githubusercontent.com/ThiagoLuizNunes/angular-boilerplate/master/src/assets/imgs/camera-white.png">
+                                    <img src="../images/camera.png">
                                 </figcaption>
                             </figure>
                         </label>
