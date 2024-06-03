@@ -23,7 +23,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página inicial</title>
     <link rel="stylesheet" href="../styles/sidebar.css">
-    <link rel="stylesheet" href="../styles/home.css">
+    <link rel="stylesheet" href="../styles/profile.css">
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -118,9 +118,54 @@
                 </li>
             </ul>
           </div>
-        <main>
-            
-        </main>
+            <div class="profile-area">
+                <div class="pfp-area">
+                    <div class="pfp">
+                        <img src="../images/<?= $_SESSION['pfp'] ?>" alt="Foto de perfil">
+                    </div>
+                </div>
+                <div class="username-area">
+                    <div class="username-data">
+                        <p><?= $_SESSION['username'] ?></p>
+                        <p><?= $_SESSION['ra'] ?></p>
+                    </div>
+                </div>
+            </div>
+            <div class="divider-top"></div>
+            <div class="books-area">
+                <div class="left-content">
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/aArteDaGuerraCover.png" alt="Livro">
+                        </div>
+                        <p>A Arte da Guerra</p>
+                    </div>
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <p>Introdução a programação com python</p>
+                    </div>
+                </div>
+                <div class="right-content">
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/javaCover.png" alt="livro">
+                        </div>
+                        <p>Programação em Java</p>
+                    </div>
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/cienceCover.png" alt="livro">
+                        </div>
+                        <p>História das Ciências</p>
+                    </div>
+                </div>
+            </div>
+            <div class="divider-bot"></div>
+            <div class="botton-content">
+
+            </div>
     </div>
 </body>
     <script src="../scripts/sidebar.js"></script>

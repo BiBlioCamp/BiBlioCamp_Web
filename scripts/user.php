@@ -86,10 +86,14 @@ class User {
             if($this->email == $user->getEmail()) {
                 if($this->password == $user->getPassword()) {
                     $this->setName($user->getName());
+                    $_SESSION['name'] = $user->getName();
                     $this->setEmail($user->getEmail());
+                    $_SESSION['email'] = $user->getEmail();
                     $this->setPassword($user->getPassword());
+                    $_SESSION['password'] = $user->getPassword();
                     $this->setConfPass($user->getConfPass());
                     $this->setRa($user->getRa());
+                    $_SESSION['ra'] = $user->getRa();
                     $this->setPfp($user->getPfp());
                     $_SESSION['pfp'] = $user->getPfp();
                     $this->setUsername($user->getUsername());
