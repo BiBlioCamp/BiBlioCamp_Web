@@ -25,14 +25,15 @@ body {
     }
 }
 .pfp-area .pfp {
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     position: absolute;
     margin-right: -100px;
     border: solid 20px;
     border-radius: 100%;
     border-color: #1d1b31;
-    top: 2%;
+    top: 10%;
+    z-index: 10;
 }
 .pfp-area .pfp img {
     object-fit: cover;
@@ -53,6 +54,7 @@ body {
     border-radius: 0 50px 50px 0;
     padding: 10px;
     margin-bottom: -160px;
+    z-index: 9;
 }
 .username-data {
     margin-left: 150px;
@@ -83,8 +85,8 @@ body {
     align-items: center;
     justify-content: center;
     background-image: linear-gradient(to right, #8f00f1, #4dcbff);
-    max-width: 400px;
-    max-height: 500px;
+    width: 400px;
+    height: 500px;
     text-align: center;
 }
 .right-content {
@@ -99,14 +101,40 @@ body {
     font-size: 30px;
 }
 .book-content .book-cover {
-    object-fit: cover;
-    width: 400px;
-    height: 500px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 500px;
 }
 .book-content .book-cover img {
     height: 100%;
+}
+@media (max-width: 1028px) {
+    .book-content {
+        max-width: 300px;
+        max-height: 375px;
+    }
+    .book-content p {
+        font-size: 25px;
+    }
+    .book-content .book-cover{
+        width: 300px;
+        height: 375px;
+    }
+}
+@media (max-width: 876px) {
+    .book-content {
+        max-width: 250px;
+        max-height: 312.5px;
+    }
+    .book-content p {
+        font-size: 20px;
+    }
+    .book-content .book-cover{
+        width: 250px;
+        height: 312.5px;
+    }
 }
 
 

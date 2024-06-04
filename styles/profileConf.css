@@ -19,6 +19,7 @@ main {
     flex-direction: column;
     columns: 2;
     text-align: center;
+    padding: 20px;
 }
 .main-container .content-divider {
     display: flex;
@@ -162,32 +163,22 @@ main {
 
 @media (max-width: 1600px) {
     .personal-figure {
-        position: relative;
-        width: 350px;
-        height: 350px;
-    }
-}
-@media (max-width: 1400px) {
-    .personal-figure {
-        position: relative;
         width: 300px;
         height: 300px;
     }
 }
 @media (max-width: 1300px) {
     .personal-figure {
-        position: relative;
-        width: 350px;
-        height: 350px;
+        width: 300px;
+        height: 300px;
     }
     .main-container {
         width: 70%;
     }
 }
-@media (max-width: 1200px) {
+@media (max-width: 900px) {
     .personal-figure {
-        position: relative;
-        width: 300px;
-        height: 300px;
+        width: 250px;
+        height: 250px;
     }
 }

@@ -156,7 +156,7 @@
         <div class="bottomContainer">
             <div class="text">
                 <h4>Não conseguiu resolver seu problema?</h4>
-                <h4>Entre em <a href="contato.html">contato</a> conosco!</h4>
+                <h4>Entre em <a href="contato.php">contato</a> conosco!</h4>
             </div>
         </div>
     </div>
