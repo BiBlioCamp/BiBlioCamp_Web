@@ -73,7 +73,8 @@ body {
     flex-direction: row;
     columns: 2;
     justify-content: space-evenly;
-    margin-right: -1000px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid #fff;
 }
 .book-content {
     margin-top: 50px;
@@ -143,20 +144,4 @@ body {
     height: 50vh;
     width: 100%;
     background-image: linear-gradient(to bottom, #8f00f1, #4dcbff);
-}
-
-.divider-top {
-    background: #1d1b31;
-    width: 100%;
-    height: 15vh;
-    clip-path: polygon(0 0, 100% 40%, 100% 100%, 0 60%);
-    margin-top: -60px;
-}
-
-.divider-bot {
-    background: #1d1b31;
-    width: 100%;
-    height: 15vh;
-    clip-path: polygon(0 40%, 100% 0, 100% 60%, 0 100%);
-    margin-bottom: -60px;
 }

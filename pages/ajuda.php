@@ -129,30 +129,30 @@
                 <span>Esta com algum problema? Veja algumas duvidas que frequentemente são enviadas a nós!</span>
             </div>
         </div>
-        <div class="dividerTop"></div>
         <div class="help">
-            <details>
-                <summary>Lorem Ipsum?</summary>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
-            </details>
-            <details>
-                <summary>Lorem Ipsum?</summary>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
-            </details>
-            <details>
-                <summary>Lorem Ipsum?</summary>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
-            </details>
-            <details>
-                <summary>Lorem Ipsum?</summary>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
-            </details>
-            <details>
-                <summary>Lorem Ipsum?</summary>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
-            </details>
+            <div class="main-article">
+                <details>
+                    <summary>Lorem Ipsum?</summary>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
+                </details>
+                <details>
+                    <summary>Lorem Ipsum?</summary>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
+                </details>
+                <details>
+                    <summary>Lorem Ipsum?</summary>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
+                </details>
+                <details>
+                    <summary>Lorem Ipsum?</summary>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
+                </details>
+                <details>
+                    <summary>Lorem Ipsum?</summary>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
+                </details>
+            </div>
         </div>
-        <div class="dividerBot"></div>
         <div class="bottomContainer">
             <div class="text">
                 <h4>Não conseguiu resolver seu problema?</h4>

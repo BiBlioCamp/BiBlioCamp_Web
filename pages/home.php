@@ -124,7 +124,6 @@
                     <p>A melhor maneira de gerenciar suas alocações da biblioteca de escola!</p>
                 </div>
             </div>    
-            <div class="divider-top"></div>
             <div class="emphasis-area">
                 <p>Livros mais requisitados</p>
                 <div class="carousel-container">
@@ -238,7 +237,6 @@
                     </div>
                 </div>
             </div>
-            <div class="divider-bot"></div>
             <div class="bottom-area">
                 <p>Livros fora de estoque</p>
                 <div class="carousel-container border-black">

@@ -131,7 +131,6 @@
                     </div>
                 </div>
             </div>
-            <div class="divider-top"></div>
             <div class="books-area">
                 <div class="left-content">
                     <div class="book-content">
@@ -162,7 +161,6 @@
                     </div>
                 </div>
             </div>
-            <div class="divider-bot"></div>
             <div class="botton-content">
 
             </div>
