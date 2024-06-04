@@ -40,6 +40,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/jpg" href="../images/logobbc.png"/>
 </head>
+    <script language="javascript">
+        function isMobile() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            if(userAgent.search(/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up.browser|up.link|webos|wos)/i)!= -1)
+                window.location.href = "mobileError.html";
+        }
+        window.onload(isMobile());
+    </script>
 <body>
     <main>
         <div class="main-container">
