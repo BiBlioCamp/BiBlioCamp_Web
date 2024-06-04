@@ -33,94 +33,115 @@
 </head>
 <body>
     <div class="container">
-      <div class="sidebar close">
-        <div class="logo-details">
-            <i class="bx bx-menu"></i>
-            <span class="logo_name">Menu</span>
-        </div>          
-        <div class="icon-details">                 
-            <div class="icon-content">
-                <a href="home.php">
-                    <img src="../images/logobbc.png" alt="Logo">
-                </a>
-            </div>              
-            <div class="name-bbc">                
-                <div class="bbc_name">BiblioCamp</div>
-            </div>                
-            <a href="#" class="about">
-                <i class='bx bx-link-external'></i>
-            </a>    
-        </div>   
-        <ul class="nav-links">            
-            <li>                
-                <a href="home.php">
-                    <i class='bx bxs-home'></i>
-                    <span class="link_name">Home</span>
-                </a>                  
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="home.html">Home</a></li>
-                </ul>                
-            </li>
+        <div class="sidebar close">
+            <div class="logo-details">
+                <i class="bx bx-menu"></i>
+                <span class="logo_name">Menu</span>
+            </div>          
+            <div class="icon-details">                 
+                <div class="icon-content">
+                    <a href="home.php">
+                        <img src="../images/logobbc.png" alt="Logo">
+                    </a>
+                </div>              
+                <div class="name-bbc">                
+                    <div class="bbc_name">BiblioCamp</div>
+                </div>                
+                <a href="#" class="about">
+                    <i class='bx bx-link-external'></i>
+                </a>    
+            </div>   
+            <ul class="nav-links">            
+                <li>                
+                    <a href="home.php">
+                        <i class='bx bxs-home'></i>
+                        <span class="link_name">Home</span>
+                    </a>                  
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="home.html">Home</a></li>
+                    </ul>                
+                </li>
 
-            <li>                
-                <a href="#">
-                    <i class='bx bx-library'></i>
-                    <span class="link_name">Acervo</span>
-                </a>                  
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Acervo</a></li>
-                </ul>                
-            </li>
+                <li>                
+                    <a href="#">
+                        <i class='bx bx-library'></i>
+                        <span class="link_name">Acervo</span>
+                    </a>                  
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="#">Acervo</a></li>
+                    </ul>                
+                </li>
 
-            <li>                
-                <a href="contato.php">
-                    <i class='bx bxs-phone' ></i>
-                    <span class="link_name">Contato</span>
-                </a>                  
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="contato.html">Contato</a></li>
-                </ul>                
-            </li>
+                <li>                
+                    <a href="contato.php">
+                        <i class='bx bxs-phone' ></i>
+                        <span class="link_name">Contato</span>
+                    </a>                  
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="contato.html">Contato</a></li>
+                    </ul>                
+                </li>
 
-            <li>                
-                <a href="#">
-                    <i class='bx bxs-package' ></i>
-                    <span class="link_name">Suas Alocações</span>
-                </a>                  
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Alocações</a></li>
-                </ul>                
-            </li>
+                <li>                
+                    <a href="#">
+                        <i class='bx bxs-package' ></i>
+                        <span class="link_name">Suas Alocações</span>
+                    </a>                  
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="#">Alocações</a></li>
+                    </ul>                
+                </li>
 
-            <li>                
-                <a href="ajuda.php">
-                    <i class='bx bxs-help-circle' ></i>
-                    <span class="link_name">Ajuda</span>
-                </a>                  
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="ajuda.html">Ajuda</a></li>
-                </ul>                
-            </li>
-            <li>           
-                <div class="profile-details">                 
-                    <div class="profile-content">
-                        <a href="<?= $pfpAction ?>">
-                            <img src="../images/<?= $pfp ?>" alt="profileImg">
-                        </a>
-                    </div>              
-                    <div class="name-job">                
-                        <div class="profile_name"><?= $username ?></div>
-                    </div>                
-                    <a href="logout.php" class="logout">
-                        <i class="bx bx-log-out"></i>
-                    </a>    
-                </div>            
-            </li>
-        </ul>
-      </div>
-      <main>
-            
-      </main>
+                <li>                
+                    <a href="ajuda.php">
+                        <i class='bx bxs-help-circle' ></i>
+                        <span class="link_name">Ajuda</span>
+                    </a>                  
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="ajuda.html">Ajuda</a></li>
+                    </ul>                
+                </li>
+                <li>           
+                    <div class="profile-details">                 
+                        <div class="profile-content">
+                            <a href="<?= $pfpAction ?>">
+                                <img src="../images/<?= $pfp ?>" alt="profileImg">
+                            </a>
+                        </div>              
+                        <div class="name-job">                
+                            <div class="profile_name"><?= $username ?></div>
+                        </div>                
+                        <a href="logout.php" class="logout">
+                            <i class="bx bx-log-out"></i>
+                        </a>    
+                    </div>            
+                </li>
+            </ul>
+        </div>
+            <div class="main-area">
+                <div class="left-area">
+                    <img src="../images/monitor.png" alt="Monitor">
+                </div>
+                <div class="right-area">
+                    <p class="title">BiblioCamp</p>
+                    <p>A melhor maneira de gerenciar suas alocações da biblioteca de escola!</p>
+                </div>
+            </div>    
+            <div class="divider-top"></div>
+            <div class="emphasis-area">
+                <div class="famous-books">
+                    <div class="left-buttom">
+                        <i class='bx bx-chevron-left'></i>
+                    </div>
+                    <div class="right-buttom">
+                        <i class='bx bx-chevron-right' ></i>
+                    </div>
+                </div>
+            </div>
+            <div class="divider-bot"></div>
+            <div class="bottom-area">
+
+            </div>
     </div>
 </body>
     <script src="../scripts/sidebar.js"></script>
