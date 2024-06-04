@@ -30,7 +30,7 @@ prev.addEventListener('click', () => {
     next.classList.add('shown');
     if (index === 0)
         prev.classList.remove('shown');
-    track.style.transform = `translateX(-${index * carousel}px`;
+    track.style.transform = `translateX(-${index * (carousel - 30)}px`;
 })
 
 next2.addEventListener('click', () => {
@@ -47,5 +47,5 @@ prev2.addEventListener('click', () => {
     next2.classList.add('shown');
     if (index === 0)
         prev2.classList.remove('shown');
-    track2.style.transform = `translateX(-${index * carousel2}px`;
+    track2.style.transform = `translateX(-${index * (carousel2 - 30)}px`;
 })

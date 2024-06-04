@@ -126,6 +126,10 @@ body {
     border-radius: 0 0 18px 18px;
     text-align: center;
 }
+.card .info.black {
+    background-image: none;
+    background-color: #1d1b31;
+}
 
 .nav button {
     width: 60px;
