@@ -126,9 +126,76 @@
             </div>    
             <div class="divider-top"></div>
             <div class="emphasis-area">
+                <p>Livros mais requisitados</p>
                 <div class="carousel-container">
                     <div class="carousel-inner">
                         <div class="track">
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="img"> <img src="../images/aArteDaGuerraCover.png" alt="Livro"> </div>
+                                    <div class="info"> A Arte da Guerra </div>
+                                </div>
+                            </div>
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="img"> <img src="../images/javaCover.png" alt="livro"> </div>
+                                    <div class="info"> Programação em Java </div>
+                                </div>
+                            </div>
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="img"> <img src="../images/pythonCover.png" alt="livro"> </div>
+                                    <div class="info"> Introdução a Programação com Python </div>
+                                </div>
+                            </div>
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="img"> <img src="../images/cienceCover.png" alt="livro"> </div>
+                                    <div class="info"> História das Ciências </div>
+                                </div>
+                            </div>
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="img"> 5 </div>
+                                    <div class="info"> Tittle </div>
+                                </div>
+                            </div>
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="img"> 6 </div>
+                                    <div class="info"> Tittle </div>
+                                </div>
+                            </div>
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="img"> 7 </div>
+                                    <div class="info"> Tittle </div>
+                                </div>
+                            </div>
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="img"> 8 </div>
+                                    <div class="info"> Tittle </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav">
+                        <button class="prev">
+                            <i class='bx bx-chevron-left'></i>
+                        </button>
+                        <button class="next shown">
+                            <i class='bx bx-chevron-right'></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="divider-bot"></div>
+            <div class="bottom-area">
+                <p>Livros fora de estoque</p>
+                <div class="carousel-container border-black">
+                    <div class="carousel-inner">
+                        <div class="track track2">
                             <div class="card-container">
                                 <div class="card">
                                     <div class="img"> 1 </div>
@@ -180,19 +247,14 @@
                         </div>
                     </div>
                     <div class="nav">
-                        <button class="prev">
+                        <button class="prev2">
                             <i class='bx bx-chevron-left'></i>
                         </button>
-                        <button class="next">
-                            <i class='bx bx-chevron-right' ></i>
+                        <button class="next2 shown">
+                            <i class='bx bx-chevron-right'></i>
                         </button>
                     </div>
                 </div>
-            </div>
-            <div class="divider-bot"></div>
-            <div class="bottom-area">
-
-            </div>
     </div>
 </body>
     <script src="../scripts/carouselButton.js"></script>
