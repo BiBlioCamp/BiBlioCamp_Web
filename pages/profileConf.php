@@ -47,33 +47,33 @@
                 <p>Personalize seu perfil</p>
             </div>
             <form method="POST">
-            <div class="content-divider">
-                <div class="content-left">
-                    <div class="personal-image">
-                        <label class="labelForm">
-                            <input class="pfp" type="file" accept="image/*" capture name="pfp">
-                            <figure class="personal-figure">
-                                <img src="../images/unsetPfp.png" class="personal-avatar" alt="avatar">
-                                <figcaption class="personal-figcaption">
-                                    <img src="../images/camera.png">
-                                </figcaption>
-                            </figure>
-                        </label>
+                <div class="content-divider">
+                    <div class="content-left">
+                        <div class="personal-image">
+                            <label class="labelForm">
+                                <input class="pfp" type="file" accept="image/*" capture name="pfp">
+                                <figure class="personal-figure">
+                                    <img src="../images/unsetPfp.png" class="personal-avatar" alt="avatar">
+                                    <figcaption class="personal-figcaption">
+                                        <img src="../images/camera.png">
+                                    </figcaption>
+                                </figure>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="content-right">
+                        <div class="formInputs">
+                            <div class="inputGroup">
+                                <div>
+                                    <p>Escolha seu nome de usuário!</p>
+                                    <input required type="text" id="email" class="input" name="username">
+                                    <label class="label" for="email">Username</label>
+                                </div>
+                                <button class="formButton" id="buttonCadaster">Confirmar</button>
+                            </div>
+                        </div>                    
                     </div>
                 </div>
-                <div class="content-right">
-                    <div class="formInputs">
-                        <div class="inputGroup">
-                            <div>
-                                <p>Escolha seu nome de usuário!</p>
-                                <input required type="text" id="email" class="input" name="username">
-                                <label class="label" for="email">Username</label>
-                            </div>
-                            <button class="formButton" id="buttonCadaster">Confirmar</button>
-                        </div>
-                    </div>                    
-                </div>
-            </div>
             </form>
         </div>
     </main>

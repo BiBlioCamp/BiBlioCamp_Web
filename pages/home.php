@@ -119,9 +119,6 @@
             </ul>
         </div>
             <div class="main-area">
-                <div class="left-area">
-                    <img src="../images/monitor.png" alt="Monitor">
-                </div>
                 <div class="right-area">
                     <p class="title">BiblioCamp</p>
                     <p>A melhor maneira de gerenciar suas alocações da biblioteca de escola!</p>
@@ -129,12 +126,66 @@
             </div>    
             <div class="divider-top"></div>
             <div class="emphasis-area">
-                <div class="famous-books">
-                    <div class="left-buttom">
-                        <i class='bx bx-chevron-left'></i>
+                <div class="carousel-container">
+                    <div class="carousel-inner">
+                        <div class="track">
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="img"> 1 </div>
+                                    <div class="info"> Tittle </div>
+                                </div>
+                            </div>
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="img"> 2 </div>
+                                    <div class="info"> Tittle </div>
+                                </div>
+                            </div>
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="img"> 3 </div>
+                                    <div class="info"> Tittle </div>
+                                </div>
+                            </div>
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="img"> 4 </div>
+                                    <div class="info"> Tittle </div>
+                                </div>
+                            </div>
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="img"> 5 </div>
+                                    <div class="info"> Tittle </div>
+                                </div>
+                            </div>
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="img"> 6 </div>
+                                    <div class="info"> Tittle </div>
+                                </div>
+                            </div>
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="img"> 7 </div>
+                                    <div class="info"> Tittle </div>
+                                </div>
+                            </div>
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="img"> 8 </div>
+                                    <div class="info"> Tittle </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="right-buttom">
-                        <i class='bx bx-chevron-right' ></i>
+                    <div class="nav">
+                        <button class="prev">
+                            <i class='bx bx-chevron-left'></i>
+                        </button>
+                        <button class="next">
+                            <i class='bx bx-chevron-right' ></i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -144,5 +195,6 @@
             </div>
     </div>
 </body>
+    <script src="../scripts/carouselButton.js"></script>
     <script src="../scripts/sidebar.js"></script>
 </html>
