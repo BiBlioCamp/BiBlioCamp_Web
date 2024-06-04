@@ -45,6 +45,47 @@ body {
 .main-area .right-area p {
     font-size: 50px;
 }
+@media (max-width: 1200px) {
+    .main-area .right-area .title {
+        font-size: 80px;
+    }
+    .main-area .right-area p {
+        font-size: 40px;
+    }
+}
+@media (max-width: 968px) {
+    .main-area .right-area .title {
+        font-size: 60px;
+    }
+    .main-area .right-area p {
+        font-size: 30px;
+    }
+    .main-area .left-area img {
+        width: 80%;
+        margin-left: 80px;
+    }
+}
+@media (max-width: 670px) {
+    .main-area {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+    }
+    .main-area .left-area img {
+        margin: 0;
+        width: 100%;
+        margin-bottom: 20px;
+        
+    }
+    .main-area .right-area .title {
+        font-size: 40px;
+    }
+    .main-area .right-area p {
+        font-size: 20px;
+    }
+}
+
 .emphasis-area .famous-books {
     width: 100%;
     display: flex;
