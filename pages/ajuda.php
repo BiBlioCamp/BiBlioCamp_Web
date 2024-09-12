@@ -140,23 +140,23 @@
         <div class="help">
             <div class="main-article">
                 <details>
-                    <summary>Lorem Ipsum?</summary>
+                    <summary>Problemas com login?</summary>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
                 </details>
                 <details>
-                    <summary>Lorem Ipsum?</summary>
+                    <summary>Problemas com cadastro?</summary>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
                 </details>
                 <details>
-                    <summary>Lorem Ipsum?</summary>
+                    <summary>Problemas buscando por livros?</summary>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
                 </details>
                 <details>
-                    <summary>Lorem Ipsum?</summary>
+                    <summary>Problemas ao enviar duvidas?</summary>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
                 </details>
                 <details>
-                    <summary>Lorem Ipsum?</summary>
+                    <summary>Problemas com reservas?</summary>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
                 </details>
             </div>
