@@ -1,62 +1,3 @@
-<?php
-
-    include '../scripts/user.php';
-
-    session_start();
-    $msg = "";
-    $loginMsg = "";
-    $_SESSION['email'] = "";
-    $_SESSION['emailLogin'] = "";
-    $_SESSION['password'] = "";
-    $_SESSION['confPass'] = "";
-    $_SESSION['name'] = "";
-    $_SESSION['ra'] = "";
-    if(isset($_SESSION['userList']))
-        $userList = $_SESSION['userList'];
-    else {
-        $userList = array(
-            new User('joao@g.unicamp.br', 'joao', 'joao', 'joao', '202235', 'joao', '../images/pfp.png'),
-            new User('enrique@g.unicamp.br', 'enrique', 'enrique', 'enrique', '202207', 'enrique', '../images/pfp.png'),
-            new User('jedson@g.unicamp.br', 'jedson', 'jedson', 'jedson', '202157', 'jedson', '../images/pfp.png'),
-            new User('gabriel@g.unicamp.br', 'gabriel', 'gabriel', 'gabriel', '202200', 'gabriel', '../images/pfp.png'),
-            new User('julya@g.unicamp.br', 'julya', 'julya', 'julya', '202200', 'julya', '../images/pfp.png'),
-        );
-        $_SESSION['userList'] = $userList;
-    }
-
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        $method = $_POST['button'];
-
-        if($method == 'cadaster') {
-            $_SESSION['email'] = $_POST['email'];
-            $_SESSION['password'] = $_POST['password'];
-            $_SESSION['confPass'] = $_POST['confPass'];
-            $_SESSION['name'] = $_POST['name'];
-            $_SESSION['ra'] = $_POST['ra'];    
-
-            $user = new User($_SESSION['email'], $_SESSION['password'], $_SESSION['confPass'], $_SESSION['name'], $_SESSION['ra'], '', '');
-            $msg = $user->checkForm();
-            if($msg == '') {
-                array_push($userList, $user);
-                $_SESSION['userList'] = $userList;
-                header('Location: profileConf.php');
-            }
-        }
-
-        if($method == 'login') {
-            $_SESSION['emailLogin'] = $_POST['emailLogin'];
-            $_SESSION['passwordLogin'] = $_POST['passwordLogin'];
-
-            $user = new User($_SESSION['emailLogin'], $_SESSION['passwordLogin'], '', '', '', '', '');
-            $loginMsg = $user->checkLogin();
-            if($loginMsg == '') {
-                header('Location: home.php');
-            }
-        }
-    }
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,7 +7,7 @@
     <link rel="stylesheet" href="../styles/login.css">
     <link rel="stylesheet" href="../styles/sidebar.css">
     <link rel="stylesheet" href="../styles/reset.css">
-    <link rel="stylesheet" href="../scripts/user.php">
+    <link rel="stylesheet" href="../scripts/user.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -89,7 +30,7 @@
             </div>         
             <div class="icon-details">                 
                 <div class="icon-content">
-                    <a href="home.php">
+                    <a href="home.html">
                         <img src="../images/logobbc.png" alt="Logo">
                     </a>
                 </div>              
@@ -102,7 +43,7 @@
             </div>    
             <ul class="nav-links">            
                 <li>                
-                    <a href="home.php">
+                    <a href="home.html">
                         <i class='bx bxs-home'></i>
                         <span class="link_name">Home</span>
                     </a>                  
@@ -122,7 +63,7 @@
                 </li>
 
                 <li>                
-                    <a href="contato.php">
+                    <a href="contato.html">
                         <i class='bx bxs-phone' ></i>
                         <span class="link_name">Contato</span>
                     </a>                  
@@ -142,7 +83,7 @@
                 </li>
 
                 <li>                
-                    <a href="ajuda.php">
+                    <a href="ajuda.html">
                         <i class='bx bxs-help-circle' ></i>
                         <span class="link_name">Ajuda</span>
                     </a>                  
@@ -170,13 +111,14 @@
     <main>
         <div class="loginContainer" id="loginContainer">
             <div class="formContainer">
-                <form class="form formLogin" method="POST" name="login">
+                <form class="form formLogin" method="POST" name="login" action="profileConf.html">
                     <h2 class="title">Entrar</h2>
                     <div class="formRegion">
                         <div class="formInputs">
                             <div class="inputGroup">
                                 <div>
-                                    <input required type="text" id="email" class="input" name="emailLogin" value="<?= $_SESSION['emailLogin'] ?>">
+                                    <!-- <input required type="text" id="email" class="input" name="emailLogin" value="<?= $_SESSION['emailLogin'] ?>"> -->
+                                    <input required type="text" id="email" class="input" name="emailLogin">
                                     <label class="label" for="email">Email</label>
                                 </div>
                                 <div>
@@ -188,22 +130,25 @@
                         <button class="formButton" id="buttonLogin" name="button" value="login">Entrar</button>
                     </div>
                     <a href="#" class="formLink">Esqueceu a senha?</a>
-                    <p><?= $loginMsg ?></p>
+                    <!-- <p><?= $loginMsg ?></p> -->
                 </form>
-                <form class="form formRegister" method="POST" name='cadaster'>
+                <form class="form formRegister" method="POST" name='cadaster' action="profileConf.html">
                     <h1 class="title">Cadastrar-se</h1>
                     <div class="formInputs">
                         <div class="inputGroup">
                             <div>
-                                <input required type="text" id="email" class="input" name="email" value="<?= $_SESSION['email'] ?>">
+                                <!-- <input required type="text" id="email" class="input" name="email" value="<?= $_SESSION['email'] ?>"> -->
+                                <input required type="text" id="email" class="input" name="email">
                                 <label class="label" for="email">Email</label>
                             </div>
                             <div>
-                                <input required type="password" id="senha" class="input" name="password" value="<?= $_SESSION['password'] ?>">
+                                <!-- <input required type="password" id="senha" class="input" name="password" value="<?= $_SESSION['password'] ?>"> -->
+                                <input required type="password" id="senha" class="input" name="password">
                                 <label class="label" for="senha">Senha</label>
                             </div>
                             <div>
-                                <input required type="password" id="senha" class="input" name="confPass" value="<?= $_SESSION['confPass'] ?>">
+                                <!-- <input required type="password" id="senha" class="input" name="confPass" value="<?= $_SESSION['confPass'] ?>"> -->
+                                <input required type="password" id="senha" class="input" name="confPass">
                                 <label class="label" for="confirmarsenha">Confirmar Senha</label>
                             </div>
                         </div>
@@ -212,17 +157,19 @@
                     <div class="formInputs">
                         <div class="inputGroup">
                             <div>
-                                <input required type="text" id="nome" class="input" name="name" value="<?= $_SESSION['name'] ?>">
+                                <!-- <input required type="text" id="nome" class="input" name="name" value="<?= $_SESSION['name'] ?>"> -->
+                                <input required type="text" id="nome" class="input" name="name">
                                 <label class="label" for="nome">Nome</label>
                             </div>
                             <div>
-                                <input required type="text" id="ra" class="input" name="ra" value="<?= $_SESSION['ra'] ?>">
+                                <!-- <input required type="text" id="ra" class="input" name="ra" value="<?= $_SESSION['ra'] ?>"> -->
+                                <input required type="text" id="ra" class="input" name="ra">
                                 <label class="label" for="ra">RA</label>
                             </div>
                         </div>
                     </div>
                     <button class="formButton" id="buttonCadaster" name="button" value="cadaster">Cadastrar</button>
-                    <p><?= $msg ?></p>
+                    <!-- <p><?= $msg ?></p> -->
                 </form>
             </div>
             <div class="overlayContainer">

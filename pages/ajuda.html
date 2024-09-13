@@ -1,20 +1,4 @@
-<?php
 
-    session_start();
-    if($_SERVER['REQUEST_METHOD'] === 'GET') {
-        if(!isset($_SESSION['username'])) {
-            $username = "User";
-            $pfp = "unsetPfp.png";
-            $pfpAction = "login.php";
-        }
-        else {
-            $username = $_SESSION["username"];
-            $pfp = $_SESSION['pfp'];
-            $pfpAction = 'profile.php';
-        }
-    }
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +32,7 @@
             </div>       
             <div class="icon-details">                 
                 <div class="icon-content">
-                    <a href="home.php">
+                    <a href="home.html">
                         <img src="../images/logobbc.png" alt="Logo">
                     </a>
                 </div>              
@@ -62,7 +46,7 @@
             <ul class="nav-links">   
                 
                 <li>                
-                    <a href="home.php">
+                    <a href="home.html">
                         <i class='bx bxs-home'></i>
                         <span class="link_name">Home</span>
                     </a>                  
@@ -82,7 +66,7 @@
                 </li>
 
                 <li>                
-                    <a href="contato.php">
+                    <a href="contato.html">
                         <i class='bx bxs-phone' ></i>
                         <span class="link_name">Contato</span>
                     </a>                  
@@ -102,7 +86,7 @@
                 </li>
 
                 <li>                
-                    <a href="ajuda.php">
+                    <a href="ajuda.html">
                         <i class='bx bxs-help-circle' ></i>
                         <span class="link_name">Ajuda</span>
                     </a>                  
@@ -113,13 +97,16 @@
                 <li>           
                     <div class="profile-details">                 
                         <div class="profile-content">
-                            <a href="<?= $pfpAction ?>">
-                                <img src="../images/<?= $pfp ?>" alt="profileImg">
+                        <!-- <a href="<?=$pfpAction ?>"> -->
+                            <a href="#">
+                                <!-- <img src="../images/<?= $pfp ?>" alt="profileImg"> -->
+                                <img src="../images/pfp.png" alt="profileImg">
                             </a>
                         </div>              
-                        <div class="name-job">                
-                            <div class="profile_name"><?= $username ?></div>
-                        </div>                
+                        <div class="name-job">
+                            <!-- <div class="profile_name"><?= $username ?></div> -->
+                            <div class="profile_name">Username</div>
+                            </div>                
                         <a href="logout.php" class="logout">
                             <i class="bx bx-log-out"></i>
                         </a>    
@@ -164,7 +151,7 @@
         <div class="bottomContainer">
             <div class="text">
                 <h4>Não conseguiu resolver seu problema?</h4>
-                <h4>Entre em <a href="contato.php">contato</a> conosco!</h4>
+                <h4>Entre em <a href="contato.html">contato</a> conosco!</h4>
             </div>
         </div>
     </div>
