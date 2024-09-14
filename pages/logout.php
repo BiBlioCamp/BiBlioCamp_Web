@@ -3,4 +3,4 @@
     session_start();
     unset($_SESSION['pfp']);
     unset($_SESSION['username']);
-    header("Location: login.html");
+    header("Location: login.php");

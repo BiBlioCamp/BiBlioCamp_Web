@@ -1,3 +1,34 @@
+<?php
+    $loginMsg = "";
+    if($_SERVER["REQUEST_METHOD"] === "POST"){
+        try{
+            include "conectionDB.php";
+            if($_POST["button"] == "login"){
+                $username = $_POST["emailLogin"];
+                $password = $_POST["passwordLogin"];
+                if(trim($username) != "" && trim($password) != ""){
+                    $stmt = $pdo->prepare("select * from BBC_Cliente where email = :email and senha = :senha;");
+                    $stmt->bindParam(":email",$username);
+                    $stmt->bindParam(":senha", $password);
+                    $stmt->execute();
+                    $rows = $stmt->rowCount();
+                    if($rows > 0){
+                        $userData = $stmt->fetch();
+                        session_start();
+                        $_SESSION["username"] = $userData["username"];
+                        $_SESSION["senha"] = $userData["senha"];
+                        header("location: home.html");
+                    }else{
+                        $loginMsg = "Usuário ou senha incorreto.";
+                    }
+                }
+            }
+        }catch(PDOException $e){
+            echo "Erro: " . $e->getMessage();
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,7 +142,7 @@
     <main>
         <div class="loginContainer" id="loginContainer">
             <div class="formContainer">
-                <form class="form formLogin" method="POST" name="login" action="profileConf.html">
+                <form class="form formLogin" method="POST" name="login">
                     <h2 class="title">Entrar</h2>
                     <div class="formRegion">
                         <div class="formInputs">
@@ -130,7 +161,7 @@
                         <button class="formButton" id="buttonLogin" name="button" value="login">Entrar</button>
                     </div>
                     <a href="#" class="formLink">Esqueceu a senha?</a>
-                    <!-- <p><?= $loginMsg ?></p> -->
+                    <p><?= $loginMsg ?></p>
                 </form>
                 <form class="form formRegister" method="POST" name='cadaster' action="profileConf.html">
                     <h1 class="title">Cadastrar-se</h1>
