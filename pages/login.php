@@ -1,13 +1,15 @@
+
 <?php
     $loginMsg = "";
+    $msg = "";
     if($_SERVER["REQUEST_METHOD"] === "POST"){
         try{
-            include "conectionDB.php";
+            include "conexaoDB.php";
             if($_POST["button"] == "login"){
                 $username = $_POST["emailLogin"];
                 $password = $_POST["passwordLogin"];
                 if(trim($username) != "" && trim($password) != ""){
-                    $stmt = $pdo->prepare("select * from BBC_Cliente where email = :email and senha = :senha;");
+                    $stmt = $pdo->prepare("select * from BBC_User where email = :email and senha = :senha;");
                     $stmt->bindParam(":email",$username);
                     $stmt->bindParam(":senha", $password);
                     $stmt->execute();
@@ -17,9 +19,38 @@
                         session_start();
                         $_SESSION["username"] = $userData["username"];
                         $_SESSION["senha"] = $userData["senha"];
-                        header("location: home.html");
+                        $_SESSION["ra"] = $userData["ra"];
+                        header("location: home.php");
                     }else{
                         $loginMsg = "Usuário ou senha incorreto.";
+                    }
+                }
+            }else if($_POST["button"] == "cadaster"){
+                $email = $_POST["email"];
+                $senha = $_POST["password"];
+                $confSenha = $_POST["confPass"];
+                $name = $_POST["name"];
+                $ra = $_POST["ra"];
+                if($senha == $confSenha){
+                    $stmt = $pdo->prepare("select * from BBC_User where email = :email");
+                    $stmt->bindParam(":email", $email);
+                    $stmt->execute();
+                    $rows = $stmt->rowCount();
+                    if($rows > 0){
+                        $msg = "Email já cadastrado";
+                    }else{
+                        $stmt = $pdo->prepare("insert into BBC_User (username, senha, email, ra) values (:nome, :senha, :email, :ra)");
+                        $stmt->bindParam(":nome",$name);
+                        $stmt->bindParam(":senha",$senha);
+                        $stmt->bindParam(":email",$email);
+                        $stmt->bindParam(":ra",$ra);
+                        $stmt->execute();
+                        $rows = $stmt->rowCount();
+                        if($rows > 0){
+                            $msg = "Cadastrado com sucesso!";
+                        }else{
+                            $msg = "Falha no cadastro";
+                        }
                     }
                 }
             }
@@ -61,7 +92,7 @@
             </div>         
             <div class="icon-details">                 
                 <div class="icon-content">
-                    <a href="home.html">
+                    <a href="home.php">
                         <img src="../images/logobbc.png" alt="Logo">
                     </a>
                 </div>              
@@ -74,12 +105,12 @@
             </div>    
             <ul class="nav-links">            
                 <li>                
-                    <a href="home.html">
+                    <a href="home.php">
                         <i class='bx bxs-home'></i>
                         <span class="link_name">Home</span>
                     </a>                  
                     <ul class="sub-menu blank">
-                        <li><a class="link_name" href="home.html">Home</a></li>
+                        <li><a class="link_name" href="home.php">Home</a></li>
                     </ul>                
                 </li>
 
@@ -94,12 +125,12 @@
                 </li>
 
                 <li>                
-                    <a href="contato.html">
+                    <a href="contato.php">
                         <i class='bx bxs-phone' ></i>
                         <span class="link_name">Contato</span>
                     </a>                  
                     <ul class="sub-menu blank">
-                        <li><a class="link_name" href="contato.html">Contato</a></li>
+                        <li><a class="link_name" href="contato.php">Contato</a></li>
                     </ul>                
                 </li>
 
@@ -114,12 +145,12 @@
                 </li>
 
                 <li>                
-                    <a href="ajuda.html">
+                    <a href="ajuda.php">
                         <i class='bx bxs-help-circle' ></i>
                         <span class="link_name">Ajuda</span>
                     </a>                  
                     <ul class="sub-menu blank">
-                        <li><a class="link_name" href="ajuda.html">Ajuda</a></li>
+                        <li><a class="link_name" href="ajuda.php">Ajuda</a></li>
                     </ul>                
                 </li>
                 <li>           
@@ -142,7 +173,7 @@
     <main>
         <div class="loginContainer" id="loginContainer">
             <div class="formContainer">
-                <form class="form formLogin" method="POST" name="login">
+                <form class="form formLogin" method="POST" name="login" action="">
                     <h2 class="title">Entrar</h2>
                     <div class="formRegion">
                         <div class="formInputs">
@@ -163,7 +194,7 @@
                     <a href="#" class="formLink">Esqueceu a senha?</a>
                     <p><?= $loginMsg ?></p>
                 </form>
-                <form class="form formRegister" method="POST" name='cadaster' action="profileConf.html">
+                <form class="form formRegister" method="POST" name='cadaster' action="">
                     <h1 class="title">Cadastrar-se</h1>
                     <div class="formInputs">
                         <div class="inputGroup">
@@ -200,7 +231,7 @@
                         </div>
                     </div>
                     <button class="formButton" id="buttonCadaster" name="button" value="cadaster">Cadastrar</button>
-                    <!-- <p><?= $msg ?></p> -->
+                    <p><?= $msg ?></p>
                 </form>
             </div>
             <div class="overlayContainer">

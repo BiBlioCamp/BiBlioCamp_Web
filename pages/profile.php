@@ -1,13 +1,27 @@
-
+<?php
+    session_start();
+    if($_SERVER['REQUEST_METHOD'] === 'GET') {
+        if(!isset($_SESSION['username'])) {
+            $username = "User";
+            $pfp = "unsetPfp.png";
+            $pfpAction = "login.php";
+        }
+        else {
+            $username = $_SESSION["username"];
+            $pfp = "pfp.png";
+            $pfpAction = 'profile.php';
+        }
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato</title>
+    <title><?= $_SESSION['username'] ?></title>
     <link rel="stylesheet" href="../styles/sidebar.css">
-    <link rel="stylesheet" href="../styles/contato.css">
+    <link rel="stylesheet" href="../styles/profile.css">
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -32,7 +46,7 @@
             </div>          
             <div class="icon-details">                 
                 <div class="icon-content">
-                    <a href="home.html">
+                    <a href="home.php">
                         <img src="../images/logobbc.png" alt="Logo">
                     </a>
                 </div>              
@@ -45,12 +59,12 @@
             </div>   
             <ul class="nav-links">            
                 <li>                
-                    <a href="home.html">
+                    <a href="home.php">
                         <i class='bx bxs-home'></i>
                         <span class="link_name">Home</span>
                     </a>                  
                     <ul class="sub-menu blank">
-                        <li><a class="link_name" href="home.html">Home</a></li>
+                        <li><a class="link_name" href="home.php">Home</a></li>
                     </ul>                
                 </li>
 
@@ -65,12 +79,12 @@
                 </li>
 
                 <li>                
-                    <a href="contato.html">
+                    <a href="contato.php">
                         <i class='bx bxs-phone' ></i>
                         <span class="link_name">Contato</span>
                     </a>                  
                     <ul class="sub-menu blank">
-                        <li><a class="link_name" href="contato.html">Contato</a></li>
+                        <li><a class="link_name" href="contato.php">Contato</a></li>
                     </ul>                
                 </li>
 
@@ -85,60 +99,78 @@
                 </li>
 
                 <li>                
-                    <a href="ajuda.html">
+                    <a href="ajuda.php">
                         <i class='bx bxs-help-circle' ></i>
                         <span class="link_name">Ajuda</span>
                     </a>                  
                     <ul class="sub-menu blank">
-                        <li><a class="link_name" href="ajuda.html">Ajuda</a></li>
+                        <li><a class="link_name" href="ajuda.php">Ajuda</a></li>
                     </ul>                
                 </li>
                 <li>           
                     <div class="profile-details">                 
                         <div class="profile-content">
-                        <!-- <a href="<?=$pfpAction ?>"> -->
-                            <a href="#">
-                                <!-- <img src="../images/<?= $pfp ?>" alt="profileImg"> -->
-                                <img src="../images/pfp.png" alt="profileImg">
+                            <a href="<?=$pfpAction ?>">
+                                <img src="../images/<?= $pfp ?>" alt="profileImg">
                             </a>
                         </div>              
                         <div class="name-job">
-                            <!-- <div class="profile_name"><?= $username ?></div> -->
-                            <div class="profile_name">Username</div>
-                            </div>                
+                            <div class="profile_name"><?= $username ?></div>
+                        </div>
                         <a href="logout.php" class="logout">
                             <i class="bx bx-log-out"></i>
                         </a>    
-                    </div>          
+                    </div>    
                 </li>
             </ul>
-        </div>
-        <main>
-            <div class="formContainer">
-                <form class="form formContact" method="POST" name='contact'>
-                    <h1 class="title">Formulário de contato</h1>
-                    <div class="formRegion">
-                        <div class="formInputs">
-                            <div class="inputGroup">
-                                <div>
-                                    <input required type="text" id="nome" class="input" name="name">
-                                    <label class="label" for="nome">Nome</label>
-                                </div>
-                                <div>
-                                    <input required type="text" id="email" class="input" name="email">
-                                    <label class="label" for="email">Email</label>
-                                </div>
-                                <div class="messageGroup">
-                                    <textarea required id="message" name="message"></textarea>
-                                    <label class="label" for="message">Mensagem:</label>
-                                </div>
-                            </div>
+          </div>
+            <div class="profile-area">
+                <div class="pfp-area">
+                    <div class="pfp">
+                        <!-- <img src="../images/<?= $_SESSION['pfp'] ?>" alt="Foto de perfil"> -->
+                        <img src="../images/pfp.png" alt="Foto de perfil">
                         </div>
+                </div>
+                <div class="username-area">
+                    <div class="username-data">
+                        <p><?= $_SESSION['username'] ?></p>
+                        <p><?= $_SESSION['ra'] ?></p>
                     </div>
-                    <button class="formButton" id="buttonSubmit" name="button" value="submit">Enviar</button>
-                </form>
+                </div>
             </div>
-        </main>
+            <div class="books-area">
+                <div class="left-content">
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/aArteDaGuerraCover.png" alt="Livro">
+                        </div>
+                        <p>A Arte da Guerra</p>
+                    </div>
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <p>Introdução a programação com python</p>
+                    </div>
+                </div>
+                <div class="right-content">
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/javaCover.png" alt="livro">
+                        </div>
+                        <p>Programação em Java</p>
+                    </div>
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/cienceCover.png" alt="livro">
+                        </div>
+                        <p>História das Ciências</p>
+                    </div>
+                </div>
+            </div>
+            <div class="botton-content">
+
+            </div>
     </div>
 </body>
     <script src="../scripts/sidebar.js"></script>

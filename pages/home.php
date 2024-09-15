@@ -1,3 +1,18 @@
+<?php
+    session_start();
+    if($_SERVER['REQUEST_METHOD'] === 'GET') {
+        if(!isset($_SESSION['username'])) {
+            $username = "User";
+            $pfp = "unsetPfp.png";
+            $pfpAction = "login.php";
+        }
+        else {
+            $username = $_SESSION["username"];
+            $pfp = "pfp.png";
+            $pfpAction = 'profile.php';
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +45,7 @@
             </div>          
             <div class="icon-details">                 
                 <div class="icon-content">
-                    <a href="home.html">
+                    <a href="home.php">
                         <img src="../images/logobbc.png" alt="Logo">
                     </a>
                 </div>              
@@ -43,12 +58,12 @@
             </div>   
             <ul class="nav-links">            
                 <li>                
-                    <a href="home.html">
+                    <a href="home.php">
                         <i class='bx bxs-home'></i>
                         <span class="link_name">Home</span>
                     </a>                  
                     <ul class="sub-menu blank">
-                        <li><a class="link_name" href="home.html">Home</a></li>
+                        <li><a class="link_name" href="home.php">Home</a></li>
                     </ul>                
                 </li>
 
@@ -63,12 +78,12 @@
                 </li>
 
                 <li>                
-                    <a href="contato.html">
+                    <a href="contato.php">
                         <i class='bx bxs-phone' ></i>
                         <span class="link_name">Contato</span>
                     </a>                  
                     <ul class="sub-menu blank">
-                        <li><a class="link_name" href="contato.html">Contato</a></li>
+                        <li><a class="link_name" href="contato.php">Contato</a></li>
                     </ul>                
                 </li>
 
@@ -83,26 +98,23 @@
                 </li>
 
                 <li>                
-                    <a href="ajuda.html">
+                    <a href="ajuda.php">
                         <i class='bx bxs-help-circle' ></i>
                         <span class="link_name">Ajuda</span>
                     </a>                  
                     <ul class="sub-menu blank">
-                        <li><a class="link_name" href="ajuda.html">Ajuda</a></li>
+                        <li><a class="link_name" href="ajuda.php">Ajuda</a></li>
                     </ul>                
                 </li>
                 <li>           
                     <div class="profile-details">                 
                         <div class="profile-content">
-                        <!-- <a href="<?=$pfpAction ?>"> -->
-                            <a href="profile.html">
-                                <!-- <img src="../images/<?= $pfp ?>" alt="profileImg"> -->
-                                <img src="../images/pfp.png" alt="profileImg">
+                        <a href="<?=$pfpAction ?>">
+                                <img src="../images/<?= $pfp ?>" alt="profileImg">
                             </a>
                         </div>              
                         <div class="name-job">
-                            <!-- <div class="profile_name"><?= $username ?></div> -->
-                            <div class="profile_name">Username</div>
+                            <div class="profile_name"><?= $username ?></div>
                             </div>                
                         <a href="logout.php" class="logout">
                             <i class="bx bx-log-out"></i>
