@@ -1,7 +1,6 @@
-
 <?php
-    $loginMsg = "";
     $msg = "";
+    $loginMsg = "";
     if($_SERVER["REQUEST_METHOD"] === "POST"){
         try{
             include "conexaoDB.php";
@@ -20,7 +19,7 @@
                         $_SESSION["username"] = $userData["username"];
                         $_SESSION["senha"] = $userData["senha"];
                         $_SESSION["ra"] = $userData["ra"];
-                        header("location: home.php");
+                        header("location: profile.php");
                     }else{
                         $loginMsg = "Usuário ou senha incorreto.";
                     }
@@ -52,14 +51,16 @@
                             $msg = "Falha no cadastro";
                         }
                     }
+                }else{
+                    $msg = "Senhas não compatíveis";
                 }
             }
         }catch(PDOException $e){
             echo "Erro: " . $e->getMessage();
         }
+        $pdo = null;
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,7 +100,7 @@
                 <div class="name-bbc">                
                     <div class="bbc_name">BiblioCamp</div>
                 </div>     
-                <a href="#" class="about">
+                <a href="home.php" class="about">
                     <i class='bx bx-link-external'></i>
                 </a>    
             </div>    
@@ -145,6 +146,16 @@
                 </li>
 
                 <li>                
+                    <a href="users.php">
+                        <i class='bx bxs-user-pin' ></i>
+                        <span class="link_name">Usuários</span>
+                    </a>                  
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="users.php">Usuários</a></li>
+                    </ul>                
+                </li>
+
+                <li>                
                     <a href="ajuda.php">
                         <i class='bx bxs-help-circle' ></i>
                         <span class="link_name">Ajuda</span>
@@ -163,7 +174,7 @@
                         <div class="name-job">                
                             <div class="profile_name">User</div>
                         </div>                
-                        <a href="logout.php" class="logout">
+                        <a href="#" class="logout">
                             <i class="bx bx-log-out"></i>
                         </a>    
                     </div>            
@@ -189,29 +200,33 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="formButton" id="buttonLogin" name="button" value="login">Entrar</button>
+                        <button class="formButton" id="buttonLogin" name="button" value="login" >Entrar</button>
                     </div>
                     <a href="#" class="formLink">Esqueceu a senha?</a>
                     <p><?= $loginMsg ?></p>
                 </form>
-                <form class="form formRegister" method="POST" name='cadaster' action="">
+                <form class="form formRegister" id="formRegister" method="POST" name='cadaster' onload="desableSpan()" action="">
                     <h1 class="title">Cadastrar-se</h1>
                     <div class="formInputs">
                         <div class="inputGroup">
                             <div>
                                 <!-- <input required type="text" id="email" class="input" name="email" value="<?= $_SESSION['email'] ?>"> -->
-                                <input required type="text" id="email" class="input" name="email">
-                                <label class="label" for="email">Email</label>
+                                <input required type="text" id="email" class="input inputValidate" name="email" oninput="emailValidate()">
+                                <label class="label labelValidate" for="email">Email</label><br>
+                                <span class="span-required">O email informado precisa ser da Unicamp</span>
                             </div>
+
                             <div>
                                 <!-- <input required type="password" id="senha" class="input" name="password" value="<?= $_SESSION['password'] ?>"> -->
-                                <input required type="password" id="senha" class="input" name="password">
-                                <label class="label" for="senha">Senha</label>
+                                <input required type="password" id="senha" class="input inputValidate" name="password" oninput="passwordValidate()">
+                                <label class="label labelValidate" for="senha">Senha</label><br>
+                                <span class="span-required">A senha precisa conter 8 caracteres</span>
                             </div>
                             <div>
                                 <!-- <input required type="password" id="senha" class="input" name="confPass" value="<?= $_SESSION['confPass'] ?>"> -->
-                                <input required type="password" id="senha" class="input" name="confPass">
-                                <label class="label" for="confirmarsenha">Confirmar Senha</label>
+                                <input required type="password" id="senha" class="input inputValidate" name="confPass" oninput="confPassword()">
+                                <label class="label labelValidate" for="confirmarsenha">Confirmar Senha</label><br>
+                                <span class="span-required">Senhas devem ser compatíveis</span>
                             </div>
                         </div>
                     </div>
@@ -220,13 +235,15 @@
                         <div class="inputGroup">
                             <div>
                                 <!-- <input required type="text" id="nome" class="input" name="name" value="<?= $_SESSION['name'] ?>"> -->
-                                <input required type="text" id="nome" class="input" name="name">
-                                <label class="label" for="nome">Nome</label>
+                                <input required type="text" id="nome" class="input inputValidate" name="name" oninput="nameValidate()">
+                                <label class="label labelValidate" for="nome">Nome</label><br>
+                                <span class="span-required">O nome deve ter 3 caracteres no mínimo</span>
                             </div>
                             <div>
                                 <!-- <input required type="text" id="ra" class="input" name="ra" value="<?= $_SESSION['ra'] ?>"> -->
-                                <input required type="text" id="ra" class="input" name="ra">
-                                <label class="label" for="ra">RA</label>
+                                <input required type="text" id="ra" class="input inputValidate" name="ra" oninput="raValidate()"><br>
+                                <label class="label labelValidate" for="ra">RA</label>
+                                <span class="span-required">RA precisa ter 6 digitos</span>
                             </div>
                         </div>
                     </div>
@@ -251,4 +268,69 @@
 </body>
     <script src="../scripts/sidebar.js"></script>
     <script src="../scripts/loginSwap.js"></script>
+    <script>
+        const form = document.getElementById("formRegister");
+        const campos = document.querySelectorAll(".inputValidate");
+        const spans = document.querySelectorAll(".span-required");
+        const labels =document.querySelectorAll(".labelValidate");
+        const btnCadaster =document.getElementById("buttonCadaster");
+
+        function setError(index){
+            campos[index].style.border = '1px solid #e63636';
+            labels[index].style.color = '#e53636';
+            spans[index].style.display = 'block';
+        }
+
+        function removeError(index){
+            campos[index].style.border = '';
+            labels[index].style.color = '#4dcbff';
+            spans[index].style.display = 'none';
+        }
+
+        function emailValidate(){
+            if((campos[0].value.indexOf("@g.unicamp.br")) == -1){
+                console.log(campos[0].value.indexOf("@g.unicamp.br"));
+                setError(0);
+            }else{
+                removeError(0);
+            }
+        }
+
+        function passwordValidate(){
+            if(campos[1].value.length < 8){
+                setError(1);
+            }else{
+                removeError(1);
+            }
+        }
+
+        function confPassword(){
+            if(campos[2].value != campos[1].value){
+                setError(2);
+            }else{
+                removeError(2);
+            }
+        }
+
+        function nameValidate(){
+            if(campos[3].value.length < 3){
+                setError(3);
+            }else{
+                removeError(3);
+            }
+        }
+
+        function raValidate(){
+            if(campos[4].value.length != 6){
+                setError(4);
+            }else{
+                removeError(4);
+            }
+        }
+
+        function desableSpan(){
+            spans.style.display = 'none';
+        }
+
+    </script>
 </html>

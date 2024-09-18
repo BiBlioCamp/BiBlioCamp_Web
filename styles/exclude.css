@@ -1,0 +1,37 @@
+body {
+    font-family: 'red hat display', sans-serif;
+    background-image: linear-gradient(to bottom, #8f00f1, #4dcbff);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.popup {
+    width: 400px;
+    background-color: white;
+    height: 200px;
+    border-radius: 25px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+p {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+.formButton {
+    border-style: none;
+    width: 160px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: transparent;
+    border: 2px solid #4dcbff;
+    color: #4dcbff;
+    transition: .2s;
+}
+.formButton:hover {
+    background-color: #4dcbff;
+    color: white;
+    cursor: pointer;
+}

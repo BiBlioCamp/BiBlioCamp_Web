@@ -11,7 +11,7 @@ body {
 
 .loginContainer {
     position: relative;
-    height: 560px;
+    height: 640px;
     width: 60%;
     border-radius: 12px;
     overflow: hidden;
@@ -79,14 +79,14 @@ a {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    height: 30%;
+    height: 32%;
 }
 
 .formRegister {
     background-color: white;
 }
 .formRegister > .title{
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 100;
 }
 
@@ -199,4 +199,11 @@ a {
 .loginContainer.move .overlay:nth-child(2) {
     z-index: -1;
     opacity: 0;
+}
+
+.span-required{
+    display: none;
+    font-size: 14px;
+    margin-top: -0.25%;
+    color: #e63636;
 }

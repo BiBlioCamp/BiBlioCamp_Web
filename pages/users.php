@@ -1,17 +1,60 @@
 <?php
     session_start();
+    $text = array();
     if($_SERVER['REQUEST_METHOD'] === 'GET') {
         if(!isset($_SESSION['username'])) {
-            header("Location: error.html");
-            #$username = "User";
-            #$pfp = "unsetPfp.png";
-            #$pfpAction = "login.php";
+            $username = "User";
+            $pfp = "unsetPfp.png";
+            $pfpAction = "login.php";
         }
         else {
             $username = $_SESSION["username"];
-            $pfp = "pfp.png";
+            $pfp = "unknownPfp.png";
             $pfpAction = 'profile.php';
         }
+    }else if($_SERVER["REQUEST_METHOD"] === "POST"){
+        try{
+            include("conexaoDB.php");
+            if(!isset($_SESSION['username'])) {
+                $username = "User";
+                $pfp = "unsetPfp.png";
+                $pfpAction = "login.php";
+            }
+            else {
+                $username = $_SESSION["username"];
+                $pfp = "unknownPfp.png";
+                $pfpAction = 'profile.php';
+            }
+
+            if(trim($_POST["ra"]) != ""){
+                $ra = $_POST["ra"];
+                $stmt = $pdo->prepare("select * from BBC_User where ra = :ra");
+                $stmt->bindParam(":ra",$ra);
+                $stmt->execute();
+                while($rows = $stmt->fetch()){
+                    array_push($text,
+                    "<tr>
+                    <td>" . $rows["username"] . "</td>
+                    <td>" . $rows["email"] ."</td>
+                    <td>". $rows["ra"] . "</td>
+                    </tr>");
+                }
+            }else{
+                $stmt = $pdo->prepare("select * from BBC_User order by username");
+                $stmt->execute();
+                while($rows = $stmt->fetch()){
+                    array_push($text,
+                    "<tr>
+                    <td>" . $rows["username"] . "</td>
+                    <td>" . $rows["email"] ."</td>
+                    <td>". $rows["ra"] . "</td>
+                    </tr>");
+                }
+            }
+        }catch(PDOException $e){
+            "Error: " . $e->getMessage();
+        }
+        $pdo = null;
     }
 ?>
 
@@ -20,9 +63,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $_SESSION['username'] ?></title>
+    <title>Users</title>
     <link rel="stylesheet" href="../styles/sidebar.css">
-    <link rel="stylesheet" href="../styles/profile.css">
+    <link rel="stylesheet" href="../styles/users.css">
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -38,7 +81,7 @@
         }
         window.onload(isMobile());
     </script>
-<body>
+<body onload="makeTableScroll()">
     <div class="container">
         <div class="sidebar close">
             <div class="logo-details">
@@ -100,12 +143,12 @@
                 </li>
 
                 <li>                
-                    <a href="users.php">
+                    <a href="#">
                         <i class='bx bxs-user-pin' ></i>
                         <span class="link_name">Usuários</span>
                     </a>                  
                     <ul class="sub-menu blank">
-                        <li><a class="link_name" href="users.php">Usuários</a></li>
+                        <li><a class="link_name" href="#">Usuários</a></li>
                     </ul>                
                 </li>
 
@@ -121,8 +164,8 @@
                 <li>           
                     <div class="profile-details">                 
                         <div class="profile-content">
-                            <a href="#">
-                                <img src="../images/unknownPfp.png" alt="profileImg">
+                            <a href="<?=$pfpAction?>">
+                                <img src="../images/<?=$pfp?>" alt="profileImg">
                             </a>
                         </div>
                         <div class="name-job">
@@ -135,58 +178,56 @@
                 </li>
             </ul>
         </div>
-            <div class="profile-area">
-                <div class="pfp-area">
-                    <div class="pfp">
-                        <!-- <img src="../images/<?= $_SESSION['pfp'] ?>" alt="Foto de perfil"> -->
-                        <img src="../images/unknownPfp.png" alt="Foto de perfil">
-                    </div>
+        <div class="search-area">
+            <div class="search">
+                <div>
+                    <p>Procurar por RA</p>
                 </div>
-                <div class="username-area">
-                    <div class="username-data">
-                        <p><?= $_SESSION['username'] ?></p>
-                        <p><?= $_SESSION['ra'] ?></p>
+                <form method="POST">
+                    <div class="inputs">
+                        <input  type="text" id="ra" class="input" name="ra">
+                        <input type="submit" class="button" id="buttonCadaster" name="enviar">
                     </div>
-                </div>
-                <a href="profileConf.php"><button class="button">Editar perfil</button></a>
-                <form>
-                    <button type="submit" formaction="exclude.php" class="buttonExclude">Excluir conta</button>
                 </form>
             </div>
-            <div class="books-area">
-                <div class="left-content">
-                    <div class="book-content">
-                        <div class="sbook-cover">
-                            <img src="../images/aArteDaGuerraCover.png" alt="Livro">
-                        </div>
-                        <p>A Arte da Guerra</p>
-                    </div>
-                    <div class="book-content">
-                        <div class="book-cover">
-                            <img src="../images/pythonCover.png" alt="Livro">
-                        </div>
-                        <p>Introdução a programação com python</p>
-                    </div>
-                </div>
-                <div class="right-content">
-                    <div class="book-content">
-                        <div class="book-cover">
-                            <img src="../images/javaCover.png" alt="livro">
-                        </div>
-                        <p>Programação em Java</p>
-                    </div>
-                    <div class="book-content">
-                        <div class="book-cover">
-                            <img src="../images/cienceCover.png" alt="livro">
-                        </div>
-                        <p>História das Ciências</p>
-                    </div>
-                </div>
-            </div>
-            <div class="botton-content">
-
-            </div>
+        </div>                 
     </div>
 </body>
     <script src="../scripts/sidebar.js"></script>
+    <script type="text/javascript">
+        function makeTableScroll() {
+            var maxRows = 10;
+
+            var table = document.getElementById('table');
+            var wrapper = table.parentNode;
+            var rowsInTable = table.rows.length;
+            var height = 0;
+            if (rowsInTable > maxRows) {
+                for (var i = 0; i < maxRows; i++) {
+                    height += table.rows[i].clientHeight;
+                }
+                wrapper.style.height = height + "px";
+            }
+        }
+    </script>
 </html>
+
+<?php 
+    echo "<div class='result-area'>";
+    echo    "<div class='table'>";
+    echo        "<table id='table'>";
+    echo            "<thead>";
+    echo                "<tr>";
+    echo                    "<th scope='col'>Username</th>";
+    echo                    "<th scope='col'>Email</th>";
+    echo                    "<th scope='col'>RA</th>";
+    echo                "</tr>" ;
+    echo            "</thead>";
+    echo            "<tbody>";
+    foreach($text as $val){
+        echo $val;
+    };
+    echo            "</tbody>";
+    echo        "</table>";
+    echo    "</div>";
+    echo "</div>";

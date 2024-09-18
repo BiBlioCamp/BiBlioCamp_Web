@@ -1,3 +1,32 @@
+<?php
+    session_start();
+    if($_SERVER["REQUEST_METHOD"] === "GET"){
+        if(!isset($_SESSION["username"])){
+            header("location: error.html");
+        }
+    }else if($_SERVER["REQUEST_METHOD"] === "POST"){
+        try{
+            include("conexaoDB.php");
+            $username = $_POST["username"];
+            $senha = $_POST["senha"];
+            $stmt = $pdo->prepare("update BBC_User set username = :username, senha = :senha where ra = :ra ");
+            $stmt->bindParam(":username", $username);
+            $stmt->bindParam(":senha", $senha);
+            $stmt->bindParam(":ra", $_SESSION["ra"]);
+            $stmt->execute();
+            $rows = $stmt->rowCount();
+            if($rows>0){
+                $_SESSION["username"] = $username;
+                $_SESSION["senha"] = $senha;
+                header("location: profile.php");
+            }
+        }catch(PDOException $e){
+            echo "Erro: " . $e->getMessage();
+        }
+        $pdo = null;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,36 +53,24 @@
     <main>
         <div class="main-container">
             <div class="presentation-text">
-                <p>Personalize seu perfil</p>
+                <p>Edite seu perfil</p>
             </div>
-            <form method="POST" action="profile.html">
-                <div class="content-divider">
-                    <div class="content-left">
-                        <div class="personal-image">
-                            <label class="labelForm">
-                                <input class="pfp" type="file" accept="image/*" capture name="pfp">
-                                <figure class="personal-figure">
-                                    <img src="../images/unsetPfp.png" class="personal-avatar" alt="avatar">
-                                    <figcaption class="personal-figcaption">
-                                        <img src="../images/camera.png">
-                                    </figcaption>
-                                </figure>
-                            </label>
-                        </div>
-                    </div>
+            <form method="POST" action="">
                     <div class="content-right">
                         <div class="formInputs">
                             <div class="inputGroup">
                                 <div>
-                                    <p>Escolha seu nome de usuário!</p>
-                                    <input required type="text" id="email" class="input" name="username">
-                                    <label class="label" for="email">Username</label>
+                                    <p>Altere seu nome de usuario</p>
+                                    <input required type="text" id="username" class="input" name="username">
                                 </div>
-                                <button class="formButton" id="buttonCadaster">Confirmar</button>
+                                <div>
+                                    <p>Altere sua senha</p>
+                                    <input required type="password" id="senha" class="input" name="senha">
+                                </div>
+                                <input type="submit" class="formButton" id="buttonCadaster" name="enviar"></input>
                             </div>
                         </div>                    
                     </div>
-                </div>
             </form>
         </div>
     </main>

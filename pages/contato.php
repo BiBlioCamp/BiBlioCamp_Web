@@ -8,7 +8,7 @@
         }
         else {
             $username = $_SESSION["username"];
-            $pfp = "pfp.png";
+            $pfp = "unknownpfp.png";
             $pfpAction = 'profile.php';
         }
     }
@@ -95,6 +95,16 @@
                     </a>                  
                     <ul class="sub-menu blank">
                         <li><a class="link_name" href="#">Alocações</a></li>
+                    </ul>                
+                </li>
+
+                <li>                
+                    <a href="users.php">
+                        <i class='bx bxs-user-pin' ></i>
+                        <span class="link_name">Usuários</span>
+                    </a>                  
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="users.php">Usuários</a></li>
                     </ul>                
                 </li>
 

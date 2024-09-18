@@ -63,8 +63,35 @@ body {
 .username-data p {
     font-size: 70px;
 }
-
-
+.button {
+    border-style: none;
+    width: 200px;
+    height: 35px;
+    border-radius: 50px;
+    background-color: #4dcbff;
+    border: 2px solid #4dcbff;
+    color: white;
+    transition: .2s;
+    margin-left: -250px;
+    margin-top: 440px;
+}
+.buttonExclude {
+    border-style: none;
+    width: 200px;
+    height: 35px;
+    border-radius: 50px;
+    background-color: #4dcbff;
+    border: 2px solid #4dcbff;
+    color: white;
+    transition: .2s;
+    margin-left: -250px;
+    margin-top: 525px;
+}
+.buttonExclude:hover, .button:hover {
+    background-color: #FFF177;
+    color: #4dcbff;
+    cursor: pointer;
+}
 
 .books-area {
     width: 100%;
@@ -137,8 +164,6 @@ body {
         height: 312.5px;
     }
 }
-
-
 
 .botton-content {
     height: 50vh;
