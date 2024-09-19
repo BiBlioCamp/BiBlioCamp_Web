@@ -204,6 +204,20 @@ a {
 .span-required{
     display: none;
     font-size: 14px;
-    margin-top: -0.25%;
     color: #e63636;
+}
+
+#buttonCadaster:disabled{
+    cursor: default;
+    opacity: .9;
+}
+
+#buttonCadaster:disabled:hover{
+    background-color: white;
+    color: #4dcbff;
+}
+
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

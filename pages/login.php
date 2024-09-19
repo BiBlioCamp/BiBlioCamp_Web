@@ -211,20 +211,20 @@
                         <div class="inputGroup">
                             <div>
                                 <!-- <input required type="text" id="email" class="input" name="email" value="<?= $_SESSION['email'] ?>"> -->
-                                <input required type="text" id="email" class="input inputValidate" name="email" oninput="emailValidate()">
+                                <input required type="text" id="email" class="input inputValidate" name="email" oninput="emailValidate(), verifyCadaster()">
                                 <label class="label labelValidate" for="email">Email</label><br>
                                 <span class="span-required">O email informado precisa ser da Unicamp</span>
                             </div>
 
                             <div>
                                 <!-- <input required type="password" id="senha" class="input" name="password" value="<?= $_SESSION['password'] ?>"> -->
-                                <input required type="password" id="senha" class="input inputValidate" name="password" oninput="passwordValidate()">
+                                <input required type="password" id="senha" class="input inputValidate" name="password" oninput="passwordValidate(), verifyCadaster()">
                                 <label class="label labelValidate" for="senha">Senha</label><br>
                                 <span class="span-required">A senha precisa conter 8 caracteres</span>
                             </div>
                             <div>
                                 <!-- <input required type="password" id="senha" class="input" name="confPass" value="<?= $_SESSION['confPass'] ?>"> -->
-                                <input required type="password" id="senha" class="input inputValidate" name="confPass" oninput="confPassword()">
+                                <input required type="password" id="senha" class="input inputValidate" name="confPass" oninput="confPassword(), verifyCadaster()">
                                 <label class="label labelValidate" for="confirmarsenha">Confirmar Senha</label><br>
                                 <span class="span-required">Senhas devem ser compatíveis</span>
                             </div>
@@ -235,20 +235,20 @@
                         <div class="inputGroup">
                             <div>
                                 <!-- <input required type="text" id="nome" class="input" name="name" value="<?= $_SESSION['name'] ?>"> -->
-                                <input required type="text" id="nome" class="input inputValidate" name="name" oninput="nameValidate()">
+                                <input required type="text" id="nome" class="input inputValidate" name="name" oninput="nameValidate(), verifyCadaster()">
                                 <label class="label labelValidate" for="nome">Nome</label><br>
                                 <span class="span-required">O nome deve ter 3 caracteres no mínimo</span>
                             </div>
                             <div>
                                 <!-- <input required type="text" id="ra" class="input" name="ra" value="<?= $_SESSION['ra'] ?>"> -->
-                                <input required type="text" id="ra" class="input inputValidate" name="ra" oninput="raValidate()"><br>
+                                <input required type="number" id="ra" class="input inputValidate" name="ra" oninput="raValidate(), verifyCadaster()" ><br>
                                 <label class="label labelValidate" for="ra">RA</label>
-                                <span class="span-required">RA precisa ter 6 digitos</span>
+                                <span class="span-required">RA precisa ter 6 números</span>
                             </div>
                         </div>
                     </div>
                     <button class="formButton" id="buttonCadaster" name="button" value="cadaster">Cadastrar</button>
-                    <p><?= $msg ?></p>
+                    <p id="cadasterMessage"><?= $msg ?></p>
                 </form>
             </div>
             <div class="overlayContainer">
@@ -273,7 +273,6 @@
         const campos = document.querySelectorAll(".inputValidate");
         const spans = document.querySelectorAll(".span-required");
         const labels =document.querySelectorAll(".labelValidate");
-        const btnCadaster =document.getElementById("buttonCadaster");
 
         function setError(index){
             campos[index].style.border = '1px solid #e63636';
@@ -288,7 +287,9 @@
         }
 
         function emailValidate(){
-            if((campos[0].value.indexOf("@g.unicamp.br")) == -1){
+            if(campos[0].value == ""){
+                removeError(0);
+            }else if((campos[0].value.indexOf("@g.unicamp.br")) == -1){
                 console.log(campos[0].value.indexOf("@g.unicamp.br"));
                 setError(0);
             }else{
@@ -297,7 +298,9 @@
         }
 
         function passwordValidate(){
-            if(campos[1].value.length < 8){
+            if(campos[1].value == ""){
+                removeError(1);
+            }else if(campos[1].value.length < 8){
                 setError(1);
             }else{
                 removeError(1);
@@ -305,7 +308,9 @@
         }
 
         function confPassword(){
-            if(campos[2].value != campos[1].value){
+            if(campos[2].value == ""){
+                removeError(2);
+            }else if(campos[2].value != campos[1].value){
                 setError(2);
             }else{
                 removeError(2);
@@ -313,7 +318,9 @@
         }
 
         function nameValidate(){
-            if(campos[3].value.length < 3){
+            if(campos[3].value == ""){
+                removeError(3);
+            }else if(campos[3].value.length < 3){
                 setError(3);
             }else{
                 removeError(3);
@@ -321,7 +328,9 @@
         }
 
         function raValidate(){
-            if(campos[4].value.length != 6){
+            if(campos[4].value == ""){
+                resetInput(4);
+            }else if(campos[4].value.length != 6){
                 setError(4);
             }else{
                 removeError(4);
@@ -332,5 +341,12 @@
             spans.style.display = 'none';
         }
 
+        function verifyCadaster(){
+            if((campos[0].value.indexOf("@g.unicamp.br")) == -1 || campos[1].value.length < 8 || campos[2].value != campos[1].value || campos[3].value < 3 || campos[4].value.length != 6){
+                document.querySelector("#buttonCadaster").disabled = true;
+            }else{
+                document.querySelector("#buttonCadaster").disabled = false;
+            }
+        }
     </script>
 </html>
