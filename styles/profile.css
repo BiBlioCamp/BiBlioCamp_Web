@@ -97,32 +97,38 @@ body {
     width: 100%;
     height: fit-content;
     display: flex;
-    flex-direction: row;
-    columns: 2;
+    flex-direction: column;
     justify-content: space-evenly;
     padding-bottom: 50px;
     border-bottom: 1px solid #fff;
+    text-align: center;
+}
+.books-area > p {
+    font-size: 50px;
+    color: white;
+    margin: 20px;
+}
+.book-list {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 100px;
+    margin-right: 20px;
 }
 .book-content {
-    margin-top: 50px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     color: white;
-    padding: 50px;
     border-radius: 25px;
     align-items: center;
     justify-content: center;
     background-image: linear-gradient(to right, #8f00f1, #4dcbff);
-    width: 400px;
-    height: 500px;
+    width: 20%;
+    height: 400px;
     text-align: center;
-}
-.right-content {
-    transform: rotateY(180deg);
-}
-.right-content .book-cover,
-.right-content p {
-    transform: rotateY(180deg);
 }
 
 .book-content p {
@@ -132,49 +138,30 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 400px;
-    height: 500px;
+    width: 100%;
+    height: 300px;
+    padding: 10px;
 }
 .book-content .book-cover img {
     height: 100%;
 }
-@media (max-width: 1028px) {
-    .book-content {
-        max-width: 300px;
-        max-height: 375px;
-    }
-    .book-content p {
-        font-size: 25px;
-    }
-    .book-content .book-cover{
-        width: 300px;
-        height: 375px;
-    }
+.book-title {
+    height: 100px;
 }
-@media (max-width: 876px) {
-    .book-content {
-        max-width: 250px;
-        max-height: 312.5px;
-    }
-    .book-content p {
-        font-size: 20px;
-    }
-    .book-content .book-cover{
-        width: 250px;
-        height: 312.5px;
-    }
+.book-title p {
+    font-size: 20px;
 }
 
 .botton-content {
-    height: 50vh;
+    height: 10vh;
     width: 100%;
     background-image: linear-gradient(to bottom, #8f00f1, #4dcbff);
 }
 
 .config {
     background-color: #1d1b31;
-    height: 75px;
-    width: 75px;
+    height: 100px;
+    width: 100px;
     border-radius: 25px 25px 0 0;
     position: relative;
     margin-left: -280px;
