@@ -18,15 +18,33 @@ body {
 }
 
 .emphasis-area {
-    height: 100vh;
+    height: 60vh;
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     border-top: solid 1px #fff;
     border-bottom: solid 1px #fff;
+    gap: 50px;
 }
+.emphasis-area > .etext > .etitle {
+    font-size: 70px;
+}
+.etext {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.emphasis-area > .etext > p {
+    font-size: 40px;
+}
+.main-btext {
+    width: 80%;
+}
+
 .emphasis-area p {
     font-size: 50px;
     font-weight: 100;
@@ -164,8 +182,10 @@ body {
 
 .bottom-area {
     padding-top: 50px;
-    height: 150vh;
+    height: 20vh;
     width: 100%;
+    display: flex;
+    justify-content: center;
     background-image: linear-gradient(to bottom, #8f00f1, #4dcbff);
 }
 .bottom-area p {

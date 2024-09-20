@@ -221,3 +221,11 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+.span-required {
+    margin-top: -20px;
+    position: absolute;
+}
+.ra {
+    margin-top: 0;
+}

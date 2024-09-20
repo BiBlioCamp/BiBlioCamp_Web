@@ -100,7 +100,7 @@
                 <div class="name-bbc">                
                     <div class="bbc_name">BiblioCamp</div>
                 </div>     
-                <a href="home.php" class="about">
+                <a href="https://www.cotil.unicamp.br" target="blank" class="about">
                     <i class='bx bx-link-external'></i>
                 </a>    
             </div>    
@@ -142,16 +142,6 @@
                     </a>                  
                     <ul class="sub-menu blank">
                         <li><a class="link_name" href="#">Alocações</a></li>
-                    </ul>                
-                </li>
-
-                <li>                
-                    <a href="users.php">
-                        <i class='bx bxs-user-pin' ></i>
-                        <span class="link_name">Usuários</span>
-                    </a>                  
-                    <ul class="sub-menu blank">
-                        <li><a class="link_name" href="users.php">Usuários</a></li>
                     </ul>                
                 </li>
 
@@ -243,7 +233,7 @@
                                 <!-- <input required type="text" id="ra" class="input" name="ra" value="<?= $_SESSION['ra'] ?>"> -->
                                 <input required type="number" id="ra" class="input inputValidate" name="ra" oninput="raValidate(), verifyCadaster()" ><br>
                                 <label class="label labelValidate" for="ra">RA</label>
-                                <span class="span-required">RA precisa ter 6 números</span>
+                                <span class="span-required ra">RA precisa ter 6 números</span>
                             </div>
                         </div>
                     </div>

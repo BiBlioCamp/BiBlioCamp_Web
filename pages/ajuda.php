@@ -53,7 +53,7 @@
                 <div class="name-bbc">                
                     <div class="bbc_name">BiblioCamp</div>
                 </div>                
-                <a href="#" class="about">
+                <a href="https://www.cotil.unicamp.br" target="blank" class="about">
                     <i class='bx bx-link-external'></i>
                 </a>    
             </div>   

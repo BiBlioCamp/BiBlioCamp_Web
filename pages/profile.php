@@ -54,7 +54,7 @@
                 <div class="name-bbc">                
                     <div class="bbc_name">BiblioCamp</div>
                 </div>                
-                <a href="home.php" class="about">
+                <a href="https://www.cotil.unicamp.br" target="blank" class="about">
                     <i class='bx bx-link-external'></i>
                 </a>    
             </div>   
@@ -100,16 +100,6 @@
                 </li>
 
                 <li>                
-                    <a href="users.php">
-                        <i class='bx bxs-user-pin' ></i>
-                        <span class="link_name">Usuários</span>
-                    </a>                  
-                    <ul class="sub-menu blank">
-                        <li><a class="link_name" href="users.php">Usuários</a></li>
-                    </ul>                
-                </li>
-
-                <li>                
                     <a href="ajuda.php">
                         <i class='bx bxs-help-circle' ></i>
                         <span class="link_name">Ajuda</span>
@@ -148,10 +138,9 @@
                         <p><?= $_SESSION['ra'] ?></p>
                     </div>
                 </div>
-                <a href="profileConf.php"><button class="button">Editar perfil</button></a>
-                <form>
-                    <button type="submit" formaction="exclude.php" class="buttonExclude">Excluir conta</button>
-                </form>
+                <div class="config">
+                    <i class='bx bxs-cog'></i>
+                </div>
             </div>
             <div class="books-area">
                 <div class="left-content">

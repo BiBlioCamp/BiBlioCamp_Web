@@ -52,7 +52,7 @@
                 <div class="name-bbc">                
                     <div class="bbc_name">BiblioCamp</div>
                 </div>                
-                <a href="#" class="about">
+                <a href="https://www.cotil.unicamp.br" target="blank" class="about">
                     <i class='bx bx-link-external'></i>
                 </a>    
             </div>   
@@ -98,16 +98,6 @@
                 </li>
 
                 <li>                
-                    <a href="users.php">
-                        <i class='bx bxs-user-pin' ></i>
-                        <span class="link_name">Usuários</span>
-                    </a>                  
-                    <ul class="sub-menu blank">
-                        <li><a class="link_name" href="users.php">Usuários</a></li>
-                    </ul>                
-                </li>
-
-                <li>                
                     <a href="ajuda.php">
                         <i class='bx bxs-help-circle' ></i>
                         <span class="link_name">Ajuda</span>
@@ -133,262 +123,27 @@
                 </li>
             </ul>
         </div>
-            <div class="main-area">
-                <div class="right-area">
-                    <p class="title">BiblioCamp</p>
-                    <p>A melhor maneira de gerenciar suas alocações da biblioteca de escola!</p>
-                </div>
-            </div>    
-            <div class="emphasis-area">
-                <p>Livros mais requisitados</p>
-                <div class="carousel-container">
-                    <div class="carousel-inner">
-                        <div class="track">
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/aArteDaGuerraCover.png" alt="Livro"> </div>
-                                    <div class="info"> A Arte da Guerra </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/javaCover.png" alt="livro"> </div>
-                                    <div class="info"> Programação em Java </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/pythonCover.png" alt="livro"> </div>
-                                    <div class="info"> Introdução a Programação com Python </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/cienceCover.png" alt="livro"> </div>
-                                    <div class="info"> História das Ciências </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/aArteDaGuerraCover.png" alt="Livro"> </div>
-                                    <div class="info"> A Arte da Guerra </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/javaCover.png" alt="livro"> </div>
-                                    <div class="info"> Programação em Java </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/pythonCover.png" alt="livro"> </div>
-                                    <div class="info"> Introdução a Programação com Python </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/cienceCover.png" alt="livro"> </div>
-                                    <div class="info"> História das Ciências </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/aArteDaGuerraCover.png" alt="Livro"> </div>
-                                    <div class="info"> A Arte da Guerra </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/javaCover.png" alt="livro"> </div>
-                                    <div class="info"> Programação em Java </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/pythonCover.png" alt="livro"> </div>
-                                    <div class="info"> Introdução a Programação com Python </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/cienceCover.png" alt="livro"> </div>
-                                    <div class="info"> História das Ciências </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/aArteDaGuerraCover.png" alt="Livro"> </div>
-                                    <div class="info"> A Arte da Guerra </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/javaCover.png" alt="livro"> </div>
-                                    <div class="info"> Programação em Java </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/pythonCover.png" alt="livro"> </div>
-                                    <div class="info"> Introdução a Programação com Python </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/cienceCover.png" alt="livro"> </div>
-                                    <div class="info"> História das Ciências </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="nav">
-                        <button class="prev">
-                            <i class='bx bx-chevron-left'></i>
-                        </button>
-                        <button class="next shown">
-                            <i class='bx bx-chevron-right'></i>
-                        </button>
-                    </div>
-                </div>
+        <div class="main-area">
+            <div class="right-area">
+                <p class="title">BiblioCamp</p>
+                <p>A melhor maneira de gerenciar suas alocações da biblioteca do Campus da Unicamp de Limeira!</p>
             </div>
-            <div class="bottom-area">
-                <p>Livros fora de estoque</p>
-                <div class="carousel-container border-black">
-                    <div class="carousel-inner">
-                        <div class="track track2">
-                        <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/aArteDaGuerraCover.png" alt="Livro"> </div>
-                                    <div class="info black"> A Arte da Guerra </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/javaCover.png" alt="livro"> </div>
-                                    <div class="info black"> Programação em Java </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/pythonCover.png" alt="livro"> </div>
-                                    <div class="info black"> Introdução a Programação com Python </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/cienceCover.png" alt="livro"> </div>
-                                    <div class="info black"> História das Ciências </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/aArteDaGuerraCover.png" alt="Livro"> </div>
-                                    <div class="info black"> A Arte da Guerra </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/javaCover.png" alt="livro"> </div>
-                                    <div class="info black"> Programação em Java </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/pythonCover.png" alt="livro"> </div>
-                                    <div class="info black"> Introdução a Programação com Python </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/cienceCover.png" alt="livro"> </div>
-                                    <div class="info black"> História das Ciências </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/aArteDaGuerraCover.png" alt="Livro"> </div>
-                                    <div class="info black"> A Arte da Guerra </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/javaCover.png" alt="livro"> </div>
-                                    <div class="info black"> Programação em Java </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/pythonCover.png" alt="livro"> </div>
-                                    <div class="info black"> Introdução a Programação com Python </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/cienceCover.png" alt="livro"> </div>
-                                    <div class="info black"> História das Ciências </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/aArteDaGuerraCover.png" alt="Livro"> </div>
-                                    <div class="info black"> A Arte da Guerra </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/javaCover.png" alt="livro"> </div>
-                                    <div class="info black"> Programação em Java </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/pythonCover.png" alt="livro"> </div>
-                                    <div class="info black"> Introdução a Programação com Python </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/cienceCover.png" alt="livro"> </div>
-                                    <div class="info black"> História das Ciências </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/aArteDaGuerraCover.png" alt="Livro"> </div>
-                                    <div class="info black"> A Arte da Guerra </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/javaCover.png" alt="livro"> </div>
-                                    <div class="info black"> Programação em Java </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/pythonCover.png" alt="livro"> </div>
-                                    <div class="info black"> Introdução a Programação com Python </div>
-                                </div>
-                            </div>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img"> <img src="../images/cienceCover.png" alt="livro"> </div>
-                                    <div class="info black"> História das Ciências </div>
-                                </div>
-                            </div>
-                    </div>
-                    <div class="nav">
-                        <button class="prev2">
-                            <i class='bx bx-chevron-left'></i>
-                        </button>
-                        <button class="next2 shown">
-                            <i class='bx bx-chevron-right'></i>
-                        </button>
-                    </div>
-                </div>
-    </div>
+        </div>    
+        <div class="emphasis-area">
+            <div class="etext">
+                <p class="etitle">Objetivo</p>
+                <p>Ajudar todos os alunos a terem um acesso mais facil a todas as funcionalidades da biblioteca do Campus!</p>
+            </div>
+            <div class="etext">
+                <p class="etitle">Oque temos</p>
+                <p>Um site simples bonito e pratico que entrega exatamente oque quem entrou nele procurava!</p>
+            </div>
+        </div>
+        <div class="bottom-area">
+            <div class="main-btext">
+                <p>O site só funciona para alunos da escola! Para se registrar use seu email Unicamp cl......@g.unicamp.br</p>
+            </div>
+        </div>
 </body>
-    <script src="../scripts/carouselButton.js"></script>
     <script src="../scripts/sidebar.js"></script>
 </html>
