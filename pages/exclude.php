@@ -10,7 +10,7 @@
             try{
                 include("conexaoDB.php");
                 $ra = $_SESSION["ra"];
-                $stmt = $pdo->prepare("delete from BBC_User where ra = :ra");
+                $stmt = $pdo->prepare("update from BBC_Account set active = 0 where id = :ra");
                 $stmt->bindParam(":ra",$ra);
                 $stmt->execute();
                 $rows = $stmt->rowCount();

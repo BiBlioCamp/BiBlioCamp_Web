@@ -8,7 +8,7 @@
                 $username = $_POST["emailLogin"];
                 $password = $_POST["passwordLogin"];
                 if(trim($username) != "" && trim($password) != ""){
-                    $stmt = $pdo->prepare("select * from BBC_User where email = :email and senha = :senha;");
+                    $stmt = $pdo->prepare("select * from BBC_Account where email = :email and password = :senha;");
                     $stmt->bindParam(":email",$username);
                     $stmt->bindParam(":senha", $password);
                     $stmt->execute();
@@ -17,8 +17,8 @@
                         $userData = $stmt->fetch();
                         session_start();
                         $_SESSION["username"] = $userData["username"];
-                        $_SESSION["senha"] = $userData["senha"];
-                        $_SESSION["ra"] = $userData["ra"];
+                        $_SESSION["senha"] = $userData["password"];
+                        $_SESSION["ra"] = $userData["id"];
                         header("location: profile.php");
                     }else{
                         $loginMsg = "Usuário ou senha incorreto.";
@@ -30,19 +30,22 @@
                 $confSenha = $_POST["confPass"];
                 $name = $_POST["name"];
                 $ra = $_POST["ra"];
+                $pos_Username = strpos($name,' ');
+                $cadaster_username = substr($name,0,$pos_Username);
                 if($senha == $confSenha){
-                    $stmt = $pdo->prepare("select * from BBC_User where email = :email");
+                    $stmt = $pdo->prepare("select * from BBC_Account where email = :email");
                     $stmt->bindParam(":email", $email);
                     $stmt->execute();
                     $rows = $stmt->rowCount();
                     if($rows > 0){
                         $msg = "Email já cadastrado";
                     }else{
-                        $stmt = $pdo->prepare("insert into BBC_User (username, senha, email, ra) values (:nome, :senha, :email, :ra)");
-                        $stmt->bindParam(":nome",$name);
-                        $stmt->bindParam(":senha",$senha);
-                        $stmt->bindParam(":email",$email);
+                        $stmt = $pdo->prepare("insert into BBC_Account (id, name, email, password, username) values (:ra, :nome, :email, :senha, :username)");
                         $stmt->bindParam(":ra",$ra);
+                        $stmt->bindParam(":nome",$name);
+                        $stmt->bindParam(":email",$email);
+                        $stmt->bindParam(":senha",$senha);
+                        $stmt->bindParam(":username", $cadaster_username);
                         $stmt->execute();
                         $rows = $stmt->rowCount();
                         if($rows > 0){

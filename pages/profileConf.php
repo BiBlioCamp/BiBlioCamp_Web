@@ -9,7 +9,7 @@
             include("conexaoDB.php");
             $username = $_POST["username"];
             $senha = $_POST["senha"];
-            $stmt = $pdo->prepare("update BBC_User set username = :username, senha = :senha where ra = :ra ");
+            $stmt = $pdo->prepare("update BBC_Account set username = :username, password = :senha where id = :ra ");
             $stmt->bindParam(":username", $username);
             $stmt->bindParam(":senha", $senha);
             $stmt->bindParam(":ra", $_SESSION["ra"]);
