@@ -116,12 +116,12 @@
                 </li>
 
                 <li>                
-                    <a href="#">
+                    <a href="acervo.php">
                         <i class='bx bx-library'></i>
                         <span class="link_name">Acervo</span>
                     </a>                  
                     <ul class="sub-menu blank">
-                        <li><a class="link_name" href="#">Acervo</a></li>
+                        <li><a class="link_name" href="acervo.php">Acervo</a></li>
                     </ul>                
                 </li>
 

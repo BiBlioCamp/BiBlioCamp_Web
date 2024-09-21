@@ -1,11 +1,14 @@
 <?php
+    //https://www.livrariaacervo.com.br/buscar?q=a+arte foi por onde me baseei levemente bem levemente
+    //deixei um comentario la pra 145~ por aí vai la ver
+    //se quiser posso criar os filtros só me da uma base, me chama no dc pra conversar sobre 
+
     session_start();
     if($_SERVER['REQUEST_METHOD'] === 'GET') {
         if(!isset($_SESSION['username'])) {
-            header("Location: error.html");
-            #$username = "User";
-            #$pfp = "unsetPfp.png";
-            #$pfpAction = "login.php";
+            $username = "User";
+            $pfp = "unsetPfp.png";
+            $pfpAction = "login.php";
         }
         else {
             $username = $_SESSION["username"];
@@ -14,19 +17,18 @@
         }
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $_SESSION['username'] ?></title>
+    <title>Acervo</title>
     <link rel="stylesheet" href="../styles/sidebar.css">
-    <link rel="stylesheet" href="../styles/profile.css">
+    <link rel="stylesheet" href="../styles/acervo.css">
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/jpg" href="../images/logobbc.png"/>
 </head>
@@ -111,39 +113,36 @@
                 <li>           
                     <div class="profile-details">                 
                         <div class="profile-content">
-                            <a href="#">
-                                <img src="../images/cotil.png" alt="profileImg">
+                        <a href="<?=$pfpAction ?>">
+                                <img src="../images/<?= $pfp ?>" alt="profileImg">
                             </a>
-                        </div>
+                        </div>              
                         <div class="name-job">
                             <div class="profile_name"><?= $username ?></div>
-                        </div>
+                            </div>                
                         <a href="logout.php" class="logout">
                             <i class="bx bx-log-out"></i>
                         </a>    
-                    </div>
+                    </div>          
                 </li>
             </ul>
         </div>
-            <div class="profile-area">
-                <div class="pfp-area">
-                    <div class="pfp">
-                        <!-- <img src="../images/<?= $_SESSION['pfp'] ?>" alt="Foto de perfil"> -->
-                        <img src="../images/Cotil.png" alt="Foto de perfil">
-                    </div>
-                </div>
-                <div class="username-area">
-                    <div class="username-data">
-                        <p><?= $_SESSION['username'] ?></p>
-                        <p><?= $_SESSION['ra'] ?></p>
-                    </div>
-                </div>
-                <div class="config">
-                    <i class='bx bxs-cog'></i>
+        <div class="title-area">
+            <div class="text">
+                <p class="title">Acervo</p>
+            </div>
+        </div>
+        <div class="gap">
+            <div class="search-area">
+                <div class="search-bar">
+                    <form class="search" method="post">
+                        <input type="text" class="input" placeholder="Digite o titulo que procura">
+                        <input type="submit" class="formButton">
+                    </form>
                 </div>
             </div>
-            <div class="books-area">
-                <p>Em posse</p>
+            <div class="books-page">
+                <p>Livros</p> <!-- Quando fizer o php muda isso para a pesquisa da pessoa com aspas -> "a arte da guerra" -->
                 <div class="book-list">
                     <div class="book-content">
                         <div class="book-cover">
@@ -153,101 +152,6 @@
                             <p>Introdução a programação com python</p>
                         </div>
                     </div>
-                    <div class="book-content">
-                        <div class="book-cover">
-                            <img src="../images/pythonCover.png" alt="Livro">
-                        </div>
-                        <div class="book-title">
-                            <p>Introdução a programação com python</p>
-                        </div>
-                    </div>
-                    <div class="book-content">
-                        <div class="book-cover">
-                            <img src="../images/pythonCover.png" alt="Livro">
-                        </div>
-                        <div class="book-title">
-                            <p>Introdução a programação com python</p>
-                        </div>
-                    </div>
-                    <div class="book-content">
-                        <div class="book-cover">
-                            <img src="../images/pythonCover.png" alt="Livro">
-                        </div>
-                        <div class="book-title">
-                            <p>Introdução a programação com python</p>
-                        </div>
-                    </div>
-                    <div class="book-content">
-                        <div class="book-cover">
-                            <img src="../images/pythonCover.png" alt="Livro">
-                        </div>
-                        <div class="book-title">
-                            <p>Introdução a programação com python</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="book-list">
-                    <div class="book-content">
-                        <div class="book-cover">
-                            <img src="../images/pythonCover.png" alt="Livro">
-                        </div>
-                        <div class="book-title">
-                            <p>Introdução a programação com python</p>
-                        </div>
-                    </div>
-                    <div class="book-content">
-                        <div class="book-cover">
-                            <img src="../images/pythonCover.png" alt="Livro">
-                        </div>
-                        <div class="book-title">
-                            <p>Introdução a programação com python</p>
-                        </div>
-                    </div>
-                </div>
-                <p>Já reservados pelo menos uma(1) vez</p>
-                <div class="book-list">
-                    <div class="book-content">
-                        <div class="book-cover">
-                            <img src="../images/pythonCover.png" alt="Livro">
-                        </div>
-                        <div class="book-title">
-                            <p>Introdução a programação com python</p>
-                        </div>
-                    </div>
-                    <div class="book-content">
-                        <div class="book-cover">
-                            <img src="../images/pythonCover.png" alt="Livro">
-                        </div>
-                        <div class="book-title">
-                            <p>Introdução a programação com python</p>
-                        </div>
-                    </div>
-                    <div class="book-content">
-                        <div class="book-cover">
-                            <img src="../images/pythonCover.png" alt="Livro">
-                        </div>
-                        <div class="book-title">
-                            <p>Introdução a programação com python</p>
-                        </div>
-                    </div>
-                    <div class="book-content">
-                        <div class="book-cover">
-                            <img src="../images/pythonCover.png" alt="Livro">
-                        </div>
-                        <div class="book-title">
-                            <p>Introdução a programação com python</p>
-                        </div>
-                    </div>
-                    <div class="book-content">
-                        <div class="book-cover">
-                            <img src="../images/pythonCover.png" alt="Livro">
-                        </div>
-                        <div class="book-title">
-                            <p>Introdução a programação com python</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="book-list">
                     <div class="book-content">
                         <div class="book-cover">
                             <img src="../images/pythonCover.png" alt="Livro">
@@ -282,10 +186,21 @@
                     </div>
                 </div>
             </div>
-            <div class="botton-content">
-
+            <!-- acho q umas 10 linhas de livro ta bom, seriam 50 -->
+            <!-- Eu imagino como caralhos a gente vai fazer isso para trocar de page
+            quando lotar uma de livro -->
+            <div class="controller">
+                <div class="pages-control"> 
+                    <div class="left-arrow">
+                        <a href="#"><i class='bx bx-chevron-left'></i></a>
+                    </div>
+                    <p>1</p> <!-- 2, 3, 4, 5, 6 -->
+                    <div class="right-arrow">
+                        <a href="#"><i class='bx bx-chevron-right' ></i></a>
+                    </div>
+                </div>
             </div>
-    </div>
+        </div>
 </body>
     <script src="../scripts/sidebar.js"></script>
 </html>

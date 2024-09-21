@@ -4,7 +4,7 @@ body {
 }
 
 .profile-area {
-    background-color: #FFF177;
+    background-image: linear-gradient(to bottom, #8f00f1, #4dcbff);
     display: flex;
     flex-direction: row;
     columns: 2;
@@ -125,7 +125,7 @@ body {
     border-radius: 25px;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(to right, #8f00f1, #4dcbff);
+    background-color: #11111F;
     width: 20%;
     height: 400px;
     text-align: center;
@@ -151,7 +151,6 @@ body {
 .book-title p {
     font-size: 20px;
 }
-
 .botton-content {
     height: 10vh;
     width: 100%;

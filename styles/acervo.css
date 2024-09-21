@@ -1,0 +1,159 @@
+body {
+    font-family: 'red hat display', sans-serif;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-image: linear-gradient(to bottom, #8f00f1, #4dcbff);
+    color: white;
+}
+
+.gap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.title-area {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+    height: 15vh;
+}
+.title-area .text {
+    text-align: center;
+    font-size: 70px;
+    width: 100%;
+}
+.search-area {
+    background-color: #1d1b31;
+    height: 20vh;
+    width: 92%;
+    border-radius: 0 25px 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-bottom: solid 1px white;
+}
+.search-area p {
+    font-size: 40px;
+}
+.search-area .search-bar .search .input{
+    padding: 0.9rem;
+    border: 1px solid white;
+    border-radius: 10px;
+    transition: 150ms
+        cubic-bezier(0.4, 0, 0.2, 1);
+    width: 500px;
+    background-color: #f3f3f3;
+}
+.formButton {
+    border-style: none;
+    width: 120px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #4dcbff;
+    border: 2px solid #4dcbff;
+    color: white;
+    transition: .2s;
+}
+.formButton:hover {
+    background-color: #1d1b31;
+    color: white;
+    cursor: pointer;
+}
+
+.books-page {
+    width: 92%;
+    background-color: #1d1b31;
+    border-bottom: solid 1px white;
+    padding-top: 90px;
+    padding-bottom: 100px;
+}
+.books-page > p {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+.book-list {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 78px;
+    margin-right: 20px;
+}
+.book-content {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    border-radius: 25px;
+    align-items: center;
+    justify-content: center;
+    background-color: #11111F;
+    width: 20%;
+    height: 400px;
+    text-align: center;
+}
+.book-content p {
+    font-size: 30px;
+}
+.book-content .book-cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 300px;
+    padding: 10px;
+}
+.book-content .book-cover img {
+    height: 100%;
+}
+.book-title {
+    height: 100px;
+}
+.book-title p {
+    font-size: 20px;
+}
+.botton-content {
+    height: 10vh;
+    width: 100%;
+    background-image: linear-gradient(to bottom, #8f00f1, #4dcbff);
+}
+
+
+.controller {
+    background-color: #1d1b31;
+    width: 92%;
+    height: 10vh;
+}
+.pages-control {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    align-self: flex-start;
+    background-color: #11111F;
+    gap: 10px;
+    width: 110px;
+    margin-top: 25px;
+    margin-left: 80px;
+    border-radius: 7px;
+    position: absolute;
+
+}
+.left-arrow > a, .right-arrow > a{
+    text-decoration: none;
+    color: white;
+}
+.left-arrow:hover, .right-arrow:hover{
+    background-color: black;
+    border-radius: 10px;
+    cursor: pointer;
+}
