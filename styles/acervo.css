@@ -83,7 +83,7 @@ body {
     gap: 25px;
     justify-content: center;
     align-items: center;
-    margin-left: 78px;
+    margin-left: 50px;
     margin-right: 20px;
     margin-top: 50px;
     margin-bottom: 50px;
@@ -118,6 +118,10 @@ body {
 }
 .book-title {
     height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .book-title p {
     font-size: 20px;
