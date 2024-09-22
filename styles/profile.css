@@ -19,16 +19,18 @@ body {
     border-radius: 25px 25px 0 0;
     position: absolute;
     display: flex;
-    right: 25px;
+    right: 100px;
     justify-content: center;
     align-items: center;
     align-self: flex-end;
+    scale: 1.2;
 }
 .config > i {
     color: #fff;
     font-size: 60px;
     cursor: pointer;
-    transition: .5s ease;
+    transition: .3s ease;
+    scale: 1.2;
 }
 .config > i:hover {
     rotate: 90deg;
