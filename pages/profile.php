@@ -144,66 +144,50 @@
             </div>
             <div class="books-area">
                 <p>Em posse</p>
-                <div class="book-list owning">
-                    <div class="book-content">
-                        <div class="book-cover">
-                            <img src="../images/pythonCover.png" alt="Livro">
-                        </div>
-                        <div class="book-title">
-                            <p>Introdução a programação com python</p>
-                        </div>
+                <form method="POST">
+                    <div class="book-list owning">
+                        <button class="book-content">
+                            <div class="book-cover">
+                                <img src="../images/pythonCover.png" alt="Livro">
+                            </div>
+                            <div class="book-title">
+                                <p>Introdução a programação com python</p>
+                            </div>
+                        </button>
+                        <button class="book-content">
+                            <div class="book-cover">
+                                <img src="../images/pythonCover.png" alt="Livro">
+                            </div>
+                            <div class="book-title">
+                                <p>Introdução a programação com python</p>
+                            </div>
+                        </button>
+                        <button class="book-content">
+                            <div class="book-cover">
+                                <img src="../images/pythonCover.png" alt="Livro">
+                            </div>
+                            <div class="book-title">
+                                <p>Introdução a programação com python</p>
+                            </div>
+                        </button>
+                        <button class="book-content">
+                            <div class="book-cover">
+                                <img src="../images/pythonCover.png" alt="Livro">
+                            </div>
+                            <div class="book-title">
+                                <p>Introdução a programação com python</p>
+                            </div>
+                        </button>
+                        <button class="book-content">
+                            <div class="book-cover">
+                                <img src="../images/pythonCover.png" alt="Livro">
+                            </div>
+                            <div class="book-title">
+                                <p>Introdução a programação com python</p>
+                            </div>
+                        </button>
                     </div>
-                    <div class="book-content">
-                        <div class="book-cover">
-                            <img src="../images/pythonCover.png" alt="Livro">
-                        </div>
-                        <div class="book-title">
-                            <p>Introdução a programação com python</p>
-                        </div>
-                    </div>
-                    <div class="book-content">
-                        <div class="book-cover">
-                            <img src="../images/pythonCover.png" alt="Livro">
-                        </div>
-                        <div class="book-title">
-                            <p>Introdução a programação com python</p>
-                        </div>
-                    </div>
-                    <div class="book-content">
-                        <div class="book-cover">
-                            <img src="../images/pythonCover.png" alt="Livro">
-                        </div>
-                        <div class="book-title">
-                            <p>Introdução a programação com python</p>
-                        </div>
-                    </div>
-                    <div class="book-content">
-                        <div class="book-cover">
-                            <img src="../images/pythonCover.png" alt="Livro">
-                        </div>
-                        <div class="book-title">
-                            <p>Introdução a programação com python</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="book-list owning">
-                    <div class="book-content">
-                        <div class="book-cover">
-                            <img src="../images/pythonCover.png" alt="Livro">
-                        </div>
-                        <div class="book-title">
-                            <p>Introdução a programação com python</p>
-                        </div>
-                    </div>
-                    <div class="book-content">
-                        <div class="book-cover">
-                            <img src="../images/pythonCover.png" alt="Livro">
-                        </div>
-                        <div class="book-title">
-                            <p>Introdução a programação com python</p>
-                        </div>
-                    </div>
-                </div>
+                </form>
                 <p>Já reservados pelo menos uma(1) vez</p>
                 <div class="book-list">
                     <div class="book-content">
