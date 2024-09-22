@@ -2,6 +2,10 @@
     //https://www.livrariaacervo.com.br/buscar?q=a+arte foi por onde me baseei levemente bem levemente
 
     session_start();
+    $books = array();
+    $booksText = array();
+    $lines = "";
+    include("conexaoDB.php");
     if($_SERVER['REQUEST_METHOD'] === 'GET') {
         if(!isset($_SESSION['username'])) {
             $username = "User";
@@ -12,6 +16,95 @@
             $username = $_SESSION["username"];
             $pfp = "cotil.png";
             $pfpAction = 'profile.php';
+            $stmt = $pdo->prepare("select * from BBC_Book");
+            $stmt->execute();
+            $count = $stmt->rowCount(); 
+            while($rows = $stmt->fetch()){
+                array_push($booksText,
+            "<button class=\"book-content\" type=\"submit\" name=\"button\" value=" . $rows["id"] .">
+                        <div class=\"book-cover\">
+                            <img src=\"../images/pythonCover.png\" alt=" . $rows["title"] . ">
+                        </div>
+                        <div class=\"book-title\">" .
+                            $rows["title"] ."
+                        </div>
+                    </button>"
+                );
+            }
+            for($i = 0; $i<$count; $i++){
+                $lines .= $booksText[$i];
+                if(($i+1)%5 == 0 || $i == $count-1 and $i !=0){
+                    array_push($books, 
+                        "<div class=\"book-list\">" .
+                            $lines .
+                        "</div>"
+                    );
+                    $lines = "";   
+                }
+            }
+        }
+    }else if($_SERVER["REQUEST_METHOD"] === "POST"){
+        $username = $_SESSION["username"];
+        $pfp = "cotil.png";
+        $pfpAction = 'profile.php';
+        if($_POST["button"] == "search"){
+            if(trim($_POST["busca"]) == ""){
+                $stmt = $pdo->prepare("select * from BBC_Book");
+                $stmt->execute();
+                $count = $stmt->rowCount(); 
+                while($rows = $stmt->fetch()){
+                    array_push($booksText,
+                "<button class=\"book-content\" type=\"submit\" name=\"button\" value=" . $rows["id"] .">
+                            <div class=\"book-cover\">
+                                <img src=\"../images/pythonCover.png\" alt=" . $rows["title"] . ">
+                            </div>
+                            <div class=\"book-title\">" .
+                                $rows["title"] ."
+                            </div>
+                        </button>"
+                    );
+                }
+                for($i = 0; $i<$count; $i++){
+                    $lines .= $booksText[$i];
+                    if(($i+1)%5 == 0 || $i == $count-1 and $i !=0){
+                        array_push($books, 
+                            "<div class=\"book-list\">" .
+                                $lines .
+                            "</div>"
+                        );
+                        $lines = "";   
+                    }
+                }
+            }else{
+                $name = $_POST["busca"];
+                $stmt = $pdo->prepare("select * from BBC_Book where title like \"%:title%\"");
+                $stmt->bindParam(":title",$name);
+                $stmt->execute();
+                $count = $stmt->rowCount(); 
+                while($rows = $stmt->fetch()){
+                    array_push($booksText,
+                "<button class=\"book-content\" type=\"submit\" name=\"button\" value=" . $rows["id"] .">
+                            <div class=\"book-cover\">
+                                <img src=\"../images/pythonCover.png\" alt=" . $rows["title"] . ">
+                            </div>
+                            <div class=\"book-title\">" .
+                                $rows["title"] ."
+                            </div>
+                        </button>"
+                    );
+                }
+                for($i = 0; $i<$count; $i++){
+                    $lines .= $booksText[$i];
+                    if(($i+1)%5 == 0 || $i == $count-1 and $i !=0){
+                        array_push($books, 
+                            "<div class=\"book-list\">" .
+                                $lines .
+                            "</div>"
+                        );
+                        $lines = "";   
+                    }
+                }
+            }
         }
     }
 ?>
@@ -134,15 +227,20 @@
             <div class="search-area">
                 <div class="search-bar">
                     <form class="search" method="post">
-                        <input type="text" class="input" placeholder="Digite o titulo que procura">
-                        <input type="submit" class="formButton">
+                        <input type="text" class="input" placeholder="Digite o titulo que procura" name="busca">
+                        <input type="submit" class="formButton" name="button" value="search">
                     </form>
                 </div>
             </div>
             <div class="books-page">
                 <form method="POST">
                     <p>Livros</p> <!-- Quando fizer o php muda isso para a pesquisa da pessoa com aspas -> "a arte da guerra" -->
-                    <div class="book-list">
+                    <?php
+                        foreach($books as $value){
+                            echo $value;
+                        }
+                    ?>
+                    <!--<div class="book-list">
                         <button class="book-content" type="submit" value="{id do livro}">
                             <div class="book-cover">
                                 <img src="../images/pythonCover.png" alt="Livro">
@@ -183,7 +281,7 @@
                                 <p>Introdução a programação com python</p>
                             </div>
                         </button>
-                    </div>
+                    </div>-->
                 </form>
             </div>
         </div>
