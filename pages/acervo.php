@@ -143,46 +143,46 @@
                 <form method="POST">
                     <p>Livros</p> <!-- Quando fizer o php muda isso para a pesquisa da pessoa com aspas -> "a arte da guerra" -->
                     <div class="book-list">
-                        <div class="book-content" value="idDoLivroQVaiVirDoBD">
+                        <button class="book-content" type="submit" value="{id do livro}">
                             <div class="book-cover">
                                 <img src="../images/pythonCover.png" alt="Livro">
                             </div>
                             <div class="book-title">
                                 <p>Introdução a programação com python</p>
                             </div>
-                        </div>
-                        <div class="book-content" value="idDoLivroQVaiVirDoBD">
+                        </button>
+                        <button class="book-content" type="submit" value="{id do livro}">
                             <div class="book-cover">
                                 <img src="../images/pythonCover.png" alt="Livro">
                             </div>
                             <div class="book-title">
                                 <p>Introdução a programação com python</p>
                             </div>
-                        </div>
-                        <div class="book-content" value="idDoLivroQVaiVirDoBD">
+                        </button>
+                        <button class="book-content" type="submit" value="{id do livro}">
                             <div class="book-cover">
                                 <img src="../images/pythonCover.png" alt="Livro">
                             </div>
                             <div class="book-title">
                                 <p>Introdução a programação com python</p>
                             </div>
-                        </div>
-                        <div class="book-content" value="idDoLivroQVaiVirDoBD">
+                        </button>
+                        <button class="book-content" type="submit" value="{id do livro}">
                             <div class="book-cover">
                                 <img src="../images/pythonCover.png" alt="Livro">
                             </div>
                             <div class="book-title">
                                 <p>Introdução a programação com python</p>
                             </div>
-                        </div>
-                        <div class="book-content" value="idDoLivroQVaiVirDoBD">
+                        </button>
+                        <button class="book-content" type="submit" value="{id do livro}">
                             <div class="book-cover">
                                 <img src="../images/pythonCover.png" alt="Livro">
                             </div>
                             <div class="book-title">
                                 <p>Introdução a programação com python</p>
                             </div>
-                        </div>
+                        </button>
                     </div>
                 </form>
             </div>

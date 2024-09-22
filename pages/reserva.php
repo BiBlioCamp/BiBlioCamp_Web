@@ -141,7 +141,12 @@
                 <div class="aloc-area">
                     <form method="POST" class="form">
                         <div class="aloc-data">
-                            <p>Vou ver como faz para selecionar data</p>
+                            <p>Data de retirada</p>
+                            <input type="date" class="date" value="{data do dia atual}">
+                            <p>Data de devolução</p>
+                            <input type="date" class="date return" value="{data do dia atual + 7}">
+                            <p>Local:</p>
+                            <p> Biblioteca do Campus II de Limeira</p>
                         </div>
                         <div class="aloc-confirm">
                             <input type="submit" class="formButton" value="Agendar reserva">
