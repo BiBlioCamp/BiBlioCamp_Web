@@ -12,6 +12,29 @@ body {
     width: 100%;
     height: 60vh;
 }
+.config {
+    background-color: #1d1b31;
+    height: 100px;
+    width: 100px;
+    border-radius: 25px 25px 0 0;
+    position: absolute;
+    display: flex;
+    right: 25px;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-end;
+}
+.config > i {
+    color: #fff;
+    font-size: 60px;
+    cursor: pointer;
+    transition: .5s ease;
+}
+.config > i:hover {
+    rotate: 90deg;
+    color: #4dcbff;
+    font-size: 70px;
+}
 .pfp-area {
     width: 30%;
     height: 100%;
@@ -163,29 +186,4 @@ body {
     height: 10vh;
     width: 100%;
     background-image: linear-gradient(to bottom, #8f00f1, #4dcbff);
-}
-
-
-.config {
-    background-color: #1d1b31;
-    height: 100px;
-    width: 100px;
-    border-radius: 25px 25px 0 0;
-    position: relative;
-    margin-left: -280px;
-    margin-top: 490px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.config > i {
-    color: #fff;
-    font-size: 60px;
-    cursor: pointer;
-    transition: .5s ease;
-}
-.config > i:hover {
-    rotate: 90deg;
-    color: #4dcbff;
-    font-size: 70px;
 }
