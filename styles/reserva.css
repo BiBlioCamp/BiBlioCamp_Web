@@ -1,0 +1,102 @@
+body {
+    font-family: 'red hat display', sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-image: linear-gradient(to bottom, #8f00f1, #4dcbff);
+    color: white;
+}
+
+.main-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1d1b31;
+    width: 1000px;
+    height: 600px;
+    border-radius: 20px;
+}
+
+.left {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title {
+    width: 100%;
+    height: 20%;
+    text-align: center;
+}
+.title > p {
+    font-size: 50px;
+}
+.left > img {
+    height: 400px;
+}
+.left > .info {
+    width: 100%;
+    height: 10%;
+    text-align: center;
+}
+
+.right {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.right > .title {
+    width: 100%;
+    height: 20%;
+    text-align: center;
+}
+.title > p {
+    font-size: 50px;
+}
+
+.aloc-area {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+}
+.form {
+    width: 100%;
+    height: 100%;
+}
+.aloc-data {
+    width: 100%;
+    height: 70%;
+    background-color: green;
+}
+
+.aloc-confirm {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+}
+.formButton {
+    border-style: none;
+    width: 90%;
+    height: 40px;
+    border-radius: 50px;
+    background-color: transparent;
+    border: 2px solid #4dcbff;
+    color: #4dcbff;
+    transition: .2s;
+}
+.formButton:hover {
+    background-color: #4dcbff;
+    color: white;
+    cursor: pointer;
+}
