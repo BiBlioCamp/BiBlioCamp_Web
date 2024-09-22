@@ -141,7 +141,7 @@
         </div>
         <div class="bottom-area">
             <div class="main-btext">
-                <p>O site só funciona para alunos da escola! Para se registrar use seu email Unicamp cl......@g.unicamp.br</p>
+                <p>O site somente funciona para alunos da escola! Para se registrar use seu email Unicamp (cl......@g.unicamp.br)</p>
             </div>
         </div>
 </body>
