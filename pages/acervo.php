@@ -1,7 +1,5 @@
 <?php
     //https://www.livrariaacervo.com.br/buscar?q=a+arte foi por onde me baseei levemente bem levemente
-    //deixei um comentario la pra 145~ por aí vai la ver
-    //se quiser posso criar os filtros só me da uma base, me chama no dc pra conversar sobre 
 
     session_start();
     if($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -185,18 +183,214 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- acho q umas 10 linhas de livro ta bom, seriam 50 -->
-            <!-- Eu imagino como caralhos a gente vai fazer isso para trocar de page
-            quando lotar uma de livro -->
-            <div class="controller">
-                <div class="pages-control"> 
-                    <div class="left-arrow">
-                        <a href="#"><i class='bx bx-chevron-left'></i></a>
+                <div class="book-list">
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <div class="book-title">
+                            <p>Introdução a programação com python</p>
+                        </div>
                     </div>
-                    <p>1</p> <!-- 2, 3, 4, 5, 6 -->
-                    <div class="right-arrow">
-                        <a href="#"><i class='bx bx-chevron-right' ></i></a>
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <div class="book-title">
+                            <p>Introdução a programação com python</p>
+                        </div>
+                    </div>
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <div class="book-title">
+                            <p>Introdução a programação com python</p>
+                        </div>
+                    </div>
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <div class="book-title">
+                            <p>Introdução a programação com python</p>
+                        </div>
+                    </div>
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <div class="book-title">
+                            <p>Introdução a programação com python</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-list">
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <div class="book-title">
+                            <p>Introdução a programação com python</p>
+                        </div>
+                    </div>
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <div class="book-title">
+                            <p>Introdução a programação com python</p>
+                        </div>
+                    </div>
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <div class="book-title">
+                            <p>Introdução a programação com python</p>
+                        </div>
+                    </div>
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <div class="book-title">
+                            <p>Introdução a programação com python</p>
+                        </div>
+                    </div>
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <div class="book-title">
+                            <p>Introdução a programação com python</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-list">
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <div class="book-title">
+                            <p>Introdução a programação com python</p>
+                        </div>
+                    </div>
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <div class="book-title">
+                            <p>Introdução a programação com python</p>
+                        </div>
+                    </div>
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <div class="book-title">
+                            <p>Introdução a programação com python</p>
+                        </div>
+                    </div>
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <div class="book-title">
+                            <p>Introdução a programação com python</p>
+                        </div>
+                    </div>
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <div class="book-title">
+                            <p>Introdução a programação com python</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-list">
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <div class="book-title">
+                            <p>Introdução a programação com python</p>
+                        </div>
+                    </div>
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <div class="book-title">
+                            <p>Introdução a programação com python</p>
+                        </div>
+                    </div>
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <div class="book-title">
+                            <p>Introdução a programação com python</p>
+                        </div>
+                    </div>
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <div class="book-title">
+                            <p>Introdução a programação com python</p>
+                        </div>
+                    </div>
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <div class="book-title">
+                            <p>Introdução a programação com python</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-list">
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <div class="book-title">
+                            <p>Introdução a programação com python</p>
+                        </div>
+                    </div>
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <div class="book-title">
+                            <p>Introdução a programação com python</p>
+                        </div>
+                    </div>
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <div class="book-title">
+                            <p>Introdução a programação com python</p>
+                        </div>
+                    </div>
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <div class="book-title">
+                            <p>Introdução a programação com python</p>
+                        </div>
+                    </div>
+                    <div class="book-content">
+                        <div class="book-cover">
+                            <img src="../images/pythonCover.png" alt="Livro">
+                        </div>
+                        <div class="book-title">
+                            <p>Introdução a programação com python</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -204,3 +398,19 @@
 </body>
     <script src="../scripts/sidebar.js"></script>
 </html>
+
+<!--
+    acho q umas 10 linhas de livro ta bom, seriam 50
+    Eu imagino como caralhos a gente vai fazer isso para trocar de page quando lotar uma de livro
+            <div class="controller">
+                <div class="pages-control"> 
+                    <div class="left-arrow">
+                        <a href="#"><i class='bx bx-chevron-left'></i></a>
+                    </div>
+                    <p>1</p> 2, 3, 4, 5, 6
+                    <div class="right-arrow">
+                        <a href="#"><i class='bx bx-chevron-right' ></i></a>
+                    </div>
+                </div>
+            </div>
+-->

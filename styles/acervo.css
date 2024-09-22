@@ -69,7 +69,6 @@ body {
 .books-page {
     width: 92%;
     background-color: #1d1b31;
-    border-bottom: solid 1px white;
     padding-top: 90px;
     padding-bottom: 100px;
 }
@@ -86,6 +85,8 @@ body {
     align-items: center;
     margin-left: 78px;
     margin-right: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 .book-content {
     margin-top: 10px;
@@ -96,9 +97,10 @@ body {
     align-items: center;
     justify-content: center;
     background-color: #11111F;
-    width: 20%;
+    width: 19%;
     height: 400px;
     text-align: center;
+    transition: .2s ease;
 }
 .book-content p {
     font-size: 30px;
@@ -125,6 +127,12 @@ body {
     width: 100%;
     background-image: linear-gradient(to bottom, #8f00f1, #4dcbff);
 }
+.book-content:hover {
+    box-shadow: 0 0 40px 10px #39396B;
+    position: relative;
+    transform: scale(1.05);
+    cursor: pointer;
+}
 
 
 .controller {
@@ -146,7 +154,6 @@ body {
     margin-left: 80px;
     border-radius: 7px;
     position: absolute;
-
 }
 .left-arrow > a, .right-arrow > a{
     text-decoration: none;

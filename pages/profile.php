@@ -144,7 +144,7 @@
             </div>
             <div class="books-area">
                 <p>Em posse</p>
-                <div class="book-list">
+                <div class="book-list owning">
                     <div class="book-content">
                         <div class="book-cover">
                             <img src="../images/pythonCover.png" alt="Livro">
@@ -186,7 +186,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="book-list">
+                <div class="book-list owning">
                     <div class="book-content">
                         <div class="book-cover">
                             <img src="../images/pythonCover.png" alt="Livro">
