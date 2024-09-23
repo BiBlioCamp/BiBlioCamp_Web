@@ -141,10 +141,11 @@
                 <div class="aloc-area">
                     <form method="POST" class="form">
                         <div class="aloc-data">
+                            <p class="stock">Estoque: {qtd}</p>
                             <p>Data de retirada</p>
-                            <input type="date" class="date" value="{data do dia atual}">
+                            <input type="date" class="date">
                             <p>Data de devolução</p>
-                            <input type="date" class="date return" value="{data do dia atual + 7}">
+                            <input type="date" class="date" value="{data do dia atual + 7}" disabled>
                             <p>Local:</p>
                             <p> Biblioteca do Campus II de Limeira</p>
                         </div>
@@ -154,7 +155,8 @@
                     </form>
                 </div>
             </div>
-        </div>    
+        </div>   
+    </div>
 </body>
     <script src="../scripts/sidebar.js"></script>
 </html>
