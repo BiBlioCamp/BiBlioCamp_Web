@@ -80,6 +80,9 @@ body {
     margin-bottom: 10px;
     font-size: 30px;
 }
+.aloc-data > .noStock {
+    color: red;
+}
 .aloc-data > .date {
     width: 250px;
     height: 35px;
@@ -125,8 +128,22 @@ input[type='date']::-webkit-calendar-picker-indicator {
     color: #4dcbff;
     transition: .2s;
 }
+.button {
+    border-style: none;
+    width: 90%;
+    height: 40px;
+    border-radius: 50px;
+    background-color: transparent;
+    border: 2px solid #4dcbff;
+    color: #4dcbff;
+}
 .formButton:hover {
     background-color: #4dcbff;
     color: white;
     cursor: pointer;
+}
+.stockError {
+    color: red;
+    font-weight: 500;
+    margin-top: 10px;
 }

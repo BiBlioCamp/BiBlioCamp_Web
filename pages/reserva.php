@@ -25,12 +25,15 @@
             $stock = $rows['actualStock'];
             if($stock == 0){
                 $btn = "<div class=\"aloc-confirm\">
-                            <input type=\"submit\" class=\"formButton\" id=\"formButton\" value=\"Agendar reserva\" disabled>
+                            <input type=\"submit\" class=\"button\" id=\"formButton\" value=\"Agendar reserva\" disabled>
+                            <p class='stockError'>Esse livro está fora de estoque!</p>
                         </div>";
+                $userStockView = "<p class='stock noStock' id='stock'>Estoque: " . $stock . "</p>";
             }else{
                 $btn = "<div class=\"aloc-confirm\">
                             <input type=\"submit\" class=\"formButton\" id=\"formButton\" value=\"Agendar reserva\" onclick=\"enableInput()\">
                         </div>";
+                $userStockView = "<p class='stock' id='stock'>Estoque: " . $stock . "</p>";
             }
         }catch(PDOException $e){
             echo "Erro: " . $e->getMessage();
@@ -133,7 +136,7 @@
                 <li>           
                     <div class="profile-details">                 
                         <div class="profile-content">
-                        <a href="<?=$pfpAction ?>">
+                        <a href="<?= $pfpAction ?>">
                                 <img src="../images/<?= $pfp ?>" alt="profileImg">
                             </a>
                         </div>              
@@ -165,7 +168,7 @@
                 <div class="aloc-area">
                     <form method="POST" class="form" action="reservaForm.php">
                         <div class="aloc-data">
-                            <p class="stock" id="stock">Estoque:<?=$stock?></p>
+                            <?php echo $userStockView ?>
                             <p>Data de retirada</p>
                             <input type="date" class="date" name="dataInit" id="dataInit" required onchange="adicionarSeteDias()">
                             <p>Data de devolução</p>
