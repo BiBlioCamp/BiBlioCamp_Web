@@ -5,7 +5,7 @@
     $books = array();
     $booksText = array();
     $lines = "";
-    $msg = "";
+    $msg = "Livros";
     if($_SERVER['REQUEST_METHOD'] === 'GET') {
         if(!isset($_SESSION['username'])) {
             header("Location: error.html");
@@ -48,6 +48,7 @@
             }catch(PDOException $e){
                 echo "Erro: " . $e->getMessage();
             }
+            $pdo = null;
         }
     }else if($_SERVER["REQUEST_METHOD"] === "POST"){
         $username = $_SESSION["username"];
@@ -83,9 +84,11 @@
                             $lines = "";   
                         }
                     }
+                    $msg = "Livros";
                 }catch(PDOException $e){
                     echo "Erro: " . $e->getMessage();
                 }
+                $pdo = null;
             }else{
                 try{
                     include "conexaoDB.php";
@@ -118,12 +121,14 @@
                                 $lines = "";   
                             }
                         }
+                        $msg = "\"" . $_POST["busca"] . "\"";
                     }else{
-                        $msg = "Nenhum Livro Encontrado";
+                        $msg = "\"Nenhum Livro Encontrado\"";
                     }
                 }catch(PDOException $e){
                     echo "Erro: " . $e->getMessage();
-                } 
+                }
+                $pdo = null;
             }
         }
     }
@@ -253,14 +258,13 @@
                 </div>
             </div>
             <div class="books-page">
-                <form method="POST">
-                    <p>Livros</p> <!-- Quando fizer o php muda isso para a pesquisa da pessoa com aspas -> "a arte da guerra" -->
+                <form method="POST" action="reserva.php">
+                    <p><?=$msg?></p> <!-- Quando fizer o php muda isso para a pesquisa da pessoa com aspas -> "a arte da guerra" -->
                     <?php
                         foreach($books as $value){
                             echo $value;
                         }
                     ?>
-                    <p><?=$msg?></p>
                     <!--<div class="book-list">
                         <button class="book-content" type="submit" value="{id do livro}">
                             <div class="book-cover">

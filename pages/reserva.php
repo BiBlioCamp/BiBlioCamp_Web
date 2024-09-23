@@ -2,14 +2,28 @@
     session_start();
     if($_SERVER['REQUEST_METHOD'] === 'GET') {
         if(!isset($_SESSION['username'])) {
-            $username = "User";
+            header("Location: error.html");
+            /*$username = "User";
             $pfp = "unsetPfp.png";
-            $pfpAction = "login.php";
+            $pfpAction = "login.php";*/
         }
-        else {
-            $username = $_SESSION["username"];
-            $pfp = "cotil.png";
-            $pfpAction = 'profile.php';
+    }else if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        $username = $_SESSION["username"];
+        $pfp = "cotil.png";
+        $pfpAction = "profile.php";
+        try{
+            include "conexaoDB.php";
+            $id = $_POST["button"];
+            $_SESSION["bookId"] = $id;
+            $stmt = $pdo->prepare("select title,author,editor from BBC_Book where id = :id");
+            $stmt->bindParam(":id",$id);
+            $stmt->execute();
+            $rows = $stmt->fetch();
+            $bookName = $rows['title'];
+            $bookAuthor = $rows['author'];
+            $bookEditor = $rows['editor'];
+        }catch(PDOException $e){
+            echo "Erro: " . $e->getMessage();
         }
     }
 ?>
@@ -18,7 +32,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{Titulo do livro}</title>
+    <title><?=$bookName?></title>
     <link rel="stylesheet" href="../styles/sidebar.css">
     <link rel="stylesheet" href="../styles/reserva.css">
     <link rel="stylesheet" href="../styles/reset.css">
@@ -126,12 +140,12 @@
         <div class="main-area">
             <div class="left">
                 <div class="title">
-                    <p>{Titulo do Livro}</p>
+                    <p><?=$bookName?></p>
                 </div>
                 <img src="../images/javaCover.png" alt="Capa do Livro">
                 <div class="info">
-                    <p>Autor: {Author}</p>
-                    <p>Editora: {Editor}</p>
+                    <p>Autor: <?=$bookAuthor?></p>
+                    <p>Editora: <?=$bookEditor?></p>
                 </div>
             </div>
             <div class="right">
@@ -139,22 +153,50 @@
                     <p>Reserva de livro</p>
                 </div>
                 <div class="aloc-area">
-                    <form method="POST" class="form">
+                    <form method="POST" class="form" action="reservaForm.php">
                         <div class="aloc-data">
                             <p>Data de retirada</p>
-                            <input type="date" class="date" value="{data do dia atual}">
+                            <input type="date" class="date" name="dataInit" id="dataInit" onchange="adicionarSeteDias()">
                             <p>Data de devolução</p>
-                            <input type="date" class="date return" value="{data do dia atual + 7}">
+                            <input type="date" class="date return" name="dataReturn" id="dataReturn" disabled>
                             <p>Local:</p>
                             <p> Biblioteca do Campus II de Limeira</p>
                         </div>
                         <div class="aloc-confirm">
-                            <input type="submit" class="formButton" value="Agendar reserva">
+                            <input type="submit" class="formButton" value="Agendar reserva" onclick="enableInput()">
                         </div>
                     </form>
                 </div>
             </div>
         </div>    
 </body>
+
+<script>
+    function enableInput(){
+        document.getElementById('dataReturn').disabled = false;
+    }
+    
+    function adicionarSeteDias() {
+        // Pega o valor do primeiro input (data de retirada)
+        let dataRetirada = document.getElementById('dataInit').value;
+    
+        // Verifica se a data está preenchida
+        if (dataRetirada) {
+            // Converte a string da data para o formato Date
+            let data = new Date(dataRetirada);
+        
+            // Adiciona 7 dias
+            data.setDate(data.getDate() + 7);
+        
+            // Formata a data de volta para o formato YYYY-MM-DD
+            let ano = data.getFullYear();
+            let mes = ('0' + (data.getMonth() + 1)).slice(-2);  // Adiciona o zero à esquerda no mês, se necessário
+            let dia = ('0' + data.getDate()).slice(-2);  // Adiciona o zero à esquerda no dia, se necessário
+        
+            // Atribui o valor formatado ao segundo input (data de devolução)
+            document.getElementById('dataReturn').value = `${ano}-${mes}-${dia}`;
+        }
+    }
+</script>
     <script src="../scripts/sidebar.js"></script>
 </html>
