@@ -15,7 +15,15 @@
         $stmt->execute();
         $rows = $stmt->rowCount();
         if($rows > 0){
-            header("Location: profile.php");
+            $stmt = $pdo->prepare("update BBC_Book set actualStock = actualStock - 1 where id = :bookId");
+            $stmt->bindParam(':bookId',$_SESSION['bookId']);
+            $stmt->execute();
+            $rows = $stmt->rowCount();
+            if($rows > 0){
+                header("Location: profile.php");
+            }else{
+                echo "deu ruim";
+            }
         }
         else{
             echo "deu bom não";

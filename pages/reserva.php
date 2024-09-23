@@ -15,13 +15,23 @@
             include "conexaoDB.php";
             $id = $_POST["button"];
             $_SESSION["bookId"] = $id;
-            $stmt = $pdo->prepare("select title,author,editor from BBC_Book where id = :id");
+            $stmt = $pdo->prepare("select title,author,editor,actualStock from BBC_Book where id = :id");
             $stmt->bindParam(":id",$id);
             $stmt->execute();
             $rows = $stmt->fetch();
             $bookName = $rows['title'];
             $bookAuthor = $rows['author'];
             $bookEditor = $rows['editor'];
+            $stock = $rows['actualStock'];
+            if($stock == 0){
+                $btn = "<div class=\"aloc-confirm\">
+                            <input type=\"submit\" class=\"formButton\" id=\"formButton\" value=\"Agendar reserva\" disabled>
+                        </div>";
+            }else{
+                $btn = "<div class=\"aloc-confirm\">
+                            <input type=\"submit\" class=\"formButton\" id=\"formButton\" value=\"Agendar reserva\" onclick=\"enableInput()\">
+                        </div>";
+            }
         }catch(PDOException $e){
             echo "Erro: " . $e->getMessage();
         }
@@ -155,17 +165,15 @@
                 <div class="aloc-area">
                     <form method="POST" class="form" action="reservaForm.php">
                         <div class="aloc-data">
-                            <p class="stock">Estoque: {qtd}</p>
+                            <p class="stock" id="stock">Estoque:<?=$stock?></p>
                             <p>Data de retirada</p>
-                            <input type="date" class="date" name="dataInit" id="dataInit" onchange="adicionarSeteDias()">
+                            <input type="date" class="date" name="dataInit" id="dataInit" required onchange="adicionarSeteDias()">
                             <p>Data de devolução</p>
                             <input type="date" class="date return" name="dataReturn" id="dataReturn" disabled>
                             <p>Local:</p>
                             <p> Biblioteca do Campus II de Limeira</p>
                         </div>
-                        <div class="aloc-confirm">
-                            <input type="submit" class="formButton" value="Agendar reserva" onclick="enableInput()">
-                        </div>
+                        <?php echo $btn ?>
                     </form>
                 </div>
             </div>
@@ -177,7 +185,7 @@
     function enableInput(){
         document.getElementById('dataReturn').disabled = false;
     }
-    
+
     function adicionarSeteDias() {
         // Pega o valor do primeiro input (data de retirada)
         let dataRetirada = document.getElementById('dataInit').value;
