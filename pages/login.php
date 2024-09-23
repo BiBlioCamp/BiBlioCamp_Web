@@ -235,7 +235,7 @@
                             </div>
                             <div>
                                 <!-- <input required type="text" id="ra" class="input" name="ra" value="<?= $_SESSION['ra'] ?>"> -->
-                                <input required type="number" id="ra" class="input inputValidate" name="ra" oninput="raValidate(), verifyCadaster()" ><br>
+                                <input required type="number" id="ra" class="input inputValidate" name="ra" oninput="raValidate(), verifyCadaster()"><br>
                                 <label class="label labelValidate" for="ra">RA</label>
                                 <span class="span-required ra">RA precisa ter 6 números</span>
                             </div>
@@ -276,7 +276,7 @@
 
         function removeError(index){
             campos[index].style.border = '';
-            labels[index].style.color = '#4dcbff';
+            labels[index].style.color = '#A7A5B5';
             spans[index].style.display = 'none';
         }
 

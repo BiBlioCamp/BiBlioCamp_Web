@@ -1,5 +1,6 @@
 body {
     font-family: 'red hat display', sans-serif;
+    color: white;
 }
 
 main {
@@ -51,7 +52,7 @@ main {
     width: 50%;
 }
 .formContact {
-    background-color: white;
+    background-color: #1d1b31;
 }
 .formContact > .title{
     font-size: 2rem;
@@ -72,7 +73,7 @@ main {
     transition: 150ms
         cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
-    background-color: #f3f3f3;
+    background-color: #1d1b31;
 }
 
 #message {
@@ -86,7 +87,7 @@ main {
     transition: 150ms
         cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
-    background-color: #f3f3f3;
+    background-color: #1d1b31;
 }
 .messageGroup label {
     margin-top: -120px;
@@ -95,7 +96,7 @@ main {
     transform: 
         translatey(-120%)
         scale(0.7);
-    background-color: #f3f3f3;
+    background-color: #1d1b31;
     padding-inline: 0.3rem;
     color: #4dcbff;
 }
@@ -108,7 +109,7 @@ main {
     transform: 
         translatey(-120%)
         scale(0.7);
-    background-color: #f3f3f3;
+    background-color: #1d1b31;
     padding-inline: 0.3rem;
     color: #4dcbff;
 }
