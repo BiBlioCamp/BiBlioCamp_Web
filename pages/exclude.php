@@ -2,7 +2,7 @@
     session_start();
     if($_SERVER["REQUEST_METHOD"] === "GET"){
         if(!isset($_SESSION["username"])){
-            header("location: login.php");
+            header("location: error.html");
         }
     }else if($_SERVER["REQUEST_METHOD"] === "POST"){
         $btn = $_POST["button"];

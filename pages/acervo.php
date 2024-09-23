@@ -5,50 +5,20 @@
     $books = array();
     $booksText = array();
     $lines = "";
-    include("conexaoDB.php");
+    $msg = "";
     if($_SERVER['REQUEST_METHOD'] === 'GET') {
         if(!isset($_SESSION['username'])) {
-            $username = "User";
+            header("Location: error.html");
+            /*$username = "User";
             $pfp = "unsetPfp.png";
-            $pfpAction = "login.php";
+            $pfpAction = "login.php";*/
         }
         else {
             $username = $_SESSION["username"];
             $pfp = "cotil.png";
             $pfpAction = 'profile.php';
-            $stmt = $pdo->prepare("select * from BBC_Book");
-            $stmt->execute();
-            $count = $stmt->rowCount(); 
-            while($rows = $stmt->fetch()){
-                array_push($booksText,
-            "<button class=\"book-content\" type=\"submit\" name=\"button\" value=" . $rows["id"] .">
-                        <div class=\"book-cover\">
-                            <img src=\"../images/pythonCover.png\" alt=" . $rows["title"] . ">
-                        </div>
-                        <div class=\"book-title\">" .
-                            $rows["title"] ."
-                        </div>
-                    </button>"
-                );
-            }
-            for($i = 0; $i<$count; $i++){
-                $lines .= $booksText[$i];
-                if(($i+1)%5 == 0 || $i == $count-1 and $i !=0){
-                    array_push($books, 
-                        "<div class=\"book-list\">" .
-                            $lines .
-                        "</div>"
-                    );
-                    $lines = "";   
-                }
-            }
-        }
-    }else if($_SERVER["REQUEST_METHOD"] === "POST"){
-        $username = $_SESSION["username"];
-        $pfp = "cotil.png";
-        $pfpAction = 'profile.php';
-        if($_POST["button"] == "search"){
-            if(trim($_POST["busca"]) == ""){
+            try{
+                include "conexaoDB.php";
                 $stmt = $pdo->prepare("select * from BBC_Book");
                 $stmt->execute();
                 $count = $stmt->rowCount(); 
@@ -75,35 +45,85 @@
                         $lines = "";   
                     }
                 }
-            }else{
-                $name = $_POST["busca"];
-                $stmt = $pdo->prepare("select * from BBC_Book where title like \"%:title%\"");
-                $stmt->bindParam(":title",$name);
-                $stmt->execute();
-                $count = $stmt->rowCount(); 
-                while($rows = $stmt->fetch()){
-                    array_push($booksText,
-                "<button class=\"book-content\" type=\"submit\" name=\"button\" value=" . $rows["id"] .">
-                            <div class=\"book-cover\">
-                                <img src=\"../images/pythonCover.png\" alt=" . $rows["title"] . ">
-                            </div>
-                            <div class=\"book-title\">" .
-                                $rows["title"] ."
-                            </div>
-                        </button>"
-                    );
-                }
-                for($i = 0; $i<$count; $i++){
-                    $lines .= $booksText[$i];
-                    if(($i+1)%5 == 0 || $i == $count-1 and $i !=0){
-                        array_push($books, 
-                            "<div class=\"book-list\">" .
-                                $lines .
-                            "</div>"
+            }catch(PDOException $e){
+                echo "Erro: " . $e->getMessage();
+            }
+        }
+    }else if($_SERVER["REQUEST_METHOD"] === "POST"){
+        $username = $_SESSION["username"];
+        $pfp = "cotil.png";
+        $pfpAction = 'profile.php';
+        if($_POST["button"] == "search"){
+            if(trim($_POST["busca"]) == ""){
+                try{
+                    include "conexaoDB.php";
+                    $stmt = $pdo->prepare("select * from BBC_Book");
+                    $stmt->execute();
+                    $count = $stmt->rowCount(); 
+                    while($rows = $stmt->fetch()){
+                        array_push($booksText,
+                    "<button class=\"book-content\" type=\"submit\" name=\"button\" value=" . $rows["id"] .">
+                                <div class=\"book-cover\">
+                                    <img src=\"../images/pythonCover.png\" alt=" . $rows["title"] . ">
+                                </div>
+                                <div class=\"book-title\">" .
+                                    $rows["title"] ."
+                                </div>
+                            </button>"
                         );
-                        $lines = "";   
                     }
+                    for($i = 0; $i<$count; $i++){
+                        $lines .= $booksText[$i];
+                        if(($i+1)%5 == 0 || $i == $count-1 and $i !=0){
+                            array_push($books, 
+                                "<div class=\"book-list\">" .
+                                    $lines .
+                                "</div>"
+                            );
+                            $lines = "";   
+                        }
+                    }
+                }catch(PDOException $e){
+                    echo "Erro: " . $e->getMessage();
                 }
+            }else{
+                try{
+                    include "conexaoDB.php";
+                    $name = "%" . $_POST["busca"] . "%";
+                    $stmt = $pdo->prepare("select * from BBC_Book where title LIKE :title");
+                    $stmt->bindParam(":title",$name);
+                    $stmt->execute();
+                    $count = $stmt->rowCount(); 
+                    if($count > 0){
+                        while($rows = $stmt->fetch()){
+                            array_push($booksText,
+                        "<button class=\"book-content\" type=\"submit\" name=\"button\" value=" . $rows["id"] .">
+                                    <div class=\"book-cover\">
+                                        <img src=\"../images/pythonCover.png\" alt=" . $rows["title"] . ">
+                                    </div>
+                                    <div class=\"book-title\">" .
+                                        $rows["title"] ."
+                                    </div>
+                                </button>"
+                            );
+                        }
+                        for($i = 0; $i<$count; $i++){
+                            $lines .= $booksText[$i];
+                            if(($i+1)%5 == 0 || $i == $count-1){
+                                array_push($books, 
+                                    "<div class=\"book-list\">" .
+                                        $lines .
+                                    "</div>"
+                                );
+                                $lines = "";   
+                            }
+                        }
+                    }else{
+                        $msg = "Nenhum Livro Encontrado";
+                    }
+                }catch(PDOException $e){
+                    echo "Erro: " . $e->getMessage();
+                } 
             }
         }
     }
@@ -240,6 +260,7 @@
                             echo $value;
                         }
                     ?>
+                    <p><?=$msg?></p>
                     <!--<div class="book-list">
                         <button class="book-content" type="submit" value="{id do livro}">
                             <div class="book-cover">
