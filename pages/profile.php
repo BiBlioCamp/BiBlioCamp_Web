@@ -32,7 +32,7 @@
                         array_push($booksPosseText,
                         "<button class=\"book-content\" value=". $row['id'] . ">
                             <div class=\"book-cover\">
-                                <img src=\"../images/pythonCover.png\" alt=\"Livro\">
+                                <img src=\"../images/covers/". $row['cover'] ."\" alt=\"Livro\">
                             </div>
                             <div class=\"book-title\">" .
                                 $row['title']
@@ -72,7 +72,7 @@
                             <div class=\"book-cover\">
                                 <p class='wasADate'>" . $rowsBookId[$i]["alocDate"] . "</p> 
 
-                                <img src=\"../images/pythonCover.png\" alt=\"Livro\">
+                                <img src=\"../images/covers/". $row['cover'] ."\" alt=\"Livro\">
                             </div>
                             <div class=\"book-title\">" .
                                 $row['title']
@@ -115,7 +115,7 @@
                     array_push($booksPosseText,
                     "<button class=\"book-content\" value=". $row['id'] . ">
                         <div class=\"book-cover\">
-                            <img src=\"../images/pythonCover.png\" alt=\"Livro\">
+                            <img src=\"../images/covers/". $rows['cover'] ."\" alt=\"Livro\">
                         </div>
                         <div class=\"book-title\">" .
                             $row['title']
@@ -155,7 +155,7 @@
                         <div class=\"book-cover\">
                             <p class='wasADate'>" . $rowsBookId[$i]["alocDate"] . "</p> 
 
-                            <img src=\"../images/pythonCover.png\" alt=\"Livro\">
+                            <img src=\"../images/covers/". $rows['cover'] ."\" alt=\"Livro\">
                         </div>
                         <div class=\"book-title\">" .
                             $row['title']

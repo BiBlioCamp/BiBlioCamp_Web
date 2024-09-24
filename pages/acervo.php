@@ -26,7 +26,7 @@
                     array_push($booksText,
                 "<button class=\"book-content\" type=\"submit\" name=\"button\" value=" . $rows["id"] .">
                             <div class=\"book-cover\">
-                                <img src=\"../images/pythonCover.png\" alt=" . $rows["title"] . ">
+                                <img src=\"../images/covers/". $rows['cover'] ."\" alt=" . $rows["title"] . ">
                             </div>
                             <div class=\"book-title\">" .
                                 $rows["title"] ."
@@ -65,7 +65,7 @@
                         array_push($booksText,
                     "<button class=\"book-content\" type=\"submit\" name=\"button\" value=" . $rows["id"] .">
                                 <div class=\"book-cover\">
-                                    <img src=\"../images/pythonCover.png\" alt=" . $rows["title"] . ">
+                                    <img src=\"../images/covers/". $rows['cover'] ."\" alt=" . $rows["title"] . ">
                                 </div>
                                 <div class=\"book-title\">" .
                                     $rows["title"] ."
@@ -102,7 +102,7 @@
                             array_push($booksText,
                         "<button class=\"book-content\" type=\"submit\" name=\"button\" value=" . $rows["id"] .">
                                     <div class=\"book-cover\">
-                                        <img src=\"../images/pythonCover.png\" alt=" . $rows["title"] . ">
+                                        <img src=\"../images/covers/". $rows['cover'] ."\" alt=" . $rows["title"] . ">
                                     </div>
                                     <div class=\"book-title\">" .
                                         $rows["title"] ."
