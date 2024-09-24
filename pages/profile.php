@@ -56,7 +56,7 @@
             }
             try{
                 include "conexaoDB.php";
-                $stmt = $pdo->prepare("select bookId, alocDate from BBC_Aloc where userId = :id and status = 'entregue';");
+                $stmt = $pdo->prepare("select bookId, DATE_FORMAT(alocDate, '%d/%m/%Y') as alocDate, DATE_FORMAT(returnDate, '%d/%m/%Y') as returnDate from BBC_Aloc where userId = :id and status = 'entregue';");
                 $stmt->bindParam(':id', $_SESSION['ra']);
                 $stmt->execute();
 
@@ -70,7 +70,7 @@
                         array_push($booksReadText,
                         "<div class=\"book-content\" value=". $row['id'] . ">
                             <div class=\"book-cover\">
-                                <p class='wasADate'>" . $rowsBookId[$i]["alocDate"] . "</p> 
+                                <p class='wasADate'>" . $rowsBookId[$i]["alocDate"] . '-' . $rowsBookId[$i]['returnDate'] . "</p> 
 
                                 <img src=\"../images/covers/". $row['cover'] ."\" alt=\"Livro\">
                             </div>
@@ -327,7 +327,7 @@
                         </button>
                     </div>-->
                 </form>
-                <p>Já reservados pelo menos uma(1) vez <br>Formato da data: ano-mes-dia</p>
+                <p>Já reservados pelo menos uma(1) vez <!--<br>Formato da data: ano-mes-dia</p>-->
                 <?php
                     foreach($booksRead as $value){
                         echo $value;
