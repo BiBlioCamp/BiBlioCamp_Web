@@ -36,8 +36,13 @@
                         $_SESSION['username'] = $update_username;
                     }
                 }
+<<<<<<< HEAD
             }else if($button == 'Alterar Email'){
                 $email = $_POST['email'];
+=======
+            }else if($button == 'email'){
+                $email = $_POST['Alterar Email'];
+>>>>>>> 0583e25e274c39d3f47e10b69d916e976f058994
                 if(isset($email) and $email != ""){
                     $stmt = $pdo->prepare("update BBC_Account set email = :email where id = :id");
                     $stmt->bindParam(':email',$email);
@@ -84,6 +89,7 @@
             echo "Erro: " . $e->getMessage();
         }
     }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -216,7 +222,7 @@
                     <div class="form">
                         <div class="input-msg">
                             <input type="text" class="input" name="nome" placeholder="Digite seu Nome">
-                            <p class="">$nomeAlterado</p><!-- class = success / fail -->
+                            <!-- <p class="">$nomeAlterado</p> class = success "Nome alterado com sucesso!" / fail "Seu nome precisa de no minimo X Digitos."-->
                         </div>
                         <input type="submit" class="button" name="btn" value="Alterar Nome">
                     </div>
@@ -230,7 +236,7 @@
                     <div class="form">
                         <div class="input-msg">
                             <input type="text" class="input" name="nome" placeholder="Digite seu Email">
-                            <p class="">$emailAlterado</p><!-- class = success / fail -->
+                            <!-- <p class="">$emailAlterado</p> class = success "Email alterado com sucesso!" / fail "Seu email precisa ser UNICAMP." -->
                         </div>
                         <input type="submit" class="button" name="btn" value="Alterar Email">
                     </div>
@@ -244,11 +250,11 @@
                     <div class="form">
                         <div class="password-inputs">
                             <input type="text" class="input" name="senha" placeholder="Digite sua senha atual">
-                            <p class="">$senhaIncorreta</p>
+                            <!-- <p class="fail">$senhaIncorreta</p> class = fail "Senha incorreta." -->
                             <input type="text" class="input" name="newSenha" placeholder="Digite sua nova senha">
-                            <p class="">$senhaInvalida</p>
+                            <!-- <p class="fail">$senhaInvalida</p> class = fail "Sua senha precisa de no minimo 8 digitos." -->
                             <input type="text" class="input" name="confNewSenha" placeholder="Confirme sua nova senha">
-                            <p class="">$senhasDiferentes</p>
+                            <!-- <p class="">$senhasDiferentes</p> class = success "Senha alterada com sucesso!" / fail "Senhas não coincidem." -->
                         </div>
                         <input type="submit" class="button" name="btn" value="Alterar Senha">
                     </div>
@@ -262,7 +268,7 @@
                     <div class="form">
                         <div class="input-msg">
                             <input type="text" class="input" name="nome" placeholder="Digite sua Senha">
-                            <!-- Se a conta for excluida n vai ter como ver -->
+                            <!-- <p class="">$senhaExcludeIncorreta</p> class = fail "Senha incorreta." -->
                         </div>
                         <input type="submit" class="button" name="btn" value="Excluir Conta">
                     </div>
