@@ -22,18 +22,73 @@
                 $stmt->bindParam(':id', $_SESSION['ra']);
                 $stmt->execute();
 
-                $count = $stmt->rowCount(); 
                 $rowsBookId = $stmt->fetchAll();
+                $count = count($rowsBookId);
                 for ($i = 0; $i < $count; $i++) {
                     $stmt = $pdo->prepare("select * from BBC_Book where id = :id");
                     $stmt->bindParam(":id", $rowsBookId[$i]['bookId']);
                     $stmt->execute();
-                    $row = $stmt->fetch();
-
-                    $titulo = $row['title'];
-                    echo "<p style='margin-left: 200px;'>" . $titulo . "</p>";
+                    while($row = $stmt->fetch()){
+                        array_push($booksPosseText,
+                        "<button class=\"book-content\" value=". $row['id'] . ">
+                            <div class=\"book-cover\">
+                                <img src=\"../images/pythonCover.png\" alt=\"Livro\">
+                            </div>
+                            <div class=\"book-title\">" .
+                                $row['title']
+                            . "</div>
+                        </button>");
+                    }
                 }
+                for($i = 0; $i < count($booksPosseText); $i++){
+                    $lines .= $booksPosseText[$i];
+                    if(($i+1)%5 == 0 || $i == $count-1 and $i !=0){
+                        array_push($booksPosse, 
+                            "<div class=\"book-list owning\">" .
+                                $lines .
+                            "</div>"
+                        );
+                        $lines = "";   
+                    }
+                }
+            }catch(PDOException $e){
+                echo "Erro: " . $e->getMessage();
+            }
+            try{
+                include "conexaoDB.php";
+                $stmt = $pdo->prepare("select bookId from BBC_Aloc where userId = :id and status = 'entregue';");
+                $stmt->bindParam(':id', $_SESSION['ra']);
+                $stmt->execute();
 
+                $rowsBookId = $stmt->fetchAll();
+                $count = count($rowsBookId);
+                for ($i = 0; $i < $count; $i++) {
+                    $stmt = $pdo->prepare("select * from BBC_Book where id = :id");
+                    $stmt->bindParam(":id", $rowsBookId[$i]['bookId']);
+                    $stmt->execute();
+                    while($row = $stmt->fetch()){
+                        array_push($booksReadText,
+                        "<button class=\"book-content\" value=". $row['id'] . ">
+                            <div class=\"book-cover\">
+                                <img src=\"../images/pythonCover.png\" alt=\"Livro\">
+                            </div>
+                            <div class=\"book-title\">" .
+                                $row['title']
+                            . "</div>
+                        </button>");
+                    }
+                }
+                for($i = 0; $i < count($booksReadText); $i++){
+                    $lines .= $booksReadText[$i];
+                    if(($i+1)%5 == 0 || $i == $count-1 and $i !=0){
+                        array_push($booksRead, 
+                            "<div class=\"book-list\">" .
+                                $lines .
+                            "</div>"
+                        );
+                        $lines = "";   
+                    }
+                }
             }catch(PDOException $e){
                 echo "Erro: " . $e->getMessage();
             }
@@ -171,7 +226,12 @@
             <div class="books-area">
                 <p>Em posse</p>
                 <form method="POST">
-                    <div class="book-list owning">
+                    <?php
+                        foreach($booksPosse as $value){
+                            echo $value;
+                        }
+                    ?>
+                    <!--<div class="book-list owning">
                         <button class="book-content">
                             <div class="book-cover">
                                 <img src="../images/pythonCover.png" alt="Livro">
@@ -212,10 +272,15 @@
                                 <p>Introdução a programação com python</p>
                             </div>
                         </button>
-                    </div>
+                    </div>-->
                 </form>
                 <p>Já reservados pelo menos uma(1) vez</p>
-                <div class="book-list">
+                <?php
+                    foreach($booksRead as $value){
+                        echo $value;
+                    }
+                ?>
+                <!--<div class="book-list">
                     <div class="book-content">
                         <div class="book-cover">
                             <img src="../images/pythonCover.png" alt="Livro">
@@ -290,7 +355,7 @@
                             <p>Introdução a programação com python</p>
                         </div>
                     </div>
-                </div>
+                </div>-->
             </div>
             <div class="botton-content">
 
