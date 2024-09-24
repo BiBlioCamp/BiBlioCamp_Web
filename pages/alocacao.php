@@ -19,15 +19,287 @@
                 $stmt->execute();
                 $rows = $stmt->fetch();
                 $reservasCount = $rows['count'];
-                $stmt = $pdo->prepare("select bookId from BBC_Aloc where userId = :id and status !='entregue'");
+                $stmt = $pdo->prepare("select bookId, status,  DATE_FORMAT(alocDate, '%d/%m/%Y') as alocDate, DATE_FORMAT(returnDate, '%d/%m/%Y') as returnDate from BBC_Aloc where userId = :id and status != 'entregue';");
                 $stmt->bindParam(':id',$_SESSION['ra']);
                 $stmt->execute();
                 $rowsBookId = $stmt->fetchAll();
+                $count = count($rowsBookId);
+                for($i = 0; $i < $count; $i++){
+                    $status = $rowsBookId[$i]['status'];
+                    $todayDate = new DateTime();
+                    $returnDate = DateTime::createFromFormat('d/m/Y',$rowsBookId[$i]['returnDate']);
+                    $interval = $returnDate->diff($todayDate);
+                    $stmt = $pdo->prepare("select * from BBC_Book where id = :bookId");
+                    $stmt->bindParam(':bookId',$rowsBookId[$i]['bookId']);
+                    $stmt->execute();
+                    while($row = $stmt->fetch()){
+                        if($status == 'em posse' and $interval->days <= 2){
+                            array_push($booksText,"
+                            <div class=\"reserve\" id=\"". $row['id'] ."\">
+                                <div class=\"book-content\">
+                                    <div class=\"book-title\">
+                                        <p>" . $row['title']. "</p>
+                                    </div>
+                                    <div class=\"book-cover\">
+                                        <img src=\"../images/covers/" . $row['cover'] . "\" alt=\"Livro\">
+                                    </div>
+                                </div>
+                                <div class=\"reserve-data\">
+                                    <p>Data de retirada: <br>". $rowsBookId[$i]["alocDate"] ."</p>
+                                    <p>Data de devolução: <br>". $rowsBookId[$i]["returnDate"] ."</p>
+                                    <p>Status do livro: <br>". $status . "</p>
+                                </div>
+                                <form method='post'>
+                                    <div class=\"form-area\">
+                                        <p class='warning late'>Expira em " . $interval->days . " dias</p>
+                                        <input type=\"hidden\" name=\"idBook\" value=". $row['id'] .">
+                                        <input type=\"hidden\" name=\"dateAloc\" value=". $rowsBookId[$i]["alocDate"] .">
+                                        <input type=\"submit\" value=\"Cancelar Reserva\" name=\"btn\" class=\"button\">
+                                    </div>
+                                </form>
+                            </div>
+                            ");
+                        }else if($status == 'em posse' and $interval->days > 2){
+                            array_push($booksText,"
+                            <div class=\"reserve\" id=\"". $row['id'] ."\">
+                                <div class=\"book-content\">
+                                    <div class=\"book-title\">
+                                        <p>" . $row['title']. "</p>
+                                    </div>
+                                    <div class=\"book-cover\">
+                                        <img src=\"../images/covers/" . $row['cover'] . "\" alt=\"Livro\">
+                                    </div>
+                                </div>
+                                <div class=\"reserve-data\">
+                                    <p>Data de retirada: <br>". $rowsBookId[$i]["alocDate"] ."</p>
+                                    <p>Data de devolução: <br>". $rowsBookId[$i]["returnDate"] ."</p>
+                                    <p>Status do livro: <br>". $status . "</p>
+                                </div>
+                                <form method='post'>
+                                    <div class=\"form-area\">
+                                        <p class='warning'>Expira em " . $interval->days . " dias</p>
+                                        <input type=\"hidden\" name=\"idBook\" value=". $row['id'] .">
+                                        <input type=\"hidden\" name=\"dateAloc\" value=". $rowsBookId[$i]["alocDate"] .">
+                                        <input type=\"submit\" value=\"Cancelar Reserva\" name=\"btn\" class=\"button\">
+                                    </div>
+                                </form>
+                            </div>
+                            ");
+                        }else if($status == 'retirar'){
+                            array_push($booksText,"
+                            <div class=\"reserve\" id=\"". $row['id'] ."\">
+                                <div class=\"book-content\">
+                                    <div class=\"book-title\">
+                                        <p>" . $row['title']. "</p>
+                                    </div>
+                                    <div class=\"book-cover\">
+                                        <img src=\"../images/covers/" . $row['cover'] . "\" alt=\"Livro\">
+                                    </div>
+                                </div>
+                                <div class=\"reserve-data\">
+                                    <p>Data de retirada: <br>". $rowsBookId[$i]["alocDate"] ."</p>
+                                    <p>Data de devolução: <br>". $rowsBookId[$i]["returnDate"] ."</p>
+                                    <p>Status do livro: <br>". $status . "</p>
+                                </div>
+                                <form method='post'>
+                                    <div class=\"form-area\">
+                                        <p class='warning'>Retirada em " . $interval->days . " dias</p>
+                                        <input type=\"hidden\" name=\"idBook\" value=". $row['id'] .">
+                                        <input type=\"hidden\" name=\"dateAloc\" value=". $rowsBookId[$i]["alocDate"] .">
+                                        <input type=\"submit\" value=\"Cancelar Reserva\" name=\"btn\" class=\"button\">
+                                    </div>
+                                </form>
+                            </div>
+                            ");
+                        }else if($status == 'atrasado'){
+                            array_push($booksText,"
+                            <div class=\"reserve\" id=\"". $row['id'] ."\">
+                                <div class=\"book-content\">
+                                    <div class=\"book-title\">
+                                        <p>" . $row['title']. "</p>
+                                    </div>
+                                    <div class=\"book-cover\">
+                                        <img src=\"../images/covers/" . $row['cover'] . "\" alt=\"Livro\">
+                                    </div>
+                                </div>
+                                <div class=\"reserve-data\">
+                                    <p>Data de retirada: <br>". $rowsBookId[$i]["alocDate"] ."</p>
+                                    <p>Data de devolução: <br>". $rowsBookId[$i]["returnDate"] ."</p>
+                                    <p>Status do livro: <br>". $status . "</p>
+                                </div>
+                                <form method='post'>
+                                    <div class=\"form-area\">
+                                        <p class='warning late'>Atrasado há " . $interval->days . " dias</p>
+                                        <input type=\"hidden\" name=\"idBook\" value=". $row['id'] .">
+                                        <input type=\"hidden\" name=\"dateAloc\" value=". $rowsBookId[$i]["alocDate"] .">
+                                        <input type=\"submit\" value=\"Cancelar Reserva\" name=\"btn\" class=\"button\">
+                                    </div>
+                                </form>
+                            </div>
+                            ");
+                        }
+                    }
+                }
             }catch(PDOException $e){
                 echo "Erro: " . $e->getMessage();
             }
         }
-    }
+    }else if($_SERVER['REQUEST_METHOD'] === "POST"){
+            $username = $_SESSION["username"];
+            $pfp = "cotil.png";
+            $pfpAction = 'profile.php';
+            
+            $button = $_POST['btn'];
+            if(isset($button)){
+                $idBook = $_POST['idBook'];
+                $dateAloc = DateTime::createFromFormat('d/m/Y',$_POST['dateAloc']);
+                $dateAloc = $dateAloc->format('Y-m-d');
+                try{
+                    include "conexaoDB.php";
+                    $stmt = $pdo->prepare("delete from BBC_Aloc where userId = :id and bookId = :idBook and alocDate = :dateAloc");
+                    $stmt->bindParam(':id',$_SESSION['ra']);
+                    $stmt->bindParam(':idBook',$idBook);
+                    $stmt->bindParam(':dateAloc', $dateAloc);
+                    $stmt->execute();
+                    if($stmt->rowCount() > 0){
+                        header('location: home.php');
+                    }
+                }catch(PDOException $e){
+                    echo "Erro: " . $e->getMessage();
+                }
+            }
+                try{
+                    include "conexaoDB.php";
+                    $stmt = $pdo->prepare("select count(*) as count from BBC_Aloc where userId = :id and status !='entregue'");
+                    $stmt->bindParam(':id',$_SESSION['ra']);
+                    $stmt->execute();
+                    $rows = $stmt->fetch();
+                    $reservasCount = $rows['count'];
+                    $stmt = $pdo->prepare("select bookId, status,  DATE_FORMAT(alocDate, '%d/%m/%Y') as alocDate, DATE_FORMAT(returnDate, '%d/%m/%Y') as returnDate from BBC_Aloc where userId = :id and status != 'entregue';");
+                    $stmt->bindParam(':id',$_SESSION['ra']);
+                    $stmt->execute();
+                    $rowsBookId = $stmt->fetchAll();
+                    $count = count($rowsBookId);
+                    for($i = 0; $i < $count; $i++){
+                        $status = $rowsBookId[$i]['status'];
+                        $todayDate = new DateTime();
+                        $returnDate = DateTime::createFromFormat('d/m/Y',$rowsBookId[$i]['returnDate']);
+                        $interval = $returnDate->diff($todayDate);
+                        $stmt = $pdo->prepare("select * from BBC_Book where id = :bookId");
+                        $stmt->bindParam(':bookId',$rowsBookId[$i]['bookId']);
+                        $stmt->execute();
+                        while($row = $stmt->fetch()){
+                            if($status == 'em posse' and $interval->days <= 2){
+                                array_push($booksText,"
+                                <div class=\"reserve\" id=\"". $row['id'] ."\">
+                                    <div class=\"book-content\">
+                                        <div class=\"book-title\">
+                                            <p>" . $row['title']. "</p>
+                                        </div>
+                                        <div class=\"book-cover\">
+                                            <img src=\"../images/covers/" . $row['cover'] . "\" alt=\"Livro\">
+                                        </div>
+                                    </div>
+                                    <div class=\"reserve-data\">
+                                        <p>Data de retirada: <br>". $rowsBookId[$i]["alocDate"] ."</p>
+                                        <p>Data de devolução: <br>". $rowsBookId[$i]["returnDate"] ."</p>
+                                        <p>Status do livro: <br>". $status . "</p>
+                                    </div>
+                                    <form method='post'>
+                                        <div class=\"form-area\">
+                                            <p class='warning late'>Expira em " . $interval->days . " dias</p>
+                                            <input type=\"hidden\" name=\"idBook\" value=". $row['id'] .">
+                                            <input type=\"hidden\" name=\"dateAloc\" value=". $rowsBookId[$i]["alocDate"] .">
+                                            <input type=\"submit\" value=\"Cancelar Reserva\" name=\"btn\" class=\"button\">
+                                        </div>
+                                    </form>
+                                </div>
+                                ");
+                            }else if($status == 'em posse' and $interval->days > 2){
+                                array_push($booksText,"
+                                <div class=\"reserve\" id=\"". $row['id'] ."\">
+                                    <div class=\"book-content\">
+                                        <div class=\"book-title\">
+                                            <p>" . $row['title']. "</p>
+                                        </div>
+                                        <div class=\"book-cover\">
+                                            <img src=\"../images/covers/" . $row['cover'] . "\" alt=\"Livro\">
+                                        </div>
+                                    </div>
+                                    <div class=\"reserve-data\">
+                                        <p>Data de retirada: <br>". $rowsBookId[$i]["alocDate"] ."</p>
+                                        <p>Data de devolução: <br>". $rowsBookId[$i]["returnDate"] ."</p>
+                                        <p>Status do livro: <br>". $status . "</p>
+                                    </div>
+                                    <form method='post'>
+                                        <div class=\"form-area\">
+                                            <p class='warning'>Expira em " . $interval->days . " dias</p>
+                                            <input type=\"hidden\" name=\"idBook\" value=". $row['id'] .">
+                                            <input type=\"hidden\" name=\"dateAloc\" value=". $rowsBookId[$i]["alocDate"] .">
+                                            <input type=\"submit\" value=\"Cancelar Reserva\" name=\"btn\" class=\"button\">
+                                        </div>
+                                    </form>
+                                </div>
+                                ");
+                            }else if($status == 'retirar'){
+                                array_push($booksText,"
+                                <div class=\"reserve\" id=\"". $row['id'] ."\">
+                                    <div class=\"book-content\">
+                                        <div class=\"book-title\">
+                                            <p>" . $row['title']. "</p>
+                                        </div>
+                                        <div class=\"book-cover\">
+                                            <img src=\"../images/covers/" . $row['cover'] . "\" alt=\"Livro\">
+                                        </div>
+                                    </div>
+                                    <div class=\"reserve-data\">
+                                        <p>Data de retirada: <br>". $rowsBookId[$i]["alocDate"] ."</p>
+                                        <p>Data de devolução: <br>". $rowsBookId[$i]["returnDate"] ."</p>
+                                        <p>Status do livro: <br>". $status . "</p>
+                                    </div>
+                                    <form method='post'>
+                                        <div class=\"form-area\">
+                                            <p class='warning'>Retirada em " . $interval->days . " dias</p>
+                                            <input type=\"hidden\" name=\"idBook\" value=". $row['id'] .">
+                                            <input type=\"hidden\" name=\"dateAloc\" value=". $rowsBookId[$i]["alocDate"] .">
+                                            <input type=\"submit\" value=\"Cancelar Reserva\" name=\"btn\" class=\"button\">
+                                        </div>
+                                    </form>
+                                </div>
+                                ");
+                            }else if($status == 'atrasado'){
+                                array_push($booksText,"
+                                <div class=\"reserve\" id=\"". $row['id'] ."\">
+                                    <div class=\"book-content\">
+                                        <div class=\"book-title\">
+                                            <p>" . $row['title']. "</p>
+                                        </div>
+                                        <div class=\"book-cover\">
+                                            <img src=\"../images/covers/" . $row['cover'] . "\" alt=\"Livro\">
+                                        </div>
+                                    </div>
+                                    <div class=\"reserve-data\">
+                                        <p>Data de retirada: <br>". $rowsBookId[$i]["alocDate"] ."</p>
+                                        <p>Data de devolução: <br>". $rowsBookId[$i]["returnDate"] ."</p>
+                                        <p>Status do livro: <br>". $status . "</p>
+                                    </div>
+                                    <form method='post'>
+                                        <div class=\"form-area\">
+                                            <p class='warning late'>Atrasado há " . $interval->days . " dias</p>
+                                            <input type=\"hidden\" name=\"idBook\" value=". $row['id'] .">
+                                            <input type=\"hidden\" name=\"dateAloc\" value=". $rowsBookId[$i]["alocDate"] .">
+                                            <input type=\"submit\" value=\"Cancelar Reserva\" name=\"btn\" class=\"button\">
+                                        </div>
+                                    </form>
+                                </div>
+                                ");
+                            }
+                        }
+                    }
+                }catch(PDOException $e){
+                    echo "Erro: " . $e->getMessage();
+                }
+            }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -145,7 +417,12 @@
     </div>
     <div class="reserve-area">
         <p class="reserve-number"><?=$reservasCount?> reservas registradas</p>
-        <div class="reserve"> <!-- Seu template de livro reservado começa aqui // ancora aqui para chegar do perfil?? -->
+        <?php
+            foreach($booksText as $value){
+                echo $value;
+            }
+        ?>
+        <!--<div class="reserve"> Seu template de livro reservado começa aqui // ancora aqui para chegar do perfil??
             <div class="book-content">
                 <div class="book-title">
                     <p>Introdução a programação com python</p>
@@ -162,7 +439,7 @@
             <form>
                 <div class="form-area">
                     <p class='warning late'>Expira em {data de devolução - data de hoje} dias</p>
-                    <!--
+                    
                         Em posse: <p class='warning'>Expira em {data de devolução - data de hoje} dias</p> {
                             se {data de devolução - data de hoje} <= 2 class='warning late'
                             senão class='warning'
@@ -170,11 +447,10 @@
                         Retirar: <p class='warning'>Retirada em {data de retirada - data de hoje} dias</p>
                         Atrasado: <p class='warning late'>Atrasado há {data de hoje - data de devolução} dias</p>
                         Entregue: Some da pagina e aparece no perfil 
-                    -->
                     <input type="submit" value="Cancelar Reserva" class="button">
                 </div>
             </form>
-        </div> <!-- Seu template de livro reservado termina aqui -->
+        </div> Seu template de livro reservado termina aqui -->
     </div>
 </body>
     <script src="../scripts/sidebar.js"></script>

@@ -17,7 +17,7 @@
         $button = $_POST['btn'];
         try{
             include "conexaoDB.php";
-            if($button == "nome"){
+            if($button == "Alterar Nome"){
                 $nome = $_POST['nome'];
                 if(isset($nome) and $nome != ""){
                    $pos_Username = strpos($nome,' ');
@@ -36,7 +36,7 @@
                         $_SESSION['username'] = $update_username;
                     }
                 }
-            }else if($button == 'email'){
+            }else if($button == 'Alterar Email'){
                 $email = $_POST['email'];
                 if(isset($email) and $email != ""){
                     $stmt = $pdo->prepare("update BBC_Account set email = :email where id = :id");
@@ -44,7 +44,7 @@
                     $stmt->bindParam(":id", $_SESSION['ra']);
                     $stmt->execute();
                 }
-            }else if($button == 'senha'){
+            }else if($button == 'Alterar Senha'){
                 $senha = $_POST['senha'];
                 $newSenha = $_POST['newSenha'];
                 $confNewSenha = $_POST['confNewSenha'];
@@ -62,7 +62,7 @@
                         }
                     }
                 }
-            }else if($button == 'exclusão'){
+            }else if($button == 'Excluir Conta'){
                 $exc = $_POST['exclusão'];
                 if($exc != ''){
                     $stmt = $pdo->prepare("select password from BBC_Account where id = :id");
