@@ -70,8 +70,7 @@
                         array_push($booksReadText,
                         "<div class=\"book-content\" value=". $row['id'] . ">
                             <div class=\"book-cover\">
-                                <p class='wasADate'>" . $rowsBookId[$i]["alocDate"] . '-' . $rowsBookId[$i]['returnDate'] . "</p> 
-
+                                <p class='wasADate'>" . $rowsBookId[$i]["alocDate"] . ' - ' . $rowsBookId[$i]['returnDate'] . "</p>
                                 <img src=\"../images/covers/". $row['cover'] ."\" alt=\"Livro\">
                             </div>
                             <div class=\"book-title\">" .
@@ -153,7 +152,7 @@
                     array_push($booksReadText,
                     "<div class=\"book-content\" value=". $row['id'] . ">
                         <div class=\"book-cover\">
-                            <p class='wasADate'>" . $rowsBookId[$i]["alocDate"] . " -> " . $rowsBookId[$i]["returnDate"] . "</p> 
+                            <p class='wasADate'>" . $rowsBookId[$i]["alocDate"] . "</p> 
 
                             <img src=\"../images/covers/". $rows['cover'] ."\" alt=\"Livro\">
                         </div>
