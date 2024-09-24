@@ -17,7 +17,7 @@
         $button = $_POST['btn'];
         try{
             include "conexaoDB.php";
-            if($button == "nome"){
+            if($button == "Alterar Nome"){
                 $nome = $_POST['nome'];
                 if(isset($nome) and $nome != ""){
                    $pos_Username = strpos($nome,' ');
@@ -37,14 +37,14 @@
                     }
                 }
             }else if($button == 'email'){
-                $email = $_POST['email'];
+                $email = $_POST['Alterar Email'];
                 if(isset($email) and $email != ""){
                     $stmt = $pdo->prepare("update BBC_Account set email = :email where id = :id");
                     $stmt->bindParam(':email',$email);
                     $stmt->bindParam(":id", $_SESSION['ra']);
                     $stmt->execute();
                 }
-            }else if($button == 'senha'){
+            }else if($button == 'Alterar Senha'){
                 $senha = $_POST['senha'];
                 $newSenha = $_POST['newSenha'];
                 $confNewSenha = $_POST['confNewSenha'];
@@ -62,7 +62,7 @@
                         }
                     }
                 }
-            }else if($button == 'exclusão'){
+            }else if($button == 'Excluir Conta'){
                 $exc = $_POST['exclusão'];
                 if($exc != ''){
                     $stmt = $pdo->prepare("select password from BBC_Account where id = :id");
@@ -216,7 +216,7 @@
                     <div class="form">
                         <div class="input-msg">
                             <input type="text" class="input" name="nome" placeholder="Digite seu Nome">
-                            <p class="">$nomeAlterado</p><!-- class = success / fail -->
+                            <!-- <p class="">$nomeAlterado</p> class = success "Nome alterado com sucesso!" / fail "Seu nome precisa de no minimo X Digitos."-->
                         </div>
                         <input type="submit" class="button" name="btn" value="Alterar Nome">
                     </div>
@@ -230,7 +230,7 @@
                     <div class="form">
                         <div class="input-msg">
                             <input type="text" class="input" name="nome" placeholder="Digite seu Email">
-                            <p class="">$emailAlterado</p><!-- class = success / fail -->
+                            <!-- <p class="">$emailAlterado</p> class = success "Email alterado com sucesso!" / fail "Seu email precisa ser UNICAMP." -->
                         </div>
                         <input type="submit" class="button" name="btn" value="Alterar Email">
                     </div>
@@ -244,11 +244,11 @@
                     <div class="form">
                         <div class="password-inputs">
                             <input type="text" class="input" name="senha" placeholder="Digite sua senha atual">
-                            <p class="">$senhaIncorreta</p>
+                            <!-- <p class="fail">$senhaIncorreta</p> class = fail "Senha incorreta." -->
                             <input type="text" class="input" name="newSenha" placeholder="Digite sua nova senha">
-                            <p class="">$senhaInvalida</p>
+                            <!-- <p class="fail">$senhaInvalida</p> class = fail "Sua senha precisa de no minimo 8 digitos." -->
                             <input type="text" class="input" name="confNewSenha" placeholder="Confirme sua nova senha">
-                            <p class="">$senhasDiferentes</p>
+                            <!-- <p class="">$senhasDiferentes</p> class = success "Senha alterada com sucesso!" / fail "Senhas não coincidem." -->
                         </div>
                         <input type="submit" class="button" name="btn" value="Alterar Senha">
                     </div>
@@ -262,7 +262,7 @@
                     <div class="form">
                         <div class="input-msg">
                             <input type="text" class="input" name="nome" placeholder="Digite sua Senha">
-                            <!-- Se a conta for excluida n vai ter como ver -->
+                            <!-- <p class="">$senhaExcludeIncorreta</p> class = fail "Senha incorreta." -->
                         </div>
                         <input type="submit" class="button" name="btn" value="Excluir Conta">
                     </div>
