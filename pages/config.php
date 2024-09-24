@@ -1,5 +1,6 @@
 <?php
-    //minde ideias doq fazer aq :( ta paia pprt, mas se tu achar q ta bom assim eu quero q se foda
+    //lembra de bloquear pra quem n é user
+    //Eu tenho que admitir que essa página ficou bonita pra KARALHO, só isso mesmo
 
     session_start();
     if($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -20,9 +21,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suas Reservas</title>
+    <title>Configurações</title>
     <link rel="stylesheet" href="../styles/sidebar.css">
-    <link rel="stylesheet" href="../styles/minhasReservas.css">
+    <link rel="stylesheet" href="../styles/config.css">
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -90,12 +91,12 @@
                 </li>
 
                 <li>                
-                    <a href="#">
+                    <a href="alocacao.php">
                         <i class='bx bxs-package' ></i>
                         <span class="link_name">Suas Alocações</span>
                     </a>                  
                     <ul class="sub-menu blank">
-                        <li><a class="link_name" href="#">Alocações</a></li>
+                        <li><a class="link_name" href="alocacao.php">Alocações</a></li>
                     </ul>                
                 </li>
 
@@ -126,41 +127,67 @@
             </ul>
         </div>
     </div>
-    <div class="upperText">
-        <p>Suas Reservas</p>
-    </div>
-    <div class="reserve-area">
-        <p class="reserve-number">{numero de reservas} reservas registradas</p>
-        <div class="reserve"> <!-- Seu template de livro reservado começa aqui // ancora aqui para chegar do perfil?? -->
-            <div class="book-content">
-                <div class="book-title">
-                    <p>Introdução a programação com python</p>
-                </div>
-                <div class="book-cover">
-                    <img src="../images/pythonCover.png" alt="Livro">
-                </div>
+    <div class="body-container">
+        <div class="left-content">
+            <p class="title">Gerenciamento de conta</p>
+            <div class="subs">
+                <p><i class='bx bxs-rename'></i>Nome</p>
+                <p><i class='bx bxs-envelope'></i>Email</p>
+                <p><i class='bx bxs-key'></i>Senha</p>
+                <p><i class='bx bxs-shield-x'></i>Status</p>
             </div>
-            <div class="reserve-data">
-                <p>Data de retirada: <br>{data de retirada}</p>
-                <p>Data de devolução: <br>{data de devolução}</p>
-                <p>Status do livro: <br>{status do livro}</p>
-            </div>
-            <form>
-                <div class="form-area">
-                    <p class='warning late'>Expira em {data de devolução - data de hoje} dias</p>
-                    <!--
-                        Em posse: <p class='warning'>Expira em {data de devolução - data de hoje} dias</p> {
-                            se {data de devolução - data de hoje} <= 2 class='warning late'
-                            senão class='warning'
-                        }
-                        Retirar: <p class='warning'>Retirada em {data de retirada - data de hoje} dias</p>
-                        Atrasado: <p class='warning late'>Atrasado há {data de hoje - data de devolução} dias</p>
-                        Entregue: Some da pagina e aparece no perfil 
-                    -->
-                    <input type="submit" value="Cancelar Reserva" class="button">
-                </div>
+        </div>
+        <div class="right-content">
+            <form method="POST">
+                <div class="data-area">
+                    <div class="explain-text">
+                        <p class="title"><i class='bx bxs-rename'></i> Alterar seu Nome</i></p>
+                        <p class="sub">Seu nome é muito importante, é com ele que você se identifica aqui no site e também pode ser usado para confirmar sua identidade na hora de retirar seu livro reservado!</p>
+                    </div>
+                    <div class="form">
+                        <input type="text" class="input" placeholder="Digite seu nome">
+                        <input type="submit" class="button" value="Confirmar nome">
+                    </div>
+                </div>   
+
+                <div class="data-area">
+                    <div class="explain-text">
+                        <p class="title"><i class='bx bxs-envelope'></i> Alterar seu Email</p>
+                        <p class="sub">Seu email é muito importante, é a unica forma de podermos notificar você de qualquer distancia sem problema, além de assim como o nome, ajudar você a se identificar!</p>
+                    </div>
+                    <div class="form">
+                        <input type="text" class="input" placeholder="Digite seu email">
+                        <input type="submit" class="button" value="Confirmar email">
+                    </div>
+                </div>  
+
+                <div class="data-area">
+                    <div class="explain-text">
+                        <p class="title"><i class='bx bxs-key'></i> Alterar sua Senha</p>
+                        <p class="sub">Sua senha é muito importante, se você suspeita de que ela esteja comprometida troque imediatamente! A unica maneira de entrar em sua conta é com sua senha, projeta-a com cuidado!</p>
+                    </div>
+                    <div class="form">
+                        <div class="password-inputs">
+                            <input type="text" class="input" placeholder="Digite sua senha atual">
+                            <input type="text" class="input" placeholder="Digite sua nova senha">
+                            <input type="text" class="input" placeholder="Confirme sua nova senha">
+                        </div>
+                        <input type="submit" class="button" value="Trocar senha">
+                    </div>
+                </div>  
+
+                <div class="data-area">
+                    <div class="explain-text">
+                        <p class="title"><i class='bx bxs-shield-x'></i> Excluir sua conta</p>
+                        <p class="sub">Tome muito cuidado, a unica maneira de recuperar sua conta após exclui-la é diretamente com a diretoria da escola, sua conta será excluida para sempre! (Isso é um tempão)!</p>
+                    </div>
+                    <div class="form">
+                        <input type="text" class="input" placeholder="Digite sua senha">
+                        <input type="submit" class="button" value="Confirmar exclusão">
+                    </div>
+                </div>   
             </form>
-        </div> <!-- Seu template de livro reservado termina aqui -->
+        </div>
     </div>
 </body>
     <script src="../scripts/sidebar.js"></script>

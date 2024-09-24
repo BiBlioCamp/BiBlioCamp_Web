@@ -26,14 +26,14 @@ body {
     align-self: flex-end;
     scale: 1.2;
 }
-.config > i {
+.config > a > i {
     color: #fff;
     font-size: 60px;
     cursor: pointer;
     transition: .2s;
     scale: 1.2;
 }
-.config > i:hover {
+.config > a > i:hover {
     rotate: 60deg;
     color: #4dcbff;
     font-size: 70px;

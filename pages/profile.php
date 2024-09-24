@@ -173,12 +173,12 @@
                 </li>
 
                 <li>                
-                    <a href="#">
+                    <a href="alocacao.php">
                         <i class='bx bxs-package' ></i>
                         <span class="link_name">Suas Alocações</span>
                     </a>                  
                     <ul class="sub-menu blank">
-                        <li><a class="link_name" href="#">Alocações</a></li>
+                        <li><a class="link_name" href="alocacao.php">Alocações</a></li>
                     </ul>                
                 </li>
 
@@ -222,7 +222,7 @@
                     </div>
                 </div>
                 <div class="config">
-                    <i class='bx bxs-cog'></i>
+                    <a href="config.php"><i class='bx bxs-cog'></i></a>
                 </div>
             </div>
             <div class="books-area">

@@ -1,42 +1,18 @@
 <?php
+    //minde ideias doq fazer aq :( ta paia pprt, mas se tu achar q ta bom assim eu quero q se foda
+    //lembra de bloquear quem n ta logado
+    
     session_start();
     if($_SERVER['REQUEST_METHOD'] === 'GET') {
         if(!isset($_SESSION['username'])) {
-            header("Location: error.html");
-            /*$username = "User";
+            $username = "User";
             $pfp = "unsetPfp.png";
-            $pfpAction = "login.php";*/
+            $pfpAction = "login.php";
         }
-    }else if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $username = $_SESSION["username"];
-        $pfp = "cotil.png";
-        $pfpAction = "profile.php";
-        try{
-            include "conexaoDB.php";
-            $id = $_POST["button"];
-            $_SESSION["bookId"] = $id;
-            $stmt = $pdo->prepare("select title,author,editor,actualStock from BBC_Book where id = :id");
-            $stmt->bindParam(":id",$id);
-            $stmt->execute();
-            $rows = $stmt->fetch();
-            $bookName = $rows['title'];
-            $bookAuthor = $rows['author'];
-            $bookEditor = $rows['editor'];
-            $stock = $rows['actualStock'];
-            if($stock == 0){
-                $btn = "<div class=\"aloc-confirm\">
-                            <input type=\"submit\" class=\"button\" id=\"formButton\" value=\"Agendar reserva\" disabled>
-                            <p class='stockError'>Esse livro está fora de estoque!</p>
-                        </div>";
-                $userStockView = "<p class='stock noStock' id='stock'>Estoque: " . $stock . "</p>";
-            }else{
-                $btn = "<div class=\"aloc-confirm\">
-                            <input type=\"submit\" class=\"formButton\" id=\"formButton\" value=\"Agendar reserva\" onclick=\"enableInput()\">
-                        </div>";
-                $userStockView = "<p class='stock' id='stock'>Estoque: " . $stock . "</p>";
-            }
-        }catch(PDOException $e){
-            echo "Erro: " . $e->getMessage();
+        else {
+            $username = $_SESSION["username"];
+            $pfp = "cotil.png";
+            $pfpAction = 'profile.php';
         }
     }
 ?>
@@ -45,9 +21,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?=$bookName?></title>
+    <title>Suas Reservas</title>
     <link rel="stylesheet" href="../styles/sidebar.css">
-    <link rel="stylesheet" href="../styles/reserva.css">
+    <link rel="stylesheet" href="../styles/alocacao.css">
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -115,12 +91,12 @@
                 </li>
 
                 <li>                
-                    <a href="alocacao.php">
+                    <a href="#">
                         <i class='bx bxs-package' ></i>
                         <span class="link_name">Suas Alocações</span>
                     </a>                  
                     <ul class="sub-menu blank">
-                        <li><a class="link_name" href="alocacao.php">Alocações</a></li>
+                        <li><a class="link_name" href="#">Alocações</a></li>
                     </ul>                
                 </li>
 
@@ -136,7 +112,7 @@
                 <li>           
                     <div class="profile-details">                 
                         <div class="profile-content">
-                        <a href="<?= $pfpAction ?>">
+                        <a href="<?=$pfpAction ?>">
                                 <img src="../images/<?= $pfp ?>" alt="profileImg">
                             </a>
                         </div>              
@@ -150,66 +126,43 @@
                 </li>
             </ul>
         </div>
-        <div class="main-area">
-            <div class="left">
-                <div class="title">
-                    <p><?=$bookName?></p>
+    </div>
+    <div class="upperText">
+        <p>Suas Reservas</p>
+    </div>
+    <div class="reserve-area">
+        <p class="reserve-number">{numero de reservas} reservas registradas</p>
+        <div class="reserve"> <!-- Seu template de livro reservado começa aqui // ancora aqui para chegar do perfil?? -->
+            <div class="book-content">
+                <div class="book-title">
+                    <p>Introdução a programação com python</p>
                 </div>
-                <img src="../images/javaCover.png" alt="Capa do Livro">
-                <div class="info">
-                    <p>Autor: <?=$bookAuthor?></p>
-                    <p>Editora: <?=$bookEditor?></p>
-                </div>
-            </div>
-            <div class="right">
-                <div class="title">
-                    <p>Reserva de livro</p>
-                </div>
-                <div class="aloc-area">
-                    <form method="POST" class="form" action="reservaForm.php">
-                        <div class="aloc-data">
-                            <?php echo $userStockView ?>
-                            <p>Data de retirada</p>
-                            <input type="date" class="date" name="dataInit" id="dataInit" required onchange="adicionarSeteDias()">
-                            <p>Data de devolução</p>
-                            <input type="date" class="date return" name="dataReturn" id="dataReturn" disabled>
-                            <p>Local:</p>
-                            <p> Biblioteca do Campus II de Limeira</p>
-                        </div>
-                        <?php echo $btn ?>
-                    </form>
+                <div class="book-cover">
+                    <img src="../images/pythonCover.png" alt="Livro">
                 </div>
             </div>
-        </div>   
+            <div class="reserve-data">
+                <p>Data de retirada: <br>{data de retirada}</p>
+                <p>Data de devolução: <br>{data de devolução}</p>
+                <p>Status do livro: <br>{status do livro}</p>
+            </div>
+            <form>
+                <div class="form-area">
+                    <p class='warning late'>Expira em {data de devolução - data de hoje} dias</p>
+                    <!--
+                        Em posse: <p class='warning'>Expira em {data de devolução - data de hoje} dias</p> {
+                            se {data de devolução - data de hoje} <= 2 class='warning late'
+                            senão class='warning'
+                        }
+                        Retirar: <p class='warning'>Retirada em {data de retirada - data de hoje} dias</p>
+                        Atrasado: <p class='warning late'>Atrasado há {data de hoje - data de devolução} dias</p>
+                        Entregue: Some da pagina e aparece no perfil 
+                    -->
+                    <input type="submit" value="Cancelar Reserva" class="button">
+                </div>
+            </form>
+        </div> <!-- Seu template de livro reservado termina aqui -->
     </div>
 </body>
-
-<script>
-    function enableInput(){
-        document.getElementById('dataReturn').disabled = false;
-    }
-
-    function adicionarSeteDias() {
-        // Pega o valor do primeiro input (data de retirada)
-        let dataRetirada = document.getElementById('dataInit').value;
-    
-        // Verifica se a data está preenchida
-        if (dataRetirada) {
-            // Converte a string da data para o formato Date
-            let data = new Date(dataRetirada);
-        
-            // Adiciona 7 dias
-            data.setDate(data.getDate() + 8);
-        
-            // Formata a data de volta para o formato YYYY-MM-DD
-            let ano = data.getFullYear();
-            let mes = ('0' + (data.getMonth() + 1)).slice(-2);  // Adiciona o zero à esquerda no mês, se necessário
-            let dia = ('0' + data.getDate()).slice(-2);  // Adiciona o zero à esquerda no dia, se necessário
-        
-            // Atribui o valor formatado ao segundo input (data de devolução)
-            document.getElementById('dataReturn').value = `${ano}-${mes}-${dia}`;
-        }
-    }
-</script>
     <script src="../scripts/sidebar.js"></script>
 </html>
