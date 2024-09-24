@@ -131,7 +131,7 @@ a {
 }
 .formRegister p {
     text-align: center;
-    color: #DB362A;
+    color: #50EB57;
 }
 .formLogin p {
     text-align: center;
@@ -216,8 +216,8 @@ a {
 }
 
 #buttonCadaster:disabled:hover{
-    background-color: white;
-    color: #4dcbff;
+    background-color: #8f00f1;
+    color: white;
 }
 
 input::-webkit-inner-spin-button {
