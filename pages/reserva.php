@@ -15,13 +15,14 @@
             include "conexaoDB.php";
             $id = $_POST["button"];
             $_SESSION["bookId"] = $id;
-            $stmt = $pdo->prepare("select title,author,editor,actualStock from BBC_Book where id = :id");
+            $stmt = $pdo->prepare("select * from BBC_Book where id = :id");
             $stmt->bindParam(":id",$id);
             $stmt->execute();
             $rows = $stmt->fetch();
             $bookName = $rows['title'];
             $bookAuthor = $rows['author'];
             $bookEditor = $rows['editor'];
+            $bookCover = $rows['cover'];
             $stock = $rows['actualStock'];
             if($stock == 0){
                 $btn = "<div class=\"aloc-confirm\">
@@ -155,7 +156,7 @@
                 <div class="title">
                     <p><?=$bookName?></p>
                 </div>
-                <img src="../images/javaCover.png" alt="Capa do Livro">
+                <img src="../images/covers/<?= $bookCover ?>" alt="Capa do Livro">
                 <div class="info">
                     <p>Autor: <?=$bookAuthor?></p>
                     <p>Editora: <?=$bookEditor?></p>
