@@ -18,7 +18,22 @@
             $pfpAction = 'profile.php';
             try{
                 include "conexaoDB.php";
-                $stmt = $pdo->prepare("select BBC_Book.id, BBC_Book.title from BBC_Book, BBC_Account, BBC_Aloc where BBC_Book.id = :bookId and BBC_Book.id = BBC_Aloc.bookId and BBC_Account.id = :userId and BBC_Account.id = BBC_Aloc = ");
+                $stmt = $pdo->prepare("select bookId from BBC_Aloc where userId = :id and status = 'em posse';");
+                $stmt->bindParam(':id', $_SESSION['ra']);
+                $stmt->execute();
+
+                $count = $stmt->rowCount(); 
+                $rowsBookId = $stmt->fetchAll();
+                for ($i = 0; $i < $count; $i++) {
+                    $stmt = $pdo->prepare("select * from BBC_Book where id = :id");
+                    $stmt->bindParam(":id", $rowsBookId[$i]['bookId']);
+                    $stmt->execute();
+                    $row = $stmt->fetch();
+
+                    $titulo = $row['title'];
+                    echo "<p style='margin-left: 200px;'>" . $titulo . "</p>";
+                }
+
             }catch(PDOException $e){
                 echo "Erro: " . $e->getMessage();
             }
