@@ -36,13 +36,9 @@
                         $_SESSION['username'] = $update_username;
                     }
                 }
-<<<<<<< HEAD
             }else if($button == 'Alterar Email'){
                 $email = $_POST['email'];
-=======
-            }else if($button == 'email'){
-                $email = $_POST['Alterar Email'];
->>>>>>> 0583e25e274c39d3f47e10b69d916e976f058994
+
                 if(isset($email) and $email != ""){
                     $stmt = $pdo->prepare("update BBC_Account set email = :email where id = :id");
                     $stmt->bindParam(':email',$email);
