@@ -1,7 +1,9 @@
 <?php
     //minde ideias doq fazer aq :( ta paia pprt, mas se tu achar q ta bom assim eu quero q se foda
     //lembra de bloquear quem n ta logado
-    
+    $books = array();
+    $booksText = array();
+    $lines = "";
     session_start();
     if($_SERVER['REQUEST_METHOD'] === 'GET') {
         if(!isset($_SESSION['username'])) {
@@ -11,6 +13,17 @@
             $username = $_SESSION["username"];
             $pfp = "cotil.png";
             $pfpAction = 'profile.php';
+            try{
+                include "conexaoDB.php";
+                $stmt = $pdo->prepare("select count(*) as count from BBC_Aloc where userId = :id and status !='entregue'");
+                $stmt->bindParam(':id',$_SESSION['ra']);
+                $stmt->execute();
+                $rows = $stmt->fetch();
+                $reservasCount = $rows['count'];
+                $stmt = $pdo->prepare("select bookId from BBC_Aloc where userId = :id and status !='entregue'");
+            }catch(PDOException $e){
+                echo "Erro: " . $e->getMessage();
+            }
         }
     }
 ?>
@@ -129,7 +142,7 @@
         <p>Suas Reservas</p>
     </div>
     <div class="reserve-area">
-        <p class="reserve-number">{numero de reservas} reservas registradas</p>
+        <p class="reserve-number"><?=$reservasCount?> reservas registradas</p>
         <div class="reserve"> <!-- Seu template de livro reservado começa aqui // ancora aqui para chegar do perfil?? -->
             <div class="book-content">
                 <div class="book-title">
