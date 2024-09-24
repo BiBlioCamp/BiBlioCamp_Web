@@ -216,7 +216,7 @@
                     <div class="form">
                         <div class="input-msg">
                             <input type="text" class="input" name="nome" placeholder="Digite seu Nome">
-                            <p class="">Nome alterado com sucesso</p><!-- class = success / fail -->
+                            <p class="">$nomeAlterado</p><!-- class = success / fail -->
                         </div>
                         <input type="submit" class="button" name="btn" value="Alterar Nome">
                     </div>
@@ -230,7 +230,7 @@
                     <div class="form">
                         <div class="input-msg">
                             <input type="text" class="input" name="nome" placeholder="Digite seu Email">
-                            <p class="">Nome alterado com sucesso</p><!-- class = success / fail -->
+                            <p class="">$emailAlterado</p><!-- class = success / fail -->
                         </div>
                         <input type="submit" class="button" name="btn" value="Alterar Email">
                     </div>
@@ -244,11 +244,11 @@
                     <div class="form">
                         <div class="password-inputs">
                             <input type="text" class="input" name="senha" placeholder="Digite sua senha atual">
-                            <p class="">Senha incorreta</p>
+                            <p class="">$senhaIncorreta</p>
                             <input type="text" class="input" name="newSenha" placeholder="Digite sua nova senha">
-                            <p class="">Senha incorreta</p>
+                            <p class="">$senhaInvalida</p>
                             <input type="text" class="input" name="confNewSenha" placeholder="Confirme sua nova senha">
-                            <p class="">Senha incorreta</p>
+                            <p class="">$senhasDiferentes</p>
                         </div>
                         <input type="submit" class="button" name="btn" value="Alterar Senha">
                     </div>
@@ -262,7 +262,7 @@
                     <div class="form">
                         <div class="input-msg">
                             <input type="text" class="input" name="nome" placeholder="Digite sua Senha">
-                            <p class="">Nome alterado com sucesso</p><!-- class = success / fail -->
+                            <!-- Se a conta for excluida n vai ter como ver -->
                         </div>
                         <input type="submit" class="button" name="btn" value="Excluir Conta">
                     </div>

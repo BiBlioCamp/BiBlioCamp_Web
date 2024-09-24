@@ -327,7 +327,7 @@
                         </button>
                     </div>-->
                 </form>
-                <p>Já reservados pelo menos uma(1) vez</p>
+                <p>Já reservados pelo menos uma(1) vez <br>Formato da data: ano-mes-dia</p>
                 <?php
                     foreach($booksRead as $value){
                         echo $value;
