@@ -5,14 +5,85 @@
     session_start();
     if($_SERVER['REQUEST_METHOD'] === 'GET') {
         if(!isset($_SESSION['username'])) {
-            $username = "User";
-            $pfp = "unsetPfp.png";
-            $pfpAction = "login.php";
+            header("Location: error.html");
         }
         else {
             $username = $_SESSION["username"];
             $pfp = "cotil.png";
             $pfpAction = 'profile.php';
+        }
+    }else if($_SERVER["REQUEST_METHOD"] === "POST"){
+        $username = $_SESSION["username"];
+        $pfp = "cotil.png";
+        $pfpAction = 'profile.php';
+        $button = $_POST['btn'];
+        try{
+            include "conexaoDB.php";
+            if($button == "nome"){
+                $nome = $_POST['nome'];
+                if(isset($nome) and $nome != ""){
+                   $pos_Username = strpos($nome,' ');
+                    if($pos_Username == null){
+                        $update_username = $nome;
+                    }else{
+                        $update_username = substr($nome,0,$pos_Username);
+                    }
+                    $stmt = $pdo->prepare("update BBC_Account set name = :nome, username = :username where id = :id");
+                    $stmt->bindParam(':nome',$nome);
+                    $stmt->bindParam(':username',$update_username);
+                    $stmt->bindParam(':id', $_SESSION['ra']);
+                    $stmt->execute();
+                    $rows = $stmt->rowCount();
+                    if($rows > 0){
+                        $_SESSION['username'] = $update_username;
+                    }
+                }
+            }else if($button == 'email'){
+                $email = $_POST['email'];
+                if(isset($email) and $email != ""){
+                    $stmt = $pdo->prepare("update BBC_Account set email = :email where id = :id");
+                    $stmt->bindParam(':email',$email);
+                    $stmt->bindParam(":id", $_SESSION['ra']);
+                    $stmt->execute();
+                }
+            }else if($button == 'senha'){
+                $senha = $_POST['senha'];
+                $newSenha = $_POST['newSenha'];
+                $confNewSenha = $_POST['confNewSenha'];
+                if($senha != '' and $newSenha != '' and $confNewSenha != ''){
+                    $stmt = $pdo->prepare("select password from BBC_Account where id = :id");
+                    $stmt->bindParam(":id", $_SESSION['ra']);
+                    $stmt->execute();
+                    $rows = $stmt->fetch();
+                    if($senha == $rows['password']){
+                        if($newSenha == $confNewSenha){
+                            $stmt = $pdo->prepare("update BBC_Account set password = :password where id = :id");
+                            $stmt->bindParam(":password", $newSenha);
+                            $stmt->bindParam(":id", $_SESSION['ra']);
+                            $stmt->execute();
+                        }
+                    }
+                }
+            }else if($button == 'exclusão'){
+                $exc = $_POST['exclusão'];
+                if($exc != ''){
+                    $stmt = $pdo->prepare("select password from BBC_Account where id = :id");
+                    $stmt->bindParam(':id',$_SESSION['ra']);
+                    $stmt->execute();
+                    $rows = $stmt->fetch();
+                    if($exc == $rows['password']){
+                        $stmt = $pdo->prepare("update BBC_Account set active = 0 where id = :id");
+                        $stmt->bindParam(':id',$_SESSION['ra']);
+                        $stmt->execute();
+                        $rows = $stmt->rowCount();
+                        if($rows > 0){
+                            header("Location: logout.php");
+                        }
+                    }
+                }
+            }
+        }catch(PDOException $e){
+            echo "Erro: " . $e->getMessage();
         }
     }
 ?>
@@ -145,8 +216,8 @@
                         <p class="sub">Seu nome é muito importante, é com ele que você se identifica aqui no site e também pode ser usado para confirmar sua identidade na hora de retirar seu livro reservado!</p>
                     </div>
                     <div class="form">
-                        <input type="text" class="input" placeholder="Digite seu nome">
-                        <input type="submit" class="button" value="Confirmar nome">
+                        <input type="text" class="input" name="nome" placeholder="Digite seu nome">
+                        <input type="submit" class="button" name="btn" value="nome">
                     </div>
                 </div>   
 
@@ -156,8 +227,8 @@
                         <p class="sub">Seu email é muito importante, é a unica forma de podermos notificar você de qualquer distancia sem problema, além de assim como o nome, ajudar você a se identificar!</p>
                     </div>
                     <div class="form">
-                        <input type="text" class="input" placeholder="Digite seu email">
-                        <input type="submit" class="button" value="Confirmar email">
+                        <input type="text" class="input" name="email" id="email" placeholder="Digite seu email">
+                        <input type="submit" class="button" name="btn" value="email">
                     </div>
                 </div>  
 
@@ -168,11 +239,11 @@
                     </div>
                     <div class="form">
                         <div class="password-inputs">
-                            <input type="text" class="input" placeholder="Digite sua senha atual">
-                            <input type="text" class="input" placeholder="Digite sua nova senha">
-                            <input type="text" class="input" placeholder="Confirme sua nova senha">
+                            <input type="text" class="input" name="senha" placeholder="Digite sua senha atual">
+                            <input type="text" class="input" name="newSenha" placeholder="Digite sua nova senha">
+                            <input type="text" class="input" name="confNewSenha" placeholder="Confirme sua nova senha">
                         </div>
-                        <input type="submit" class="button" value="Trocar senha">
+                        <input type="submit" class="button" name="btn" value="senha">
                     </div>
                 </div>  
 
@@ -182,8 +253,8 @@
                         <p class="sub">Tome muito cuidado, a unica maneira de recuperar sua conta após exclui-la é diretamente com a diretoria da escola, sua conta será excluida para sempre! (Isso é um tempão)!</p>
                     </div>
                     <div class="form">
-                        <input type="text" class="input" placeholder="Digite sua senha">
-                        <input type="submit" class="button" value="Confirmar exclusão">
+                        <input type="text" class="input" name="exclusão" placeholder="Digite sua senha">
+                        <input type="submit" class="button" name="btn" value="exclusão">
                     </div>
                 </div>   
             </form>
@@ -191,4 +262,28 @@
     </div>
 </body>
     <script src="../scripts/sidebar.js"></script>
+    <script>
+
+        function setError(index){
+            campos[index].style.border = '1px solid #e63636';
+            labels[index].style.color = '#e53636';
+            spans[index].style.display = 'block';
+        }
+
+        function removeError(index){
+            campos[index].style.border = '';
+            labels[index].style.color = '#A7A5B5';
+            spans[index].style.display = 'none';
+        }
+
+        function emailValidate(){
+            if(document.getElementById('email').value == ""){
+                removeError(0);
+            }else if((document.getElementById('email').value.indexOf("@g.unicamp.br")) == -1){
+                setError(0);
+            }else{
+                removeError(0);
+            }
+        }
+    </script>
 </html>

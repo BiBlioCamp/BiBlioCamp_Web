@@ -5,9 +5,7 @@
     session_start();
     if($_SERVER['REQUEST_METHOD'] === 'GET') {
         if(!isset($_SESSION['username'])) {
-            $username = "User";
-            $pfp = "unsetPfp.png";
-            $pfpAction = "login.php";
+            header("Location: error.html");
         }
         else {
             $username = $_SESSION["username"];

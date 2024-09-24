@@ -56,7 +56,7 @@
             }
             try{
                 include "conexaoDB.php";
-                $stmt = $pdo->prepare("select bookId from BBC_Aloc where userId = :id and status = 'entregue';");
+                $stmt = $pdo->prepare("select bookId, alocDate from BBC_Aloc where userId = :id and status = 'entregue';");
                 $stmt->bindParam(':id', $_SESSION['ra']);
                 $stmt->execute();
 
@@ -70,7 +70,7 @@
                         array_push($booksReadText,
                         "<div class=\"book-content\" value=". $row['id'] . ">
                             <div class=\"book-cover\">
-                                <p class='wasADate'>2024/10/09</p> 
+                                <p class='wasADate'>" . $rowsBookId[$i]["alocDate"] . "</p> 
 
                                 <img src=\"../images/pythonCover.png\" alt=\"Livro\">
                             </div>
@@ -95,6 +95,89 @@
                 echo "Erro: " . $e->getMessage();
             }
         }
+    }else if ($_SERVER["REQUEST_METHOD"] === 'POST'){
+        $username = $_SESSION["username"];
+        $pfp = "cotil.png";
+        $pfpAction = 'profile.php';
+        try{
+            include "conexaoDB.php";
+            $stmt = $pdo->prepare("select bookId from BBC_Aloc where userId = :id and status = 'em posse';");
+            $stmt->bindParam(':id', $_SESSION['ra']);
+            $stmt->execute();
+
+            $rowsBookId = $stmt->fetchAll();
+            $count = count($rowsBookId);
+            for ($i = 0; $i < $count; $i++) {
+                $stmt = $pdo->prepare("select * from BBC_Book where id = :id");
+                $stmt->bindParam(":id", $rowsBookId[$i]['bookId']);
+                $stmt->execute();
+                while($row = $stmt->fetch()){
+                    array_push($booksPosseText,
+                    "<button class=\"book-content\" value=". $row['id'] . ">
+                        <div class=\"book-cover\">
+                            <img src=\"../images/pythonCover.png\" alt=\"Livro\">
+                        </div>
+                        <div class=\"book-title\">" .
+                            $row['title']
+                        . "</div>
+                    </button>");
+                }
+            }
+            for($i = 0; $i < count($booksPosseText); $i++){
+                $lines .= $booksPosseText[$i];
+                if(($i+1)%5 == 0 || $i == $count-1 and $i !=0){
+                array_push($booksPosse, 
+                        "<div class=\"book-list owning\">" .
+                            $lines .
+                        "</div>"
+                    );
+                    $lines = "";   
+                }
+            }
+        }catch(PDOException $e){
+            echo "Erro: " . $e->getMessage();
+        }
+        try{
+            include "conexaoDB.php";
+            $stmt = $pdo->prepare("select bookId, alocDate from BBC_Aloc where userId = :id and status = 'entregue';");
+            $stmt->bindParam(':id', $_SESSION['ra']);
+            $stmt->execute();
+
+            $rowsBookId = $stmt->fetchAll();
+            $count = count($rowsBookId);
+            for ($i = 0; $i < $count; $i++) {
+                $stmt = $pdo->prepare("select * from BBC_Book where id = :id");
+                $stmt->bindParam(":id", $rowsBookId[$i]['bookId']);
+                $stmt->execute();
+                while($row = $stmt->fetch()){
+                    array_push($booksReadText,
+                    "<div class=\"book-content\" value=". $row['id'] . ">
+                        <div class=\"book-cover\">
+                            <p class='wasADate'>" . $rowsBookId[$i]["alocDate"] . "</p> 
+
+                            <img src=\"../images/pythonCover.png\" alt=\"Livro\">
+                        </div>
+                        <div class=\"book-title\">" .
+                            $row['title']
+                        . "</div>
+                    </div>");//usa essa classe "wasADate pra <p> da data :)"
+                }
+            }
+            for($i = 0; $i < count($booksReadText); $i++){
+                $lines .= $booksReadText[$i];
+                if(($i+1)%5 == 0 || $i == $count-1 and $i !=0){
+                    array_push($booksRead, 
+                        "<div class=\"book-list\">" .
+                            $lines .
+                        "</div>"
+                    );
+                    $lines = "";   
+                }
+            }
+        }catch(PDOException $e){
+            echo "Erro: " . $e->getMessage();
+        }
+        $pdo = null;
     }
 ?>
 
