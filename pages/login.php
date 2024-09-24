@@ -45,7 +45,7 @@
                     if($rows > 0){
                         $msg = "Email já cadastrado";
                     }else{
-                        $stmt = $pdo->prepare("select * from BBC_Account where email = :id");
+                        $stmt = $pdo->prepare("select * from BBC_Account where id = :id");
                         $stmt->bindParam(":id", $ra);
                         $stmt->execute();
                         $rows = $stmt->rowCount();
