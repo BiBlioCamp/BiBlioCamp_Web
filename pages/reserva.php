@@ -199,7 +199,7 @@
             let data = new Date(dataRetirada);
         
             // Adiciona 7 dias
-            data.setDate(data.getDate() + 7);
+            data.setDate(data.getDate() + 8);
         
             // Formata a data de volta para o formato YYYY-MM-DD
             let ano = data.getFullYear();
