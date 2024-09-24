@@ -1,5 +1,10 @@
 <?php
     session_start();
+    $booksPosse = array();
+    $booksPosseText = array();
+    $lines = "";
+    $booksRead = array();
+    $booksReadText = array();
     if($_SERVER['REQUEST_METHOD'] === 'GET') {
         if(!isset($_SESSION['username'])) {
             header("Location: error.html");
@@ -11,6 +16,12 @@
             $username = $_SESSION["username"];
             $pfp = "cotil.png";
             $pfpAction = 'profile.php';
+            try{
+                include "conexaoDB.php";
+                $stmt = $pdo->prepare("select BBC_Book.id, BBC_Book.title from BBC_Book, BBC_Account, BBC_Aloc where BBC_Book.id = :bookId and BBC_Book.id = BBC_Aloc.bookId and BBC_Account.id = :userId and BBC_Account.id = BBC_Aloc = ");
+            }catch(PDOException $e){
+                echo "Erro: " . $e->getMessage();
+            }
         }
     }
 ?>
