@@ -231,7 +231,7 @@
                     </div>
                     <div class="form">
                         <div class="input-msg">
-                            <input type="text" class="input" name="nome" placeholder="Digite seu Email">
+                            <input type="text" class="input" name="email" placeholder="Digite seu Email">
                             <!-- <p class="">$emailAlterado</p> class = success "Email alterado com sucesso!" / fail "Seu email precisa ser UNICAMP." -->
                         </div>
                         <input type="submit" class="button" name="btn" value="Alterar Email">
@@ -263,7 +263,7 @@
                     </div>
                     <div class="form">
                         <div class="input-msg">
-                            <input type="text" class="input" name="nome" placeholder="Digite sua Senha">
+                            <input type="text" class="input" name="exclusão" placeholder="Digite sua Senha">
                             <!-- <p class="">$senhaExcludeIncorreta</p> class = fail "Senha incorreta." -->
                         </div>
                         <input type="submit" class="button" name="btn" value="Excluir Conta">
