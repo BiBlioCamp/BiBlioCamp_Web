@@ -68,14 +68,16 @@
                     $stmt->execute();
                     while($row = $stmt->fetch()){
                         array_push($booksReadText,
-                        "<button class=\"book-content\" value=". $row['id'] . ">
+                        "<div class=\"book-content\" value=". $row['id'] . ">
                             <div class=\"book-cover\">
+                                <p class='wasADate'>2024/10/09</p> 
+
                                 <img src=\"../images/pythonCover.png\" alt=\"Livro\">
                             </div>
                             <div class=\"book-title\">" .
                                 $row['title']
                             . "</div>
-                        </button>");
+                        </div>");//usa essa classe "wasADate pra <p> da data :)"
                     }
                 }
                 for($i = 0; $i < count($booksReadText); $i++){

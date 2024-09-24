@@ -1,0 +1,131 @@
+body {
+    font-family: 'red hat display', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-image: linear-gradient(to bottom, #8f00f1, #4dcbff);
+    color: white;
+}
+
+
+.upperText {
+    font-size: 60px;
+    text-align: center;
+    width: 100%;
+    height: 10vh;
+}
+
+
+.reserve-area {
+    min-width: 80%;
+    max-width: 90%;
+    min-height: 85vh;
+    padding-bottom: 60px;
+    border-radius: 25px 25px 0 0;
+    background-color: #1d1b31;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.reserve-area > .reserve {
+    background-color: #11111F;
+    width: 92%;
+    height: 50vh;
+    margin-top: 80px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+}
+.reserve-number {
+    margin-top: 10px;
+    font-size: 40px;
+}
+
+
+.book-content {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+    height: 100%;
+    text-align: center;
+    transition: .2s ease;
+}
+.book-content .book-cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+    padding: 10px;
+}
+.book-content .book-cover img {
+    max-height: 90%;
+    max-width: 80%;
+}
+.book-title {
+    height: 20%;
+    font-size: 32px;
+    font-weight: 400;
+}
+@media (max-width: 1000px) {
+    .book-content .book-cover img {
+        max-height: 80%;
+        max-width: 80%;
+    }
+}
+
+.reserve > .reserve-data {
+    font-weight: 100;
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 30%;
+}
+.reserve-data > p {
+    margin-left: 40px;
+}
+.reserve-data > .late {
+    color: #e53636;
+}
+
+
+form {
+    height: 100%;
+    width: 25%;
+}
+.form-area {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: start;
+}
+.warning {
+    font-size: 30px;
+    text-align: left;
+}
+.button {
+    border-style: none;
+    width: 90%;
+    height: 40px;
+    border-radius: 50px;
+    background-color: transparent;
+    border: 2px solid #e53636;
+    color: #e53636;
+    font-weight: 500;
+    transition: .2s;
+}
+.button:hover {
+    background-color: #e53636;
+    color: white;
+    cursor: pointer;
+}

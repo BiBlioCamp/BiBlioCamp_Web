@@ -1,6 +1,7 @@
 body {
     font-family: 'red hat display', sans-serif;
     background-color: #1d1b31;
+    font-weight: 100;
 }
 
 .profile-area {
@@ -161,6 +162,7 @@ body {
 }
 .book-content .book-cover {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -182,6 +184,9 @@ body {
     position: relative;
     transform: scale(1.05);
     cursor: pointer;
+}
+.book-cover > .wasADate {
+    font-size: 20px;
 }
 
 
