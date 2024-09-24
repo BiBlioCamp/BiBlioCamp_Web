@@ -139,23 +139,36 @@
             <div class="main-article">
                 <details>
                     <summary>Problemas com login?</summary>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
+                    <p>1: Verifique se os dados digitados estão realmente corretos.</p>
+                    <p>2: Tente alterar sua senha.</p>
+                    <p>3: Se não funcionar use o formulário de contato!</p>
                 </details>
                 <details>
                     <summary>Problemas com cadastro?</summary>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
+                    <p>1: Verifique se os dados digitados estão realmente corretos.</p>
+                    <p>2: Se seus dados não forem veridicos o cadastro pode não funcionar.</p>
+                    <p>3: Se não funcionar use o formulário de contato!</p>
                 </details>
                 <details>
                     <summary>Problemas buscando por livros?</summary>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
+                    <p>1: Talvez a biblioteca não possua este livro, tente conversar com o funcionario da biblioteca.</p>
+                    <p>2: Não use caracteres especiais.</p>
+                    <p>3: Tente pesquisar com apenas algumas letras do nome do livro.</p>
+                    <p>4: Tente pesquisar por variações do nome do livro.</p>
+                    <p>5: Se não funcionar use o formulário de contato!</p>
                 </details>
                 <details>
-                    <summary>Problemas ao enviar duvidas?</summary>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
+                    <summary>Problemas usando o formulario de contato?</summary>
+                    <p>1: Verifique se o email não foi digitado incorretamente.</p>
+                    <p>2: O uso de palavras de baixo calão em sua mensagem podem barrar o envio do formulario.</p>
+                    <p>3: O site pode estar com problemas de conexão, tente novamente mais tarde.</p>
                 </details>
                 <details>
                     <summary>Problemas com reservas?</summary>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptate eos earum consectetur aliquid ipsum ipsam nihil autem eligendi molestiae rem consequatur at debitis, dolorum temporibus sunt maiores officia optio!</p>
+                    <p>1: Verifique se não há um erro na hora de escolher a data.</p>
+                    <p>2: Verifique se o estoque do livro não acabou.</p>
+                    <p>3: O site pode estar com problemas de conexão, tente novamente mais tarde.</p>
+                    <p>4: Se não funcionar use o formulário de contato!</p>
                 </details>
             </div>
         </div>
