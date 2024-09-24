@@ -84,6 +84,7 @@
             echo "Erro: " . $e->getMessage();
         }
     }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
