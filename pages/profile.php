@@ -8,9 +8,6 @@
     if($_SERVER['REQUEST_METHOD'] === 'GET') {
         if(!isset($_SESSION['username'])) {
             header("Location: error.html");
-            #$username = "User";
-            #$pfp = "unsetPfp.png";
-            #$pfpAction = "login.php";
         }
         else {
             $username = $_SESSION["username"];
@@ -76,7 +73,7 @@
                             <div class=\"book-title\">" .
                                 $row['title']
                             . "</div>
-                        </div>");//usa essa classe "wasADate pra <p> da data :)"
+                        </div>");
                     }
                 }
                 for($i = 0; $i < count($booksReadText); $i++){
@@ -293,7 +290,6 @@
             <div class="profile-area">
                 <div class="pfp-area">
                     <div class="pfp">
-                        <!-- <img src="../images/<?= $_SESSION['pfp'] ?>" alt="Foto de perfil"> -->
                         <img src="../images/Cotil.png" alt="Foto de perfil">
                     </div>
                 </div>
@@ -326,7 +322,7 @@
                         </button>
                     </div>-->
                 </form>
-                <p>Já reservados pelo menos uma(1) vez <!--<br>Formato da data: ano-mes-dia</p>-->
+                <p>Já reservados pelo menos uma(1) vez
                 <?php
                     foreach($booksRead as $value){
                         echo $value;
