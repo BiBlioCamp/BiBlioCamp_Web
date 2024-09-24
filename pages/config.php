@@ -1,6 +1,4 @@
 <?php
-    //lembra de bloquear pra quem n é user
-    //Eu tenho que admitir que essa página ficou bonita pra KARALHO, só isso mesmo
 
     session_start();
     if($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -216,8 +214,11 @@
                         <p class="sub">Seu nome é muito importante, é com ele que você se identifica aqui no site e também pode ser usado para confirmar sua identidade na hora de retirar seu livro reservado!</p>
                     </div>
                     <div class="form">
-                        <input type="text" class="input" name="nome" placeholder="Digite seu nome">
-                        <input type="submit" class="button" name="btn" value="nome">
+                        <div class="input-msg">
+                            <input type="text" class="input" name="nome" placeholder="Digite seu Nome">
+                            <p class="">Nome alterado com sucesso</p><!-- class = success / fail -->
+                        </div>
+                        <input type="submit" class="button" name="btn" value="Alterar Nome">
                     </div>
                 </div>   
 
@@ -227,8 +228,11 @@
                         <p class="sub">Seu email é muito importante, é a unica forma de podermos notificar você de qualquer distancia sem problema, além de assim como o nome, ajudar você a se identificar!</p>
                     </div>
                     <div class="form">
-                        <input type="text" class="input" name="email" id="email" placeholder="Digite seu email">
-                        <input type="submit" class="button" name="btn" value="email">
+                        <div class="input-msg">
+                            <input type="text" class="input" name="nome" placeholder="Digite seu Email">
+                            <p class="">Nome alterado com sucesso</p><!-- class = success / fail -->
+                        </div>
+                        <input type="submit" class="button" name="btn" value="Alterar Email">
                     </div>
                 </div>  
 
@@ -240,10 +244,13 @@
                     <div class="form">
                         <div class="password-inputs">
                             <input type="text" class="input" name="senha" placeholder="Digite sua senha atual">
+                            <p class="">Senha incorreta</p>
                             <input type="text" class="input" name="newSenha" placeholder="Digite sua nova senha">
+                            <p class="">Senha incorreta</p>
                             <input type="text" class="input" name="confNewSenha" placeholder="Confirme sua nova senha">
+                            <p class="">Senha incorreta</p>
                         </div>
-                        <input type="submit" class="button" name="btn" value="senha">
+                        <input type="submit" class="button" name="btn" value="Alterar Senha">
                     </div>
                 </div>  
 
@@ -253,8 +260,11 @@
                         <p class="sub">Tome muito cuidado, a unica maneira de recuperar sua conta após exclui-la é diretamente com a diretoria da escola, sua conta será excluida para sempre! (Isso é um tempão)!</p>
                     </div>
                     <div class="form">
-                        <input type="text" class="input" name="exclusão" placeholder="Digite sua senha">
-                        <input type="submit" class="button" name="btn" value="exclusão">
+                        <div class="input-msg">
+                            <input type="text" class="input" name="nome" placeholder="Digite sua Senha">
+                            <p class="">Nome alterado com sucesso</p><!-- class = success / fail -->
+                        </div>
+                        <input type="submit" class="button" name="btn" value="Excluir Conta">
                     </div>
                 </div>   
             </form>

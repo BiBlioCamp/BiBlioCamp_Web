@@ -93,6 +93,9 @@ form {
     width: 100%;
     gap: 10px;
 }
+.password-inputs > p {
+    margin-top: -10px;
+}
 
 .button {
     border-style: none;
@@ -125,4 +128,17 @@ form {
 .input:focus {
     border: 1px solid
         #8f00f1;
+}
+.input-msg {
+    width: 100%;
+}
+.password-inputs > .input {
+    height: 10px;
+}
+
+.success {
+    color: #50EB57;
+}
+.fail {
+    color: #e53636;
 }
