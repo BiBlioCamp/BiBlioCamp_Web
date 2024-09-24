@@ -15,11 +15,16 @@
                     $rows = $stmt->rowCount();
                     if($rows > 0){
                         $userData = $stmt->fetch();
-                        session_start();
-                        $_SESSION["username"] = $userData["username"];
-                        $_SESSION["senha"] = $userData["password"];
-                        $_SESSION["ra"] = $userData["id"];
-                        header("location: profile.php");
+                        $active = $userData['active'];
+                        if($active == 1){
+                            session_start();
+                            $_SESSION["username"] = $userData["username"];
+                            $_SESSION["senha"] = $userData["password"];
+                            $_SESSION["ra"] = $userData["id"];
+                            header("location: profile.php");
+                        }else if($active == 0){
+                            $loginMsg="Usuário desabilitado";
+                        }
                     }else{
                         $loginMsg = "Usuário ou senha incorreto.";
                     }
