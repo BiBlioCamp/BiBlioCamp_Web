@@ -39,7 +39,7 @@
                 }
                 for($i = 0; $i < count($booksPosseText); $i++){
                     $lines .= $booksPosseText[$i];
-                    if(($i+1)%5 == 0 || $i == $count-1 and $i !=0){
+                    if(($i+1)%5 == 0 || $i == $count-1 and $i >= 0){
                         array_push($booksPosse, 
                             "<div class=\"book-list owning\">" .
                                 $lines .
@@ -78,7 +78,7 @@
                 }
                 for($i = 0; $i < count($booksReadText); $i++){
                     $lines .= $booksReadText[$i];
-                    if(($i+1)%5 == 0 || $i == $count-1 and $i !=0){
+                    if(($i+1)%5 == 0 || $i == $count-1 and $i >= 0){
                         array_push($booksRead, 
                             "<div class=\"book-list\">" .
                                 $lines .
@@ -121,7 +121,7 @@
             }
             for($i = 0; $i < count($booksPosseText); $i++){
                 $lines .= $booksPosseText[$i];
-                if(($i+1)%5 == 0 || $i == $count-1 and $i !=0){
+                if(($i+1)%5 == 0 || $i == $count-1 and $i >= 0){
                 array_push($booksPosse, 
                         "<div class=\"book-list owning\">" .
                             $lines .
@@ -161,7 +161,7 @@
             }
             for($i = 0; $i < count($booksReadText); $i++){
                 $lines .= $booksReadText[$i];
-                if(($i+1)%5 == 0 || $i == $count-1 and $i !=0){
+                if(($i+1)%5 == 0 || $i == $count-1 and $i >= 0){
                     array_push($booksRead, 
                         "<div class=\"book-list\">" .
                             $lines .
