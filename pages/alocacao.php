@@ -1,6 +1,5 @@
 <?php
-    //minde ideias doq fazer aq :( ta paia pprt, mas se tu achar q ta bom assim eu quero q se foda
-    //lembra de bloquear quem n ta logado
+
     $books = array();
     $booksText = array();
     $lines = "";

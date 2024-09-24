@@ -3,9 +3,6 @@
     if($_SERVER['REQUEST_METHOD'] === 'GET') {
         if(!isset($_SESSION['username'])) {
             header("Location: error.html");
-            /*$username = "User";
-            $pfp = "unsetPfp.png";
-            $pfpAction = "login.php";*/
         }
     }else if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $username = $_SESSION["username"];
