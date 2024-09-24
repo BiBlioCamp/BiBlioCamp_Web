@@ -1,5 +1,4 @@
 <?php
-    //https://www.livrariaacervo.com.br/buscar?q=a+arte foi por onde me baseei levemente bem levemente
 
     session_start();
     $books = array();
@@ -9,9 +8,6 @@
     if($_SERVER['REQUEST_METHOD'] === 'GET') {
         if(!isset($_SESSION['username'])) {
             header("Location: error.html");
-            /*$username = "User";
-            $pfp = "unsetPfp.png";
-            $pfpAction = "login.php";*/
         }
         else {
             $username = $_SESSION["username"];
