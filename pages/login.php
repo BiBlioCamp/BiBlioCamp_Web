@@ -45,18 +45,26 @@
                     if($rows > 0){
                         $msg = "Email já cadastrado";
                     }else{
-                        $stmt = $pdo->prepare("insert into BBC_Account (id, name, email, password, username) values (:ra, :nome, :email, :senha, :username)");
-                        $stmt->bindParam(":ra",$ra);
-                        $stmt->bindParam(":nome",$name);
-                        $stmt->bindParam(":email",$email);
-                        $stmt->bindParam(":senha",$senha);
-                        $stmt->bindParam(":username", $cadaster_username);
+                        $stmt = $pdo->prepare("select * from BBC_Account where email = :id");
+                        $stmt->bindParam(":id", $ra);
                         $stmt->execute();
                         $rows = $stmt->rowCount();
                         if($rows > 0){
-                            $msg = "Cadastrado com sucesso!";
+                            $msg = 'RA já cadastrado';
                         }else{
-                            $msg = "Falha no cadastro";
+                            $stmt = $pdo->prepare("insert into BBC_Account (id, name, email, password, username) values (:ra, :nome, :email, :senha, :username)");
+                            $stmt->bindParam(":ra",$ra);
+                            $stmt->bindParam(":nome",$name);
+                            $stmt->bindParam(":email",$email);
+                            $stmt->bindParam(":senha",$senha);
+                            $stmt->bindParam(":username", $cadaster_username);
+                            $stmt->execute();
+                            $rows = $stmt->rowCount();
+                            if($rows > 0){
+                                $msg = "Cadastrado com sucesso!";
+                            }else{
+                                $msg = "Falha no cadastro";
+                            }
                         }
                     }
                 }else{
