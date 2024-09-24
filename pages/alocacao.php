@@ -21,6 +21,9 @@
                 $rows = $stmt->fetch();
                 $reservasCount = $rows['count'];
                 $stmt = $pdo->prepare("select bookId from BBC_Aloc where userId = :id and status !='entregue'");
+                $stmt->bindParam(':id',$_SESSION['ra']);
+                $stmt->execute();
+                $rowsBookId = $stmt->fetchAll();
             }catch(PDOException $e){
                 echo "Erro: " . $e->getMessage();
             }
