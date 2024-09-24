@@ -20,7 +20,7 @@
             $stmt->execute();
             $rows = $stmt->rowCount();
             if($rows > 0){
-                header("Location: profile.php");
+                header("Location: alocacao.php");
             }else{
                 echo "deu ruim";
             }

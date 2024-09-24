@@ -27,7 +27,7 @@
                     $stmt->execute();
                     while($row = $stmt->fetch()){
                         array_push($booksPosseText,
-                        "<button class=\"book-content\" value=". $row['id'] . ">
+                        "<button class=\"book-content\" value=". $row['id'] . " name='id'>
                             <div class=\"book-cover\">
                                 <img src=\"../images/covers/". $row['cover'] ."\" alt=\"Livro\">
                             </div>
@@ -109,7 +109,7 @@
                 $stmt->execute();
                 while($row = $stmt->fetch()){
                     array_push($booksPosseText,
-                    "<button class=\"book-content\" value=". $row['id'] . ">
+                    "<button class=\"book-content\" value=" . $row['id'] . " name='id'>
                         <div class=\"book-cover\">
                             <img src=\"../images/covers/". $rows['cover'] ."\" alt=\"Livro\">
                         </div>
@@ -173,6 +173,7 @@
         }catch(PDOException $e){
             echo "Erro: " . $e->getMessage();
         }
+        header('location: alocacao.php#' . $_POST['id']);
         $pdo = null;
     }
 ?>

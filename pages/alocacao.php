@@ -36,7 +36,7 @@
                     while($row = $stmt->fetch()){
                         if($status == 'em posse' and $interval->days <= 2){
                             array_push($booksText,"
-                            <div class=\"reserve\" id=\"". $row['id'] ."\">
+                            <div class=\"reserve\" id=". $row['id'] .">
                                 <div class=\"book-content\">
                                     <div class=\"book-title\">
                                         <p>" . $row['title']. "</p>
@@ -52,17 +52,14 @@
                                 </div>
                                 <form method='post'>
                                     <div class=\"form-area\">
-                                        <p class='warning late'>Expira em " . $interval->days+1 . " dias</p>
-                                        <input type=\"hidden\" name=\"idBook\" value=". $row['id'] .">
-                                        <input type=\"hidden\" name=\"dateAloc\" value=". $rowsBookId[$i]["alocDate"] .">
-                                        <input type=\"submit\" value=\"Cancelar Reserva\" name=\"btn\" class=\"button\">
+                                        <p class='warning late'>Expira em " . $interval->days . " dias</p>
                                     </div>
                                 </form>
                             </div>
                             ");
-                        }else if($status == 'em posse' and $interval->days+1 > 2){
+                        }else if($status == 'em posse' and $interval->days > 2){
                             array_push($booksText,"
-                            <div class=\"reserve\" id=\"". $row['id'] ."\">
+                            <div class=\"reserve\" id=". $row['id'] .">
                                 <div class=\"book-content\">
                                     <div class=\"book-title\">
                                         <p>" . $row['title']. "</p>
@@ -78,17 +75,14 @@
                                 </div>
                                 <form method='post'>
                                     <div class=\"form-area\">
-                                        <p class='warning'>Expira em " . $interval->days+1 . " dias</p>
-                                        <input type=\"hidden\" name=\"idBook\" value=". $row['id'] .">
-                                        <input type=\"hidden\" name=\"dateAloc\" value=". $rowsBookId[$i]["alocDate"] .">
-                                        <input type=\"submit\" value=\"Cancelar Reserva\" name=\"btn\" class=\"button\">
+                                        <p class='warning'>Expira em " . $interval->days . " dias</p>
                                     </div>
                                 </form>
                             </div>
                             ");
                         }else if($status == 'retirar'){
                             array_push($booksText,"
-                            <div class=\"reserve\" id=\"". $row['id'] ."\">
+                            <div class=\"reserve\" id=". $row['id'] .">
                                 <div class=\"book-content\">
                                     <div class=\"book-title\">
                                         <p>" . $row['title']. "</p>
@@ -104,7 +98,7 @@
                                 </div>
                                 <form method='post'>
                                     <div class=\"form-area\">
-                                        <p class='warning'>Retirada em " . $intervalRetirar->days+1 . " dias</p>
+                                        <p class='warning'>Retirada em " . $intervalRetirar->days + 1 . " dias</p>
                                         <input type=\"hidden\" name=\"idBook\" value=". $row['id'] .">
                                         <input type=\"hidden\" name=\"dateAloc\" value=". $rowsBookId[$i]["alocDate"] .">
                                         <input type=\"submit\" value=\"Cancelar Reserva\" name=\"btn\" class=\"button\">
@@ -114,7 +108,7 @@
                             ");
                         }else if($status == 'atrasado'){
                             array_push($booksText,"
-                            <div class=\"reserve\" id=\"". $row['id'] ."\">
+                            <div class=\"reserve\" id=". $row['id'] .">
                                 <div class=\"book-content\">
                                     <div class=\"book-title\">
                                         <p>" . $row['title']. "</p>
@@ -130,10 +124,7 @@
                                 </div>
                                 <form method='post'>
                                     <div class=\"form-area\">
-                                        <p class='warning late'>Atrasado há " . $interval->days+1 . " dias</p>
-                                        <input type=\"hidden\" name=\"idBook\" value=". $row['id'] .">
-                                        <input type=\"hidden\" name=\"dateAloc\" value=". $rowsBookId[$i]["alocDate"] .">
-                                        <input type=\"submit\" value=\"Cancelar Reserva\" name=\"btn\" class=\"button\">
+                                        <p class='warning late'>Atrasado há " . $interval->days . " dias</p>
                                     </div>
                                 </form>
                             </div>
@@ -163,7 +154,7 @@
                     $stmt->bindParam(':dateAloc', $dateAloc);
                     $stmt->execute();
                     if($stmt->rowCount() > 0){
-                        header('location: home.php');
+                        header('location: #');
                     }
                 }catch(PDOException $e){
                     echo "Erro: " . $e->getMessage();
@@ -194,7 +185,7 @@
                         while($row = $stmt->fetch()){
                             if($status == 'em posse' and $interval->days <= 2){
                                 array_push($booksText,"
-                                <div class=\"reserve\" id=\"". $row['id'] ."\">
+                                <div class=\"reserve\" id=". $row['id'] .">
                                     <div class=\"book-content\">
                                         <div class=\"book-title\">  
                                             <p>" . $row['title']. "</p>
@@ -211,16 +202,13 @@
                                     <form method='post'>
                                         <div class=\"form-area\">
                                             <p class='warning late'>Expira em " . $interval->days+1 . " dias</p>
-                                            <input type=\"hidden\" name=\"idBook\" value=". $row['id'] .">
-                                            <input type=\"hidden\" name=\"dateAloc\" value=". $rowsBookId[$i]["alocDate"] .">
-                                            <input type=\"submit\" value=\"Cancelar Reserva\" name=\"btn\" class=\"button\">
                                         </div>
                                     </form>
                                 </div>
                                 ");
                             }else if($status == 'em posse' and $interval->days > 2){
                                 array_push($booksText,"
-                                <div class=\"reserve\" id=\"". $row['id'] ."\">
+                                <div class=\"reserve\" id=". $row['id'] .">
                                     <div class=\"book-content\">
                                         <div class=\"book-title\">
                                             <p>" . $row['title']. "</p>
@@ -237,16 +225,13 @@
                                     <form method='post'>
                                         <div class=\"form-area\">
                                             <p class='warning'>Expira em " . $interval->days+1 . " dias</p>
-                                            <input type=\"hidden\" name=\"idBook\" value=". $row['id'] .">
-                                            <input type=\"hidden\" name=\"dateAloc\" value=". $rowsBookId[$i]["alocDate"] .">
-                                            <input type=\"submit\" value=\"Cancelar Reserva\" name=\"btn\" class=\"button\">
                                         </div>
                                     </form>
                                 </div>
                                 ");
                             }else if($status == 'retirar'){
                                 array_push($booksText,"
-                                <div class=\"reserve\" id=\"". $row['id'] ."\">
+                                <div class=\"reserve\" id=". $row['id'] .">
                                     <div class=\"book-content\">
                                         <div class=\"book-title\">
                                             <p>" . $row['title']. "</p>
@@ -263,8 +248,6 @@
                                     <form method='post'>
                                         <div class=\"form-area\">
                                             <p class='warning'>Retirada em " . $intervalRetirar->days+1 . " dias</p>
-                                            <input type=\"hidden\" name=\"idBook\" value=". $row['id'] .">
-                                            <input type=\"hidden\" name=\"dateAloc\" value=". $rowsBookId[$i]["alocDate"] .">
                                             <input type=\"submit\" value=\"Cancelar Reserva\" name=\"btn\" class=\"button\">
                                         </div>
                                     </form>
@@ -272,7 +255,7 @@
                                 ");
                             }else if($status == 'atrasado'){
                                 array_push($booksText,"
-                                <div class=\"reserve\" id=\"". $row['id'] ."\">
+                                <div class=\"reserve\" id=". $row['id'] .">
                                     <div class=\"book-content\">
                                         <div class=\"book-title\">
                                             <p>" . $row['title']. "</p>
@@ -289,8 +272,6 @@
                                     <form method='post'>
                                         <div class=\"form-area\">
                                             <p class='warning late'>Atrasado há " . $interval->days+1 . " dias</p>
-                                            <input type=\"hidden\" name=\"idBook\" value=". $row['id'] .">
-                                            <input type=\"hidden\" name=\"dateAloc\" value=". $rowsBookId[$i]["alocDate"] .">
                                             <input type=\"submit\" value=\"Cancelar Reserva\" name=\"btn\" class=\"button\">
                                         </div>
                                     </form>
