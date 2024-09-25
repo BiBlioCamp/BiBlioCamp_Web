@@ -26,10 +26,10 @@
                 for($i = 0; $i < $count; $i++){
                     $status = $rowsBookId[$i]['status'];
                     $todayDate = new DateTime();
-                        $alocDate = DateTime::createFromFormat('d/m/Y', $rowsBookId[$i]['alocDate']);
-                        $returnDate = DateTime::createFromFormat('d/m/Y',$rowsBookId[$i]['returnDate']);
-                        $interval = $returnDate->diff($todayDate);
-                        $intervalRetirar = $alocDate->diff($todayDate);
+                    $alocDate = DateTime::createFromFormat('d/m/Y', $rowsBookId[$i]['alocDate']);
+                    $returnDate = DateTime::createFromFormat('d/m/Y',$rowsBookId[$i]['returnDate']);
+                    $interval = $returnDate->diff($todayDate);
+                    $intervalRetirar = $alocDate->diff($todayDate);
                     $stmt = $pdo->prepare("select * from BBC_Book where id = :bookId");
                     $stmt->bindParam(':bookId',$rowsBookId[$i]['bookId']);
                     $stmt->execute();
@@ -52,7 +52,7 @@
                                 </div>
                                 <form method='post'>
                                     <div class=\"form-area\">
-                                        <p class='warning late'>Expira em " . $interval->days . " dias</p>
+                                        <p class='warning late'>Expira em " . $interval->days+1 . " dias</p>
                                     </div>
                                 </form>
                             </div>
@@ -75,7 +75,7 @@
                                 </div>
                                 <form method='post'>
                                     <div class=\"form-area\">
-                                        <p class='warning'>Expira em " . $interval->days . " dias</p>
+                                        <p class='warning'>Expira em " . $interval->days+1 . " dias</p>
                                     </div>
                                 </form>
                             </div>
@@ -98,7 +98,7 @@
                                 </div>
                                 <form method='post'>
                                     <div class=\"form-area\">
-                                        <p class='warning'>Retirada em " . $intervalRetirar->days + 1 . " dias</p>
+                                        <p class='warning'>Retirada em " . $intervalRetirar->days+1 . " dias</p>
                                         <input type=\"hidden\" name=\"idBook\" value=". $row['id'] .">
                                         <input type=\"hidden\" name=\"dateAloc\" value=". $rowsBookId[$i]["alocDate"] .">
                                         <input type=\"submit\" value=\"Cancelar Reserva\" name=\"btn\" class=\"button\">
@@ -271,7 +271,7 @@
                                     </div>
                                     <form method='post'>
                                         <div class=\"form-area\">
-                                            <p class='warning late'>Atrasado há " . $interval->days+1 . " dias</p>
+                                            <p class='warning late'>Atrasado há " . $interval->days . " dias</p>
                                             <input type=\"submit\" value=\"Cancelar Reserva\" name=\"btn\" class=\"button\">
                                         </div>
                                     </form>

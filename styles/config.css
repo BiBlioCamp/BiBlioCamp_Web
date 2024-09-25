@@ -108,7 +108,7 @@ form {
     font-weight: 500;
     transition: .2s;
 }
-.button:hover {
+.hvr:hover {
     background-color: #8f00f1;
     color: white;
     cursor: pointer;
@@ -141,4 +141,11 @@ form {
 }
 .fail {
     color: #e53636;
+}
+
+.span-required{
+    display: none;
+    font-size: 14px;
+    color: #e63636;
+    
 }

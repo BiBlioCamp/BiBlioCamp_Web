@@ -209,7 +209,7 @@
             </div>
         </div>
         <div class="right-content">
-            <form method="POST">
+            <form method="POST" id="forms">
                 <div class="data-area">
                     <div class="explain-text">
                         <p class="title"><i class='bx bxs-rename'></i> Alterar seu Nome</i></p>
@@ -217,10 +217,10 @@
                     </div>
                     <div class="form">
                         <div class="input-msg">
-                            <input type="text" class="input" name="nome" placeholder="Digite seu Nome">
+                            <input type="text" class="input" name="nome" oninput="nameValidate()" id="inputs" placeholder="Digite seu Nome">
                             <!-- <p class="">$nomeAlterado</p> class = success "Nome alterado com sucesso!" / fail "Seu nome precisa de no minimo X Digitos."-->
                         </div>
-                        <input type="submit" class="button" name="btn" value="Alterar Nome">
+                        <input type="submit" class="button hvr" name="btn" value="Alterar Nome">
                     </div>
                 </div>   
 
@@ -231,10 +231,10 @@
                     </div>
                     <div class="form">
                         <div class="input-msg">
-                            <input type="text" class="input" name="email" placeholder="Digite seu Email">
+                            <input type="text" class="input" name="email" id="inputs" oninput="emailValidate()" placeholder="Digite seu Email">
                             <!-- <p class="">$emailAlterado</p> class = success "Email alterado com sucesso!" / fail "Seu email precisa ser UNICAMP." -->
                         </div>
-                        <input type="submit" class="button" name="btn" value="Alterar Email">
+                        <input type="submit" class="button hvr" name="btn" value="Alterar Email">
                     </div>
                 </div>  
 
@@ -245,14 +245,14 @@
                     </div>
                     <div class="form">
                         <div class="password-inputs">
-                            <input type="text" class="input" name="senha" placeholder="Digite sua senha atual">
+                            <input type="password" class="input" name="senha" id="inputs" placeholder="Digite sua senha atual">
                             <!-- <p class="fail">$senhaIncorreta</p> class = fail "Senha incorreta." -->
-                            <input type="text" class="input" name="newSenha" placeholder="Digite sua nova senha">
+                            <input type="password" class="input" name="newSenha" id="inputs" oninput="passwordValidate()" placeholder="Digite sua nova senha">
                             <!-- <p class="fail">$senhaInvalida</p> class = fail "Sua senha precisa de no minimo 8 digitos." -->
-                            <input type="text" class="input" name="confNewSenha" placeholder="Confirme sua nova senha">
+                            <input type="password" class="input" name="confNewSenha" oninput="confPassword()" id="inputs" placeholder="Confirme sua nova senha">
                             <!-- <p class="">$senhasDiferentes</p> class = success "Senha alterada com sucesso!" / fail "Senhas não coincidem." -->
                         </div>
-                        <input type="submit" class="button" name="btn" value="Alterar Senha">
+                        <input type="submit" class="button hvr" name="btn" value="Alterar Senha">
                     </div>
                 </div>  
 
@@ -263,10 +263,10 @@
                     </div>
                     <div class="form">
                         <div class="input-msg">
-                            <input type="text" class="input" name="exclusão" placeholder="Digite sua Senha">
+                            <input type="password" class="input" name="exclusão" id="inputs" placeholder="Digite sua Senha">
                             <!-- <p class="">$senhaExcludeIncorreta</p> class = fail "Senha incorreta." -->
                         </div>
-                        <input type="submit" class="button" name="btn" value="Excluir Conta">
+                        <input type="submit" class="button hvr" name="btn" value="Excluir Conta">
                     </div>
                 </div>   
             </form>
@@ -276,26 +276,63 @@
     <script src="../scripts/sidebar.js"></script>
     <script>
 
+        const form = document.getElementById('forms');
+        const campos = document.querySelectorAll('#inputs');
+        const buttons = document.querySelectorAll('.button');
+
         function setError(index){
             campos[index].style.border = '1px solid #e63636';
-            labels[index].style.color = '#e53636';
-            spans[index].style.display = 'block';
+            buttons[index].disabled = true;
+            buttons[index].style.cursor = 'default';
+            buttons[index].classList.remove('hvr');
         }
 
         function removeError(index){
             campos[index].style.border = '';
-            labels[index].style.color = '#A7A5B5';
-            spans[index].style.display = 'none';
+            buttons[index].disabled = false;
+            buttons[index].style.cursor = 'pointer';
+            buttons[index].classList.add('hvr');
         }
 
         function emailValidate(){
-            if(document.getElementById('email').value == ""){
+            if(campos[1].value == ""){
+                removeError(1);
+            }else if((campos[1].value.indexOf("@g.unicamp.br")) == -1){
+                setError(1);
+            }else{
+                removeError(1);
+            }
+        }
+
+        function passwordValidate(){
+            if(campos[3].value == ""){
+                removeError(3);
+            }else if(campos[3].value.length < 8){
+                setError(3);
+            }else{
+                removeError(3);
+            }
+        }
+
+        function confPassword(){
+            if(campos[4].value == ""){
+                removeError(4);
+            }else if(campos[4].value != campos[3].value){
+                setError(4);
+            }else{
+                removeError(4);
+            }
+        }
+
+        function nameValidate(){
+            if(campos[0].value == ""){
                 removeError(0);
-            }else if((document.getElementById('email').value.indexOf("@g.unicamp.br")) == -1){
+            }else if(campos[0].value.length < 3){
                 setError(0);
             }else{
                 removeError(0);
             }
         }
+
     </script>
 </html>
