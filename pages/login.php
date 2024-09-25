@@ -36,7 +36,11 @@
                 $name = $_POST["name"];
                 $ra = $_POST["ra"];
                 $pos_Username = strpos($name,' ');
-                $cadaster_username = substr($name,0,$pos_Username);
+                    if($pos_Username == null){
+                        $cadaster_username = $name;
+                    }else{
+                        $cadaster_username = substr($name,0,$pos_Username);
+                    }
                 if($senha == $confSenha){
                     $stmt = $pdo->prepare("select * from BBC_Account where email = :email");
                     $stmt->bindParam(":email", $email);
