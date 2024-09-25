@@ -34,6 +34,7 @@
                     $rows = $stmt->rowCount();
                     if($rows > 0){
                         $_SESSION['username'] = $update_username;
+                        header("Location: config.php");
                     }
                 }
             }else if($button == 'Alterar Email'){
