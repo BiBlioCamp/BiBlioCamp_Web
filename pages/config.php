@@ -295,6 +295,20 @@
             buttons[index].classList.add('hvr');
         }
 
+        function removeErrorPassword(index){
+            campos[index].style.border = '';
+            buttons[2].disabled = false;
+            buttons[2].style.cursor = 'pointer';
+            buttons[2].classList.add('hvr');
+        }
+
+        function setErrorPassword(index){
+            campos[index].style.border = '1px solid #e63636';
+            buttons[2].disabled = true;
+            buttons[2].style.cursor = 'default';
+            buttons[2].classList.remove('hvr');
+        }
+
         function emailValidate(){
             if(campos[1].value == ""){
                 removeError(1);
@@ -307,21 +321,21 @@
 
         function passwordValidate(){
             if(campos[3].value == ""){
-                removeError(3);
+                removeErrorPassword(3);
             }else if(campos[3].value.length < 8){
-                setError(3);
+                setErrorPassword(3);
             }else{
-                removeError(3);
+                removeErrorPassword(3);
             }
         }
 
         function confPassword(){
             if(campos[4].value == ""){
-                removeError(4);
+                removeErrorPassword(4);
             }else if(campos[4].value != campos[3].value){
-                setError(4);
+                setErrorPassword(4);
             }else{
-                removeError(4);
+                removeErrorPassword(4);
             }
         }
 
