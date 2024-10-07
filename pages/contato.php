@@ -11,6 +11,10 @@
             $pfp = "cotil.png";
             $pfpAction = 'profile.php';
         }
+    }else if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        $username = $_SESSION["username"];
+        $pfp = "cotil.png";
+        $pfpAction = 'profile.php';
     }
 ?>
 
@@ -126,7 +130,8 @@
         </div>
         <main>
             <div class="formContainer">
-                <form class="form formContact" method="POST" name='contact'>
+                <form class="form formContact" action="https://api.staticforms.xyz/submit" method="post" name='contact'>
+                    <input type="hidden" name="accessKey" value="447b19ab-4ceb-4497-97ea-341aea225619">
                     <h1 class="title">Formulário de contato</h1>
                     <div class="formRegion">
                         <div class="formInputs">
@@ -146,7 +151,8 @@
                             </div>
                         </div>
                     </div>
-                    <button class="formButton" id="buttonSubmit" name="button" value="submit">Enviar</button>
+                    <input type="hidden" name="redirectTo" value="http://localhost/BiblioCamp_Web/pages/home.php">
+                    <button type="submit" class="formButton" id="buttonSubmit" name="button" value="submit">Enviar</button>
                 </form>
             </div>
         </main>
