@@ -148,6 +148,9 @@
                 $dateAloc = $dateAloc->format('Y-m-d');
                 try{
                     include "conexaoDB.php";
+                    $stmt = $pdo->prepare("update BBC_Book set actualStock = actualStock + 1 where id = :id");
+                    $stmt->bindParam(':id', $idBook);
+                    $stmt->execute();
                     $stmt = $pdo->prepare("delete from BBC_Aloc where userId = :id and bookId = :idBook and alocDate = :dateAloc");
                     $stmt->bindParam(':id',$_SESSION['ra']);
                     $stmt->bindParam(':idBook',$idBook);

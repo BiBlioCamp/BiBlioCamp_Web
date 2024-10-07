@@ -12,6 +12,9 @@
             include "conexaoDB.php";
             $id = $_POST["button"];
             $_SESSION["bookId"] = $id;
+            $stmt = $pdo->prepare("update BBC_Book set acesses = acesses + 1 where id = :id");
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
             $stmt = $pdo->prepare("select * from BBC_Book where id = :id");
             $stmt->bindParam(":id",$id);
             $stmt->execute();
