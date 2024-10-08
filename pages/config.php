@@ -96,6 +96,8 @@
                                 header("Location: config.php?parameter=passwordS");
                             }
                         }
+                    }else{
+                        header("Location: config.php?parameter=passwordF");
                     }
                 }else{
                     header("Location: config.php?parameter=passwordF");
