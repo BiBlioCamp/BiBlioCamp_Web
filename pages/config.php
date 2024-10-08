@@ -1,6 +1,10 @@
 <?php
 
     session_start();
+    $nameChange = "";
+    $passwordChange = "";
+    $emailChange = "";
+    $deleteChange = "";
     if($_SERVER['REQUEST_METHOD'] === 'GET') {
         if(!isset($_SESSION['username'])) {
             header("Location: error.html");
@@ -9,6 +13,24 @@
             $username = $_SESSION["username"];
             $pfp = "cotil.png";
             $pfpAction = 'profile.php';
+            if(isset($_GET['parameter'])){
+                $parameter = $_GET['parameter'];
+                if($parameter == 'nameS'){
+                    $nameChange = '<p class="success">Nome alterado com sucesso</p>';
+                }else if($parameter == 'passwordS'){
+                    $passwordChange = '<p class="success">Senha alterada com sucesso</p>';
+                }else if($parameter == 'emailS'){
+                    $emailChange = '<p class="success">Email alterado com sucesso</p>';
+                }else if($parameter == 'nameF'){
+                    $nameChange= '<p class="fail">Nome Inválido</p>';
+                }else if($parameter == 'passwordF'){
+                    $passwordChange = '<p class="fail">Senha Inválida</p>';
+                }else if($parameter == 'emailF'){
+                    $emailChange = '<p class="fail">Email Inválido</p>';
+                }else if($parameter == 'deleteF'){
+                    $deleteChange = '<p class="fail">Senha Incorreta</p>';
+                }
+            }
         }
     }else if($_SERVER["REQUEST_METHOD"] === "POST"){
         $username = $_SESSION["username"];
@@ -34,8 +56,10 @@
                     $rows = $stmt->rowCount();
                     if($rows > 0){
                         $_SESSION['username'] = $update_username;
-                        header("Location: config.php");
+                        header("Location: config.php?parameter=nameS");
                     }
+                }else{
+                    header("Location: config.php?parameter=nameF");
                 }
             }else if($button == 'Alterar Email'){
                 $email = $_POST['email'];
@@ -45,6 +69,12 @@
                     $stmt->bindParam(':email',$email);
                     $stmt->bindParam(":id", $_SESSION['ra']);
                     $stmt->execute();
+                    $rows = $stmt->rowCount();
+                    if($rows > 0){
+                        header("Location: config.php?parameter=emailS");
+                    }
+                }else{
+                    header("Location: config.php?parameter=emailF");
                 }
             }else if($button == 'Alterar Senha'){
                 $senha = $_POST['senha'];
@@ -61,8 +91,14 @@
                             $stmt->bindParam(":password", $newSenha);
                             $stmt->bindParam(":id", $_SESSION['ra']);
                             $stmt->execute();
+                            $rows = $stmt->rowCount();
+                            if($rows > 0){
+                                header("Location: config.php?parameter=passwordS");
+                            }
                         }
                     }
+                }else{
+                    header("Location: config.php?parameter=passwordF");
                 }
             }else if($button == 'Excluir Conta'){
                 $exc = $_POST['exclusão'];
@@ -79,7 +115,11 @@
                         if($rows > 0){
                             header("Location: logout.php");
                         }
+                    }else{
+                        header('Location: config.php?parameter=deleteF');
                     }
+                }else{
+                    header('Location: config.php?parameter=deleteF');
                 }
             }
         }catch(PDOException $e){
@@ -219,7 +259,7 @@
                     <div class="form">
                         <div class="input-msg">
                             <input type="text" class="input" name="nome" oninput="nameValidate()" id="inputs" placeholder="Digite seu Nome">
-                            <!-- <p class="">$nomeAlterado</p> class = success "Nome alterado com sucesso!" / fail "Seu nome precisa de no minimo X Digitos."-->
+                            <?=$nameChange?><!--<p class="fail">$nomeAlterado</p> <class = success "Nome alterado com sucesso!" / fail "Seu nome precisa de no minimo X Digitos."-->
                         </div>
                         <input type="submit" class="button hvr" name="btn" value="Alterar Nome">
                     </div>
@@ -233,7 +273,7 @@
                     <div class="form">
                         <div class="input-msg">
                             <input type="text" class="input" name="email" id="inputs" oninput="emailValidate()" placeholder="Digite seu Email">
-                            <!-- <p class="">$emailAlterado</p> class = success "Email alterado com sucesso!" / fail "Seu email precisa ser UNICAMP." -->
+                            <?=$emailChange?><!-- <p class="">$emailAlterado</p> class = success "Email alterado com sucesso!" / fail "Seu email precisa ser UNICAMP." -->
                         </div>
                         <input type="submit" class="button hvr" name="btn" value="Alterar Email">
                     </div>
@@ -251,7 +291,7 @@
                             <input type="password" class="input" name="newSenha" id="inputs" oninput="passwordValidate()" placeholder="Digite sua nova senha">
                             <!-- <p class="fail">$senhaInvalida</p> class = fail "Sua senha precisa de no minimo 8 digitos." -->
                             <input type="password" class="input" name="confNewSenha" oninput="confPassword()" id="inputs" placeholder="Confirme sua nova senha">
-                            <!-- <p class="">$senhasDiferentes</p> class = success "Senha alterada com sucesso!" / fail "Senhas não coincidem." -->
+                            <?=$passwordChange?><!-- <p class="">$senhasDiferentes</p> class = success "Senha alterada com sucesso!" / fail "Senhas não coincidem." -->
                         </div>
                         <input type="submit" class="button hvr" name="btn" value="Alterar Senha">
                     </div>
@@ -265,7 +305,7 @@
                     <div class="form">
                         <div class="input-msg">
                             <input type="password" class="input" name="exclusão" id="inputs" placeholder="Digite sua Senha">
-                            <!-- <p class="">$senhaExcludeIncorreta</p> class = fail "Senha incorreta." -->
+                            <?=$deleteChange?><!-- <p class="">$senhaExcludeIncorreta</p> class = fail "Senha incorreta." -->
                         </div>
                         <input type="submit" class="button hvr" name="btn" value="Excluir Conta">
                     </div>
