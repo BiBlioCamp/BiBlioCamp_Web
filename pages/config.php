@@ -86,15 +86,19 @@
                     $stmt->execute();
                     $rows = $stmt->fetch();
                     if($senha == $rows['password']){
-                        if($newSenha == $confNewSenha){
-                            $stmt = $pdo->prepare("update BBC_Account set password = :password where id = :id");
-                            $stmt->bindParam(":password", $newSenha);
-                            $stmt->bindParam(":id", $_SESSION['ra']);
-                            $stmt->execute();
-                            $rows = $stmt->rowCount();
-                            if($rows > 0){
-                                header("Location: config.php?parameter=passwordS");
+                        if($senha != $newSenha){
+                            if($newSenha == $confNewSenha){
+                                $stmt = $pdo->prepare("update BBC_Account set password = :password where id = :id");
+                                $stmt->bindParam(":password", $newSenha);
+                                $stmt->bindParam(":id", $_SESSION['ra']);
+                                $stmt->execute();
+                                $rows = $stmt->rowCount();
+                                if($rows > 0){
+                                    header("Location: config.php?parameter=passwordS");
+                                }
                             }
+                        }else{
+                            header("Location: config.php?parameter=passwordF");    
                         }
                     }else{
                         header("Location: config.php?parameter=passwordF");
@@ -374,7 +378,7 @@
         function confPassword(){
             if(campos[4].value == ""){
                 removeErrorPassword(4);
-            }else if(campos[4].value != campos[3].value){
+            }else if(campos[4].value != campos[3].value && campos[4].value.length < 8){
                 setErrorPassword(4);
             }else{
                 removeErrorPassword(4);
