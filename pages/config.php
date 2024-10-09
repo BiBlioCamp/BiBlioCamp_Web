@@ -378,7 +378,7 @@
         function confPassword(){
             if(campos[4].value == ""){
                 removeErrorPassword(4);
-            }else if(campos[4].value != campos[3].value && campos[4].value.length < 8){
+            }else if(campos[4].value != campos[3].value || campos[4].value.length < 8 || campos[3].value.length < 8){
                 setErrorPassword(4);
             }else{
                 removeErrorPassword(4);
