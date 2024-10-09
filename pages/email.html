@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="2; URL=contato.php">
+    <title>Sucesso</title>
+    <link rel="stylesheet" href="../styles/error.css">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/jpg" href="../images/logobbc.png"/>
+</head>
+    <script language="javascript">
+        function isMobile() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            if(userAgent.search(/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up.browser|up.link|webos|wos)/i)!= -1)
+                window.location.href = "mobileError.html";
+        }
+        window.onload(isMobile());
+    </script>
+<body>
+    <div class="notifications-container">
+        <div class="error-alert">
+            <h1 style="margin-top: 50px;">Email enviado com sucesso</h1>
+            <img src="../images/sucess.png" alt="Sucess">
+        </div>
+    </div>
+</body>
+</html>
