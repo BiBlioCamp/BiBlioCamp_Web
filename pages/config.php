@@ -80,7 +80,7 @@
                 $senha = $_POST['senha'];
                 $newSenha = $_POST['newSenha'];
                 $confNewSenha = $_POST['confNewSenha'];
-                if($senha != '' and $newSenha != '' and $confNewSenha != ''){
+                if(trim($senha) != '' and trim($newSenha) != '' and trim($confNewSenha) != ''){
                     $stmt = $pdo->prepare("select password from BBC_Account where id = :id");
                     $stmt->bindParam(":id", $_SESSION['ra']);
                     $stmt->execute();
@@ -96,6 +96,8 @@
                                 if($rows > 0){
                                     header("Location: config.php?parameter=passwordS");
                                 }
+                            }else{
+                                header("Location: config.php?parameter=passwordF");    
                             }
                         }else{
                             header("Location: config.php?parameter=passwordF");    
@@ -368,20 +370,44 @@
         function passwordValidate(){
             if(campos[3].value == ""){
                 removeErrorPassword(3);
+                verificaPasswords();
             }else if(campos[3].value.length < 8){
                 setErrorPassword(3);
             }else{
                 removeErrorPassword(3);
+                verificaPasswords();
             }
+        }
+
+        function verificaPasswords(){
+            if(campos[3].value != campos[4].value || campos[3].value.length < 8 || campos[4].value.length < 8){
+                setButtonError();
+            }else{
+                removeButtonError();
+            }
+        }
+
+        function setButtonError(){
+            buttons[2].disabled = true;
+            buttons[2].style.cursor = 'default';
+            buttons[2].classList.remove('hvr');
+        }
+
+        function removeButtonError(){
+            buttons[2].disabled = false;
+            buttons[2].style.cursor = 'pointer';
+            buttons[2].classList.add('hvr');
         }
 
         function confPassword(){
             if(campos[4].value == ""){
                 removeErrorPassword(4);
+                verificaPasswords();
             }else if(campos[4].value != campos[3].value || campos[4].value.length < 8 || campos[3].value.length < 8){
                 setErrorPassword(4);
             }else{
                 removeErrorPassword(4);
+                verificaPasswords();
             }
         }
 

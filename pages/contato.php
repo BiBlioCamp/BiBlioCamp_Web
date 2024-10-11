@@ -151,7 +151,7 @@
                             </div>
                         </div>
                     </div>
-                    <input type="hidden" name="redirectTo" value="http://localhost/BiblioCamp_Web/pages/home.php">
+                    <input type="hidden" name="redirectTo" value="http://localhost/BiblioCamp_Web/pages/email.html">
                     <button type="submit" class="formButton" id="buttonSubmit" name="button" value="submit">Enviar</button>
                 </form>
             </div>
