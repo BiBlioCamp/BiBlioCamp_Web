@@ -7,7 +7,7 @@
     $dataReturn = $_POST["dataReturn"];
     try{
         include "conexaoDB.php";
-        $stmt = $pdo->prepare("insert into BBC_Aloc (userId, bookId, alocDate, returnDate) values (:userId, :bookId, :alocDate, :returnDate)");
+        $stmt = $pdo->prepare("insert into BBC_Aloc (userId, bookId, alocDate, returnDate, status) values (:userId, :bookId, :alocDate, :returnDate, 'retirar')");
         $stmt->bindParam(":userId", $_SESSION["ra"]);
         $stmt->bindParam(":bookId", $_SESSION["bookId"]);
         $stmt->bindParam(":alocDate", $dataInit);
